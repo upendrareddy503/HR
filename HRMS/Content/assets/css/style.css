@@ -1,0 +1,15 @@
+.panel{
+	overflow:hidden;
+	border-radius:3px;
+}
+.panel-header{
+	padding: 1.25rem;
+    border-bottom: 1px solid #e5e9ec;
+    background: #fff;
+}
+.panel-body{
+	padding: 1.25rem;
+}
+h3.example-title{
+	margin:0px;
+}

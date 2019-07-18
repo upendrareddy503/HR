@@ -1,0 +1,65 @@
+﻿
+    <title>Holiday Details</title>
+    
+    <script src="~/JS/Dateformat.js"></script>
+    <script src="~/JS/Holiday.js"></script>
+
+
+    <div class="container">
+        <h2>Holiday Details</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearTextBox();">Holiday Details</button>
+        <br /><br />
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Holiday Name</th>
+                    <th>Date</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
+
+
+    <div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Holiday</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <input type="hidden" id="hdnHoliday" />
+
+
+                        <div class="form-group">
+                            <label for="HolidayName">Holiday Name</label>
+                            <input type="text" class="form-control" id="txt_holName" placeholder="Holiday Name" />
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date</label>
+
+                            @*<input type="text" id="datepicker" class="form-control" placeholder="01/01/1999">*@
+                            <input type="text" id="tbDate" class="form-control" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="year">year</label>
+                            <input type="text" class="form-control" id="txt_Year" placeholder="Year" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddHoliday();">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateHoliday();" style="display:none">Update</button>
+                    <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+

@@ -1,0 +1,130 @@
+C:\Users\FTINFO1\Downloads\HRMS\BLL\bin\Debug\BLL.dll
+C:\Users\FTINFO1\Downloads\HRMS\BLL\bin\Debug\BLL.pdb
+C:\Users\FTINFO1\Downloads\HRMS\BLL\bin\Debug\DLL.dll
+C:\Users\FTINFO1\Downloads\HRMS\BLL\bin\Debug\DLL.pdb
+C:\Users\FTINFO1\Downloads\HRMS\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\FTINFO1\Downloads\HRMS\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\FTINFO1\Downloads\HRMS\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\FTINFO1\Downloads\HRMS\BLL\obj\Debug\BLL.dll
+C:\Users\FTINFO1\Downloads\HRMS\BLL\obj\Debug\BLL.pdb
+E:\Veera desktop_b\HRMS\BLL\bin\Debug\BLL.dll
+E:\Veera desktop_b\HRMS\BLL\bin\Debug\BLL.pdb
+E:\Veera desktop_b\HRMS\BLL\bin\Debug\DLL.dll
+E:\Veera desktop_b\HRMS\BLL\bin\Debug\DLL.pdb
+E:\Veera desktop_b\HRMS\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+E:\Veera desktop_b\HRMS\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+E:\Veera desktop_b\HRMS\BLL\obj\Debug\BLL.csproj.CopyComplete
+E:\Veera desktop_b\HRMS\BLL\obj\Debug\BLL.dll
+E:\Veera desktop_b\HRMS\BLL\obj\Debug\BLL.pdb
+D:\HRMS\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+D:\HRMS\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+D:\HRMS\BLL\bin\Debug\BLL.dll
+D:\HRMS\BLL\bin\Debug\BLL.pdb
+D:\HRMS\BLL\bin\Debug\DLL.dll
+D:\HRMS\BLL\bin\Debug\DLL.pdb
+D:\HRMS\BLL\obj\Debug\BLL.csproj.CopyComplete
+D:\HRMS\BLL\obj\Debug\BLL.dll
+D:\HRMS\BLL\obj\Debug\BLL.pdb
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\bin\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\bin\Debug\BLL.pdb
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\obj\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-26-05-2019\BLL\obj\Debug\BLL.pdb
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\bin\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\bin\Debug\BLL.pdb
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\obj\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-28-05-2019\BLL\obj\Debug\BLL.pdb
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\bin\Debug\BLL.dll
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\bin\Debug\BLL.pdb
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\bin\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\bin\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\obj\Debug\BLL.dll
+G:\HRMS\New folder\HRMS-6-06-2019\BLL\obj\Debug\BLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\BLL.dll.config
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\BLL.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\BLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\WebGrease.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\DLL.dll.config
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\bin\Debug\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\obj\Debug\BLL.dll
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\obj\Debug\BLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.dll.config
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Antlr3.Runtime.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\System.Web.Optimization.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\WebGrease.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.dll.config
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\System.Web.Optimization.xml
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.dll.config
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\BLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Antlr3.Runtime.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\System.Web.Optimization.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\WebGrease.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\DLL.dll.config
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\bin\Debug\System.Web.Optimization.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\BLL\obj\Debug\BLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\BLL.dll.config
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\BLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\BLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\Antlr3.Runtime.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\DLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\System.Web.Optimization.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\WebGrease.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\DLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\DLL.dll.config
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\bin\Debug\System.Web.Optimization.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\obj\Debug\BLL.csprojAssemblyReference.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\obj\Debug\BLL.csproj.CopyComplete
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\obj\Debug\BLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\BLL\obj\Debug\BLL.pdb

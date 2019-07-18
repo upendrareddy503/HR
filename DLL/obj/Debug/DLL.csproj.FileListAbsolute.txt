@@ -1,0 +1,83 @@
+C:\Users\FTINFO1\Downloads\HRMS\DLL\bin\Debug\DLL.dll
+C:\Users\FTINFO1\Downloads\HRMS\DLL\bin\Debug\DLL.pdb
+C:\Users\FTINFO1\Downloads\HRMS\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\FTINFO1\Downloads\HRMS\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+C:\Users\FTINFO1\Downloads\HRMS\DLL\obj\Debug\DLL.dll
+C:\Users\FTINFO1\Downloads\HRMS\DLL\obj\Debug\DLL.pdb
+E:\Veera desktop_b\HRMS\DLL\bin\Debug\DLL.dll
+E:\Veera desktop_b\HRMS\DLL\bin\Debug\DLL.pdb
+E:\Veera desktop_b\HRMS\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+E:\Veera desktop_b\HRMS\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+E:\Veera desktop_b\HRMS\DLL\obj\Debug\DLL.dll
+E:\Veera desktop_b\HRMS\DLL\obj\Debug\DLL.pdb
+D:\HRMS\DLL\bin\Debug\DLL.dll
+D:\HRMS\DLL\bin\Debug\DLL.pdb
+D:\HRMS\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+D:\HRMS\DLL\obj\Debug\DLL.dll
+D:\HRMS\DLL\obj\Debug\DLL.pdb
+D:\HRMS\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\obj\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-26-05-2019\DLL\obj\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\obj\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-28-05-2019\DLL\obj\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\bin\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\bin\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\obj\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-6-06-2019\DLL\obj\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\DLL.dll.config
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\DLL.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\WebGrease.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\bin\Debug\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\obj\Debug\DLL.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\obj\Debug\DLL.dll
+G:\HRMS\New folder\HRMS-14-06-2019\DLL\obj\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.dll.config
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Antlr3.Runtime.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\System.Web.Optimization.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\WebGrease.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\System.Web.Optimization.xml
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csproj.CopyComplete
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.dll
+C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.dll.config
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\DLL.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Antlr3.Runtime.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Newtonsoft.Json.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\System.Web.Optimization.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\WebGrease.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\Newtonsoft.Json.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\bin\Debug\System.Web.Optimization.xml
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csprojAssemblyReference.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csproj.CoreCompileInputs.cache
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.csproj.CopyComplete
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.dll
+C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\DLL\obj\Debug\DLL.pdb

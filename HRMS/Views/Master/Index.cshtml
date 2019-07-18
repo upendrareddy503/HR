@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Groups</title>
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/JS/Master.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Division</h2>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearTextBox();">Add Division</button>
+        <br /><br />
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Sno</th>
+                    <th>Group Name</th>
+                    <th>Division Name</th>
+                </tr>
+            </thead>
+            <tbody class="tbody"></tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">X</button>
+                    <h4 class="modal-title" id="myModalLabel">Add Division</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+
+                        <input type="hidden" id="hdnDivisionID" />
+
+                        <div class="form-group">
+                            <label for="GroupName">Group Name</label>
+                            <select id="ddl_Group"><option>Select</option></select>                            
+                        </div>
+                        <div class="form-group">
+                            <label for="DivisionName">Division Name</label>
+                            <input type="text" class="form-control" id="txt_DivName" placeholder="Division Name" />
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddDivision();">Add</button>
+                    <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateDivision();" style="display:none">Update</button>
+                    <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
