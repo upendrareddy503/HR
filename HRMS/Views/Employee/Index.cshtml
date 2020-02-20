@@ -1,10 +1,7 @@
-﻿<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-<script src="~/Scripts/jquery-3.3.1.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
-<script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+﻿
+@*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
 <link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
-<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>
+<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>*@
 
 <script src="~/JS/Employee.js"></script>
 <script src="~/JS/Common.js"></script>
@@ -75,7 +72,7 @@
         <div class="panel-header">
             <h3 class="example-title">Employee</h3>
         </div>
-        <div class="panel-body container-fluid">
+        <div  class="panel-body">
             <div class="row row-lg">
                 <div class="col-md-6">
                     <!-- Example Basic Form (Form grid) -->
@@ -187,7 +184,10 @@
                                     <option>AB-</option>
                                 </select>
                             </div>
-
+                            <div class="form-group">
+                                <label for="AadharNo">Aadhar Number</label>
+                                <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="16" />
+                            </div>
                             <div class="form-group">
                                 <label for="Experience">
                                     Type Experience
@@ -308,14 +308,13 @@
                                 <div class="form-Reporting Designation">
                                     <label for="DesignationReport">Designation Report</label>
                                     <select id="ddl_DesignationReport" multiple="multiple">
-                                        <option value="0">Select</option>
-                                    </select>
+                                                                            </select>
                                 </div>
 
                                 <div class="form-Reporting">
                                     <label for="ReportingTo">ReportingTo</label>
-                                    <select id="ddl_ReportingTo" >
-                                        <option value="0">Select</option>
+                                    <select id="ddl_ReportingTo"  multiple="multiple">
+                                        
                                     </select>
                                 </div>
 
@@ -353,10 +352,7 @@
                                     <label for="ESI">ESI Number</label>
                                     <input type="text" class="form-control" id="txt_ESno" placeholder="ESI Number" maxlength="25" />
                                 </div>
-                                <div class="form-group">
-                                    <label for="AadharNo">Aadhar Number</label>
-                                    <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="16" />
-                                </div>
+                               
 
 
 
@@ -368,7 +364,7 @@
                             <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
                         </div>
 
-                        <div id="Third" style="display:none;height:600px">
+                        <div id="Third" style="display:none;">
                             <div class="form-group">
                                 <label for="Type">Salary Type</label>
                                 <select id="ddl_SalaryType">
@@ -392,24 +388,11 @@
                                 <input type="text" class="form-control" id="txt_Salary" placeholder="Salary" maxlength="16" />
                             </div>
 
-                            @*<div class="form-group">
+                            <div class="form-group">
                                 <label for="allowance">Allowance</label>
-                                <select id="ddl_allowance" multiple="multiple">                                    
+                                <select id="ddl_allowance" multiple="multiple">
+                                    <option value="0">Select</option>
                                 </select>
-                            </div>*@
-                            <div>
-                                <table id="tblAllowance" class="table table-bordered table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th style="display:none"></th>
-                                            <th><input type="checkbox" id="chkAll" /></th>
-                                            <th>Allowance Name</th>
-                                            <th>Type</th>
-                                            <th>Amount</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="tbody"></tbody>
-                                </table>
                             </div>
 
                             <button type="button" class="btn btn-primary" id="btnAdd1" onclick="return FinalAdd2();">Add</button>

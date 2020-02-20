@@ -6,12 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>EmployeeRules</title>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-
+    
     <script src="~/JS/EmpRules.js"></script>
 
 </head>
@@ -35,7 +30,8 @@
         <div class="modal-body">
             <form>
 
-                <input type="hidden" class="form-control" id="empruleId" placeholder="Group ID" disabled="disabled" />
+                <input type="hidden" id="empruleId" />
+                <input type="hidden" id="hdnLength" />
                 <div class="form-group">
                     <label for="GroupName">Group</label>
                     <select id="ddl_Group"><option value="0">Select</option></select>
@@ -44,12 +40,13 @@
 
                 <div class="form-group">
                     <label for="DivisionName">DivisionName</label>
-                    <select id="ddl_Division"><option value="0">Select</option></select>                  
+                    <select id="ddl_Division"><option value="0">Select</option></select>
                 </div>
 
                 <div class="form-group">
                     <label for="EmployeeId">EmployeeId</label>
                     <input type="text" class="form-control" id="txt_EmloyeeId" placeholder="EmployeeId" maxlength="15" />
+                    <input type="hidden" id="hdnEmpId" />
                 </div>
 
                 <div class="form-group">
@@ -64,7 +61,7 @@
             </div>*@
         @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearText();">Add Menu</button>*@
         <br /><br />
-        <div id="emprulebind">            
+        <div id="emprulebind">
 
 
         </div>

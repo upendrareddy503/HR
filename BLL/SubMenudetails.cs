@@ -104,5 +104,35 @@ namespace BLL
             }
             return id;
         }
+
+        public List<SubMenudetails> Get_AllSubMenuList_id(int ID)
+        {
+            SqlParameter[] parm = new SqlParameter[2];
+             parm[1] = da.AddSPParameter("MainMenuId", ID, ParameterDirection.Input, DbType.Int32, 20);
+             parm[0] = da.AddSPParameter("Flag", 6, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Menu_Sub", parm);
+            List<SubMenudetails> obj_Lst_Smenu = new List<SubMenudetails>();
+            if (dt.Rows.Count > 0)
+            {
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    SubMenudetails Obj_SubM = new SubMenudetails();
+                    Obj_SubM.MainMenuId = Convert.ToInt32(dt.Rows[i]["MainMenuId"]);
+                    Obj_SubM.Description = dt.Rows[i]["Description"].ToString();
+                    Obj_SubM.Url_Name = dt.Rows[i]["Url_Name"].ToString();
+                    if (dt.Rows[i]["Order_No"].ToString() != "" && dt.Rows[i]["Order_No"].ToString() != null)
+                    {
+                        Obj_SubM.Order_No = Convert.ToInt32(dt.Rows[i]["Order_No"]);
+                    }
+                    Obj_SubM.TxnId = Convert.ToInt32(dt.Rows[i]["TxnId"]);
+
+                    obj_Lst_Smenu.Add(Obj_SubM);
+                }
+            }
+            return obj_Lst_Smenu;
+        }
     }
 }

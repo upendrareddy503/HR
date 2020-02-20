@@ -12,6 +12,8 @@ namespace HRMS.Controllers
     {
         // GET: EmployeeRules
         Emprulesdetails obj_Emprule = new Emprulesdetails();
+
+        
         public ActionResult Index()
         {
             return View();
@@ -21,7 +23,7 @@ namespace HRMS.Controllers
         {
             return Json(obj_Emprule.Get_AllEmpRules(1), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult EmployeeIdwise(string Prefix )
+        public JsonResult EmployeeIdwise(string Prefix)
         {
             return Json(obj_Emprule.Get_employeeidwise(Prefix), JsonRequestBehavior.AllowGet);
         }
@@ -32,6 +34,18 @@ namespace HRMS.Controllers
         public JsonResult Showdetails(Emprulesdetails obj_Emprule)
         {
             return Json(obj_Emprule.GetGroupByRules(obj_Emprule), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ShowDivisiondetails(Emprulesdetails obj_Emprule)
+        {
+            return Json(obj_Emprule.GetDivisionByRules(obj_Emprule), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult ShowEmployeedetails(Emprulesdetails obj_Emprule)
+        {
+            return Json(obj_Emprule.GetEmployeeByRules(obj_Emprule), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult SaveRules(Emprulesdetails obj_Emprule)
+        {
+            return Json(obj_Emprule.SaveRules(obj_Emprule), JsonRequestBehavior.AllowGet);
         }
     }
 }

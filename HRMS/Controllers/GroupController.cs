@@ -30,7 +30,7 @@ namespace HRMS.Controllers
         }
         public JsonResult GetByID(int ID)
         {
-            var GroupId = obj_Grp.Get_AllGroup(1, 1).Find(x => x.GroupId.Equals(ID));
+            var GroupId = obj_Grp.Edit_Group(ID, 1,1);
            
             return Json(GroupId, JsonRequestBehavior.AllowGet);
         }

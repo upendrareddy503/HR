@@ -25,18 +25,31 @@ function loadData() {
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.GroupName + '</td>';
-                html += '<td>' + item.DivisionName + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.DivisionId + ')">Edit</a>|<a href="#" onclick="DeleteDivision(' + item.DivisionId + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+        success: function (data) {
+            $("#example").dataTable({
+                data: data,
+                columns: [
+                    { "data": "GroupName" },
+                    { "data": "DivisionName" },
+                    {
+                        "data": "DivisionId",
+                        "render": function (DivisionId) {
+                            return '<a href="#" onclick="getbyID(' + DivisionId + ')">Edit</a>|<a href="#" onclick="Delete(' + DivisionId + ')">Delete</a></td > '
+                        }
+                    }
+                ]
+            })
+            //var html = '';
+            //var i = 1;
+            //$.each(r, function (key, item) {
+            //    html += '<tr>';
+            //    html += '<td>' + parseInt(i) + '</td>';
+            //    html += '<td>' + item.GroupName + '</td>';
+            //    html += '<td>' + item.DivisionName + '</td>';
+            //    html += '<td><a href="#"  onclick="getbyID(' + item.DivisionId + ')">Edit</a>|<a href="#" onclick="DeleteDivision(' + item.DivisionId + ')">Delete</a></td > ';
+            //    html += '</tr>';
+            //});
+            //$('.tbody').html(html);
         },
         error: function (errmsg) {
             alert(errmsg.responseText);

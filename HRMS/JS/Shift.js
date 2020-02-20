@@ -1,15 +1,167 @@
 ﻿$(document).ready(function () {
+
+
     getGroup();
-    loadData();
-    $('.time').timepicker(); 
+    loadShift();
+    $('.time').timepicker();
+    $('#txt_OutTime').change(function () {
+        if ($('#txt_InTime').val() != '') {
+            if (ConvertTimeformat($('#txt_OutTime').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_outtime').show().text('Out time should not be less than In time.');
+                $('#txt_OutTime').val('').focus();
+                
+            }
+            else {
+                $('#sp_outtime').hide().text('');
+
+                var valuein = $('#txt_InTime').val();
+                var valueout = $('#txt_OutTime').val();
+
+                //create date format          
+                var timeStart = new Date("01/01/2007 " + valuein).getHours();
+                var timeEnd = new Date("01/01/2007 " + valueout).getHours();
+
+                var hourDiff = timeEnd - timeStart;
+                $('#txt_Hours').val(hourDiff);
+            }
+        }
+    });
+
+
+
+    $('#txt_CutIn').change(function () {
+        if ($('#txt_InTime').val() != '' && $('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_CutIn').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_LateCutIn').show().text('Late cut time should not be less than In time.');
+                $('#txt_CutIn').val('').focus();
+            }
+            else if (ConvertTimeformat($('#txt_CutIn').val()) > ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_LateCutIn').show().text('Late cut time should not be greater than Out time.');
+                $('#txt_CutIn').val('').focus();
+            }
+            else {
+                $('#sp_LateCutIn').hide().text('');
+            }
+        }
+    });
+
+
+    $('#txt_ShiftCutOff').change(function () {
+        if ($('#txt_InTime').val() != '' && $('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_ShiftCutOff').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_ShiftCutOff').show().text('Shift cutoff time should not be less than In time.');
+                $('#txt_ShiftCutOff').val('').focus();
+            }
+            else if (ConvertTimeformat($('#txt_ShiftCutOff').val()) > ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_ShiftCutOff').show().text('Shift cutoff time should not be greater than Out time.');
+                $('#txt_ShiftCutOff').val('').focus();
+            }
+            else {
+                $('#sp_ShiftCutOff').hide().text('');
+            }
+        }
+    });
+
+
+    $('#txt_SecShiftIn').change(function () {
+        if ($('#txt_InTime').val() != '' && $('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_SecShiftIn').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_SecShiftIn').show().text('Second Shift In time should not be less than In time.');
+                $('#txt_SecShiftIn').val('').focus();
+            }
+            else if (ConvertTimeformat($('#txt_SecShiftIn').val()) > ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_SecShiftIn').show().text('Second Shift In time should not be greater than Out time.');
+                $('#txt_SecShiftIn').val('').focus();
+            }
+            else {
+                $('#sp_SecShiftIn').hide().text('');
+            }
+        }
+    });
+
+
+    $('#txt_SecShiftLateIn').change(function () {
+        if ($('#txt_InTime').val() != '' && $('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_SecShiftLateIn').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_SecShiftLateIn').show().text('Second Shift late In time should not be less than In time.');
+                $('#txt_SecShiftLateIn').val('').focus();
+            }
+            else if (ConvertTimeformat($('#txt_SecShiftLateIn').val()) > ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_SecShiftLateIn').show().text('Second Shift late In time should not be greater than Out time.');
+                $('#txt_SecShiftLateIn').val('').focus();
+            }
+
+            else if ($('#txt_SecShiftIn').val() != '' && ConvertTimeformat($('#txt_SecShiftLateIn').val()) < ConvertTimeformat($('#txt_SecShiftIn').val())) {
+                $('#sp_SecShiftLateIn').show().text('Second Shift late In time should not be less than second shift In time.');
+                $('#txt_SecShiftLateIn').val('').focus();
+            }
+            else {
+                $('#sp_SecShiftLateIn').hide().text('');
+            }
+        }
+    });
+
+
+    $('#txt_SecShiftCutOff').change(function () {
+        if ($('#txt_InTime').val() != '' && $('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_SecShiftCutOff').val()) < ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_SecShiftCutOff').show().text('Second Shift Cutoff In time should not be less than In time.');
+                $('#txt_SecShiftCutOff').val('').focus();
+            }
+            else if (ConvertTimeformat($('#txt_SecShiftCutOff').val()) > ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_SecShiftCutOff').show().text('Second Shift Cutoff In time should not be greater than Out time.');
+                $('#txt_SecShiftCutOff').val('').focus();
+            }
+
+            else if ($('#txt_SecShiftIn').val() != '' && ConvertTimeformat($('#txt_SecShiftLateIn').val()) < ConvertTimeformat($('#txt_SecShiftIn').val())) {
+                $('#sp_SecShiftCutOff').show().text('Second Shift Cutoff In time should not be less than second shift In time.');
+                $('#txt_SecShiftCutOff').val('').focus();
+            }
+            else {
+                $('#sp_SecShiftCutOff').hide().text('');
+            }
+        }
+    });
+
+
+
+    $('#txt_OTBShift').change(function () {
+        if ($('#txt_InTime').val() != '') {
+            if (ConvertTimeformat($('#txt_OTBShift').val()) > ConvertTimeformat($('#txt_InTime').val())) {
+                $('#sp_OTBShift').show().text('OT before shift should not be greater than In time.');
+                $('#txt_OTBShift').val('').focus();
+
+            }
+            else {
+                $('#sp_OTBShift').hide().text('');
+            }
+        }
+    });
+
+
+    $('#txt_OTAShift').change(function () {
+        if ($('#txt_OutTime').val() != '') {
+            if (ConvertTimeformat($('#txt_OTAShift').val()) < ConvertTimeformat($('#txt_OutTime').val())) {
+                $('#sp_OTAShift').show().text('OT After Shift should not be less than Out time.');
+                $('#txt_OTAShift').val('').focus();
+
+            }
+            else {
+                $('#sp_OTAShift').hide().text('');
+            }
+        }
+    });
+
+  
+
 });
 
 function ConvertTimeformat(str) {
-    alert(str);
+
     var time = str;
     var hours = Number(time.match(/^(\d+)/)[1]);
     var minutes = Number(time.match(/:(\d+)/)[1]);
-    alert(minutes);
+
     var AMPM = time.match(/\s(.*)$/)[1];
     if (AMPM == "PM" && hours < 12) hours = hours + 12;
     if (AMPM == "AM" && hours == 12) hours = hours - 12;
@@ -18,11 +170,11 @@ function ConvertTimeformat(str) {
     if (hours < 10) sHours = "0" + sHours;
     if (minutes < 10) sMinutes = "0" + sMinutes;
     var TotalHours = sHours + ":" + sMinutes;
-    return TotalHours;    
+    return TotalHours;
 }
 
 function hours_am_pm(time) {
-    alert(time);
+
     //var hours = time[0] + time[1];
     //var min = time[2] + time[3];
     //if (hours < 12) {
@@ -46,31 +198,50 @@ function hours_am_pm(time) {
     alert(ts);
 }
 
-function loadData() {
+function loadShift() {
+
     $.ajax({
         url: "/Attendance/Shift_List",
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.ShiftName + '</td>';
-                html += '<td>' + item.ShiftCode + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.ShiftID + ')">Edit</a>|<a href="#" onclick="DeleteDivision(' + item.ShiftID + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+        success: function (data) {
+            $("#tblshiftmaster").dataTable({
+                data: data,
+                "bDestroy": true,
+                columns: [
+                    {
+                        "title": "Sl. No."
+                    },
+                    //{
+                    //    "data": "GroupName"
+                    //},
+                    { "data": "ShiftName" },
+                    { "data": "ShiftCode" },
+                    {
+                        "data": "ShiftID",
+                        "render": function (ShiftID) {
+                            return '<div class="dropdown dropdown-action" align="Right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_indicator" onclick="GetID(' + ShiftID + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Shift" onclick="Deleted(' + ShiftID + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ],
+                "columnDefs": [{
+                    "render": function (data, type, full, meta) {
+                        dataSet[meta.row].id = meta.row + 1; // adds id to dataset
+                        return meta.row + 1; // adds id to serial no
+                    },
+                    "targets": 0
+                }],
+            })
+
+
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
         }
     });
 }
-function getGroup() {    
+function getGroup() {
     $.ajax({
         url: "/Group/List",
         type: "Get",
@@ -85,6 +256,11 @@ function getGroup() {
     });
 }
 function AddShift() {
+    var res = validate();
+    if (res == false) {
+
+        return false;
+    }
     var ShiftInTime = ConvertTimeformat($('[id*=txt_InTime]').val());
     var ShiftLateInCutTime = ConvertTimeformat($('[id*=txt_CutIn]').val());
     var ShiftInCutTime = ConvertTimeformat($('[id*=txt_ShiftCutOff]').val());
@@ -94,12 +270,12 @@ function AddShift() {
     var ShiftOutTime = ConvertTimeformat($('[id*=txt_OutTime]').val());
     var ShiftOTBefore = ConvertTimeformat($('[id*=txt_OTBShift]').val());
     var ShiftOTAfter = ConvertTimeformat($('[id*=txt_OTAShift]').val());
-    var TotalHours = ConvertTimeformat($('[id*=txt_Hours]').val());    
+    var TotalHours = $('[id*=txt_Hours]').val();
     var obj_Shift = {
         GroupId: $('#ddl_EmpGroup').val(),
         ShiftName: $('[id*=txt_ShiftName]').val(),
         ShiftCode: $('[id*=txt_ShiftCode]').val(),
-        ShiftInTime: ShiftInTime ,
+        ShiftInTime: ShiftInTime,
         ShiftLateInCutTime: ShiftLateInCutTime,
         ShiftInCutTime: ShiftInCutTime,
         SecShiftInTime: SecShiftInTime,
@@ -117,8 +293,8 @@ function AddShift() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function () {
-            loadData();
-            clearTextBox();
+            loadShift();
+            clear_Shift();
             //$('#MyModal').modal('hide');
         },
         error: function (errMsg) {
@@ -127,25 +303,25 @@ function AddShift() {
     });
 }
 
-function DeleteDivision(Id) {
-    var ans = confirm("Are you sure you want to delete this Record?");
-    if (ans) {
+function DeleteShift() {
+    var Id = $('#hdnShiftId').val();
         $.ajax({
             url: "/Attendance/Delete_Shift/" + Id,
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                loadData();
+                loadShift();
+                $('#hdnShiftId').val('');
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
             }
         });
-    }
+    
 }
 
-function getbyID(Id) {   
+function GetID(Id) {
     $.ajax({
         url: "/Attendance/GetShiftByID/" + Id,
         type: "Post",
@@ -158,7 +334,7 @@ function getbyID(Id) {
             $('#txt_ShiftCode').val(r.ShiftCode);
 
             var ShiftInTime = hours_am_pm(r.ShiftInTime);
-            alert(ShiftInTime);
+
             var ShiftLateInCutTime = hours_am_pm(r.ShiftLateInCutTime);
             var ShiftInCutTime = hours_am_pm(r.ShiftInCutTime);
             var SecShiftInTime = hours_am_pm(r.SecShiftInTime);
@@ -167,7 +343,7 @@ function getbyID(Id) {
             var ShiftOutTime = hours_am_pm(r.ShiftOutTime);
             var ShiftOTBefore = hours_am_pm(r.ShiftOTBefore);
             var ShiftOTAfter = hours_am_pm(r.ShiftOTAfter);
-            var TotalHours = hours_am_pm(r.TotalHours);
+            var TotalHours = r.TotalHours;
             $('[id*=txt_InTime]').val(ShiftInTime);
             $('[id*=txt_CutIn]').val(ShiftLateInCutTime);
             $('[id*=txt_ShiftCutOff]').val(ShiftInCutTime);
@@ -177,11 +353,12 @@ function getbyID(Id) {
             $('[id*=txt_OutTime]').val(ShiftOutTime);
             $('[id*=txt_OTBShift]').val(ShiftOTBefore);
             $('[id*=txt_OTAShift]').val(ShiftOTAfter);
-            $('[id*=txt_Hours]').val(TotalHours); 
+            $('[id*=txt_Hours]').val(TotalHours);
 
-            
+
             $('#btnAdd').hide();
             $('#btnUpdate').show();
+
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -191,6 +368,11 @@ function getbyID(Id) {
 }
 
 function UpdateShift() {
+    var res = validate();
+    if (res == false) {
+
+        return false;
+    }
     var ShiftInTime = ConvertTimeformat($('[id*=txt_InTime]').val());
     var ShiftLateInCutTime = ConvertTimeformat($('[id*=txt_CutIn]').val());
     var ShiftInCutTime = ConvertTimeformat($('[id*=txt_ShiftCutOff]').val());
@@ -200,7 +382,7 @@ function UpdateShift() {
     var ShiftOutTime = ConvertTimeformat($('[id*=txt_OutTime]').val());
     var ShiftOTBefore = ConvertTimeformat($('[id*=txt_OTBShift]').val());
     var ShiftOTAfter = ConvertTimeformat($('[id*=txt_OTAShift]').val());
-    var TotalHours = ConvertTimeformat($('[id*=txt_Hours]').val()); 
+    var TotalHours = $('[id*=txt_Hours]').val();
     var obj_Shift = {
         ShiftID: $('#hdnShiftId').val(),
         GroupId: $('#ddl_EmpGroup').val(),
@@ -224,9 +406,9 @@ function UpdateShift() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function () {
-            loadData();
-            clearTextBox();
-            
+            loadShift();
+            clear_Shift()();
+
             //$('#MyModal').modal('hide');
         },
         error: function (errMsg) {
@@ -234,11 +416,124 @@ function UpdateShift() {
         }
     });
 }
-function clearTextBox() {
+function clear_Shift() {
     $("input:text").val("");
     $('#ddl_EmpGroup').val('0');
     $('#hdnShiftId').val('');
 
     $('#btnAdd').show();
     $('#btnUpdate').hide();
+}
+
+
+function validate() {
+
+    var isValid = true;
+    if ($('#txt_ShiftName').val().trim() == "") {
+        $('#txt_ShiftName').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_ShiftName').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_ShiftCode').val().trim() == "") {
+        $('#txt_ShiftCode').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_ShiftCode').css('border-color', 'lightgrey');
+    }
+    if ($('#txt_InTime').val().trim() == "") {
+        $('#txt_InTime').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_InTime').css('border-color', 'lightgrey');
+    }
+    if ($('#txt_CutIn').val().trim() == "") {
+        $('#txt_CutIn').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_CutIn').css('border-color', 'lightgrey');
+    }
+    if ($('#txt_ShiftCutOff').val().trim() == "") {
+        $('#txt_ShiftCutOff').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_ShiftCutOff').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_SecShiftIn').val().trim() == "") {
+        $('#txt_SecShiftIn').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_SecShiftIn').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_SecShiftLateIn').val().trim() == "") {
+        $('#txt_SecShiftLateIn').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_SecShiftLateIn').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_SecShiftCutOff').val().trim() == "") {
+        $('#txt_SecShiftCutOff').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_SecShiftCutOff').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_OutTime').val().trim() == "") {
+        $('#txt_OutTime').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_OutTime').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_OTBShift').val().trim() == "") {
+        $('#txt_OTBShift').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_OTBShift').css('border-color', 'lightgrey');
+    }
+    if ($('#txt_OTAShift').val().trim() == "") {
+        $('#txt_OTAShift').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_OTAShift').css('border-color', 'lightgrey');
+    }
+
+    if ($('#txt_Hours').val().trim() == "") {
+        $('#txt_Hours').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#txt_Hours').css('border-color', 'lightgrey');
+    }
+
+    if ($('#ddl_EmpGroup').val().trim() == "0") {
+        $('#ddl_EmpGroup').css('border-color', 'red');
+        isValid = false;
+    }
+    else {
+        $('#ddl_EmpGroup').css('border-color', 'lightgrey');
+    }
+    return isValid;
+}
+
+function Deleted(Id) {
+
+    $('#hdnShiftId').val(Id);
+    //var ans = confirm(errormessage.responseText);
+
 }

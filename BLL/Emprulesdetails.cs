@@ -13,10 +13,9 @@ namespace BLL
         {
         public int Tei_DivisionId { get; set; }
         public int Tei_DepartmentId { get; set; }
-
+        public int Tei_Id { get; set; }
         public string Tei_Empno { get; set; }
-        public string Tei_FirstName { get; set; }
-        
+        public string Tei_FirstName { get; set; }        
         public int Tegi_GroupId { get; set; }
 
     }
@@ -26,13 +25,8 @@ namespace BLL
     {
         public List<EmployeesCols> EmployeesCols{ get; set; }
         public string Rules { get; set; }
-
-
         public List<EmployeeRuleHistory> EmployeeRuleHistories{ get; set; }   
-
-
         DataAccess da = new DataAccess();
-
         public List<EmployeesCols> Get_AllEmpRules(int UserId)
         {
             SqlParameter[] parm = new SqlParameter[3];
@@ -74,6 +68,7 @@ namespace BLL
            for(int i=0;i<dt.Rows.Count;i++)
             {
                 properties empidwise = new properties();
+                empidwise.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);
                 empidwise.Tei_Empno = dt.Rows[i]["Tei_Empno"].ToString();
                 empidwise.Tei_FirstName = dt.Rows[i]["Tei_FirstName"].ToString();
                 empidwise.Tei_DivisionId = Convert.ToInt32(dt.Rows[i]["Tegi_DivisionId"]);
@@ -130,11 +125,74 @@ namespace BLL
                 obj_EmpRules.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);
                 obj_EmpRules.Tei_FirstName = dt.Rows[i]["Tei_Name"].ToString();
                 obj_EmpRules.Tei_Empno = dt.Rows[i]["Tei_Empno"].ToString();
+                obj_EmpRules.Tegi_DivisionId = Convert.ToInt32(dt.Rows[i]["Tegi_DivisionId"]);
+                obj_EmpRules.Rules = dt.Rows[i]["Rules"].ToString();                
+                lst_EmpRules.Add(obj_EmpRules);
+            }
+
+            return lst_EmpRules;
+        }
+        public List<Emprulesdetails> GetDivisionByRules(Emprulesdetails obj_Rules)
+        {
+            SqlParameter[] parm = new SqlParameter[3];
+            parm[0] = da.AddSPParameter("GroupId", obj_Rules.GroupId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tei_DivisionId", obj_Rules.Tegi_DivisionId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("Flag", 8, ParameterDirection.Input, DbType.Int32, 10);
+            DataTable dt = new DataTable();
+            dt = da.Sp_Datatable("Usp_Rules_Details", parm);
+
+
+
+            List<Emprulesdetails> lst_EmpRules = new List<Emprulesdetails>();
+            // foreach(DataRow r in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Emprulesdetails obj_EmpRules = new Emprulesdetails();
+                obj_EmpRules.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);
+                obj_EmpRules.Tei_FirstName = dt.Rows[i]["Tei_Name"].ToString();
+                obj_EmpRules.Tei_Empno = dt.Rows[i]["Tei_Empno"].ToString();
+                obj_EmpRules.Tegi_DivisionId = Convert.ToInt32(dt.Rows[i]["Tegi_DivisionId"]);
                 obj_EmpRules.Rules = dt.Rows[i]["Rules"].ToString();
                 lst_EmpRules.Add(obj_EmpRules);
             }
 
             return lst_EmpRules;
+        }
+        public List<Emprulesdetails> GetEmployeeByRules(Emprulesdetails obj_Rules)
+        {
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Ter_id", obj_Rules.Tei_Id, ParameterDirection.Input, DbType.Int32, 10);            
+            parm[1] = da.AddSPParameter("Flag", 9, ParameterDirection.Input, DbType.Int32, 10);
+            DataTable dt = new DataTable();
+            dt = da.Sp_Datatable("Usp_Rules_Details", parm);
+
+
+
+            List<Emprulesdetails> lst_EmpRules = new List<Emprulesdetails>();
+            // foreach(DataRow r in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Emprulesdetails obj_EmpRules = new Emprulesdetails();
+                obj_EmpRules.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);
+                obj_EmpRules.Tei_FirstName = dt.Rows[i]["Tei_Name"].ToString();
+                obj_EmpRules.Tei_Empno = dt.Rows[i]["Tei_Empno"].ToString();
+                obj_EmpRules.Tegi_DivisionId = Convert.ToInt32(dt.Rows[i]["Tegi_DivisionId"]);
+                obj_EmpRules.Rules = dt.Rows[i]["Rules"].ToString();
+                lst_EmpRules.Add(obj_EmpRules);
+            }
+
+            return lst_EmpRules;
+        }
+
+        public string SaveRules(Emprulesdetails obj_Rules)
+        {
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("EmpId", obj_Rules.Tei_Empno, ParameterDirection.Input, DbType.String, 500);
+            parm[1] = da.AddSPParameter("Rules", obj_Rules.Rules.TrimStart('$'), ParameterDirection.Input, DbType.String, 500);
+            parm[2] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("Flag", 10, ParameterDirection.Input, DbType.Int32, 10);           
+            string i = da.ExecuteNonQuerySP("Usp_Rules_Details", parm);            
+            return i;
         }
     }
    

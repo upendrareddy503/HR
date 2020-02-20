@@ -1,34 +1,61 @@
 ﻿$(document).ready(function () {
-    loadData();
-   
+    Getdata();
+    //$('#example').DataTable();
+      
 });
 
-function loadData() {
+
+function Getdata() {
     $.ajax({
         url: "/Group/List",
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.GroupName + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.GroupId + ')">Edit</a>|<a href="#" onclick="Delete(' + item.GroupId + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+            
+            //var html = '';
+            //var i = 1;
+            $("#tblGroup").dataTable({
+                data: r,
+                "bDestroy": true,
+                columns: [
+                    { "data": "GroupName" },
+                    {
+                        "data": "GroupId",
+                        "render": function (GroupId) {
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + GroupId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + GroupId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ]
+            })
+            
+            //$.each(r, function (key, item) {
+
+            //    html += '<tr>';
+            //    html += '<td>' + parseInt(i++) + '</td>';
+            //    html += '<td>' + item.GroupName + '</td>';
+            //    html += '<td class="text-right">';
+            //    html += '<div class="dropdown dropdown-action">';
+            //    html += ' <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>';
+            //    html += '<div class="dropdown-menu dropdown-menu-right">';
+            //    html += '<a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + item.GroupId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + item.GroupId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></td >';
+            //    html += '</div>';
+            //    html += '</div>'
+            //    html += '</td>';
+            //    html += '</tr>';
+            //});
+            //$('tbody').html(html);
+            //$('#example').DataTable(html);
+            //$('datatable').addClass(html);
+            
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
         }
     });
 }
-
-function Add() {
-    
+function Insert() {
+   
     var res = validate();
     if (res == false) {
        
@@ -45,9 +72,25 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
-            clearTextBox();
-            $('#MyModal').modal('hide');
+            Getdata();
+            
+                       
+            var msg = r.split('$');
+           
+            if (msg[1] == "True") {
+               
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0]+"</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0]+"</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
+            clearGroup();
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -55,18 +98,19 @@ function Add() {
     });
 }
 
-function getbyID(Id) {
-   
+function GetID(Id) {
+    
     $("#GroupName").css('border-color', 'lightngrey');
     $.ajax({
-        url: "/Group/GetByID/" + Id,
+        url: "/Master/GetGroupByID/" + Id,
         type: "Post",
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
+           
             $('#GroupId').val(r.GroupId);
             $('#GroupName').val(r.GroupName);
-            $('#MyModal').modal('show');
+            
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },
@@ -76,7 +120,7 @@ function getbyID(Id) {
     });
     return false;
 }
-function Update() {
+function Updated() {
     var res = validate();
     if (res == false) {
 
@@ -95,36 +139,58 @@ function Update() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
-            $('#MyModal').modal('hide');
-            clearTextBox();
+            Getdata();
+            
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
+            clearGroup();
         },
+        
         error: function (errMsg) {
             alert(errMsg.responseText);
         }
     });
 }
-function Delete(Id) {
-    var ans = confirm("Are you sure you want to delete this Record?");
-    if (ans) {
-        $.ajax({
-            url: "/Group/Delete_Group/" + Id,            
-            type: "POST",
-            contentType: "application/json;charset=UTF-8",
-            dataType: "json",
-            success: function (result) {
-                loadData();
-            },
-            error: function (errormessage) {
-                alert(errormessage.responseText);
-            }
-        });
-    }  
+function Deleted(Id) {
+   
+    $('#GroupId').val(Id)
+    var ans = confirm(errormessage.responseText);
+    
 }
 
-function clearTextBox() {
+
+function FinalDelete() {
+    var Id = $('#GroupId').val();
+   
+    $.ajax({
+        url: "/Group/Delete_Group/" + Id,
+        type: "POST",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (result) {
+            Getdata();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+function clearGroup() {
     
-    $("#DivisionId").val('');
+    $("#GroupId").val('');
     $('#GroupName').val('');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
@@ -132,7 +198,7 @@ function clearTextBox() {
     $('#MyModal').modal('hide');
 }
 function validate() {
-  
+   
     var isValid = true;
     if ($('#GroupName').val().trim() == "") {
         $('#GroupName').css('border-color', 'red');

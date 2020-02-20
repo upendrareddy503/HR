@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 
 namespace BLL
 {
-    public class Shift
+    public class Shift:Group
     {
         DataAccess da = new DataAccess();
         public int ShiftID { get; set; }
@@ -25,7 +25,7 @@ namespace BLL
         public string ShiftOTBefore { get; set; }
         public string ShiftOTAfter { get; set; }
         public string TotalHours { get; set; }
-        public int GroupId { get; set; }
+        //public int GroupId { get; set; }
         public int UserId { get; set; }
 
 
@@ -46,7 +46,7 @@ namespace BLL
             parm[8] = da.AddSPParameter("Tsh_OutTime", Obj_Shift.ShiftOutTime, ParameterDirection.Input, DbType.Time, 200);
             parm[9] = da.AddSPParameter("Tsh_OTBshift", Obj_Shift.ShiftOTBefore, ParameterDirection.Input, DbType.Time, 200);
             parm[10] = da.AddSPParameter("Tsh_OTAshift", Obj_Shift.ShiftOTAfter, ParameterDirection.Input, DbType.Time, 200);
-            parm[11] = da.AddSPParameter("Tsh_Totalhours", Obj_Shift.TotalHours, ParameterDirection.Input, DbType.Time, 200);
+            parm[11] = da.AddSPParameter("Tsh_Totalhours", Obj_Shift.TotalHours, ParameterDirection.Input, DbType.Decimal, 200);
             parm[12] = da.AddSPParameter("Tsh_GroupId", Obj_Shift.GroupId, ParameterDirection.Input, DbType.Int32, 100);
 
             parm[13] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
@@ -72,7 +72,7 @@ namespace BLL
             parm[8] = da.AddSPParameter("Tsh_OutTime", Obj_Shift.ShiftOutTime, ParameterDirection.Input, DbType.Time, 200);
             parm[9] = da.AddSPParameter("Tsh_OTBshift", Obj_Shift.ShiftOTBefore, ParameterDirection.Input, DbType.Time, 200);
             parm[10] = da.AddSPParameter("Tsh_OTAshift", Obj_Shift.ShiftOTAfter, ParameterDirection.Input, DbType.Time, 200);
-            parm[11] = da.AddSPParameter("Tsh_Totalhours", Obj_Shift.TotalHours, ParameterDirection.Input, DbType.Time, 200);
+            parm[11] = da.AddSPParameter("Tsh_Totalhours", Obj_Shift.TotalHours, ParameterDirection.Input, DbType.Decimal, 200);
             parm[12] = da.AddSPParameter("Tsh_GroupId", Obj_Shift.GroupId, ParameterDirection.Input, DbType.Int32, 100);
             parm[13] = da.AddSPParameter("Tsh_id", Obj_Shift.ShiftID, ParameterDirection.Input, DbType.Int32, 100);
 
@@ -105,6 +105,7 @@ namespace BLL
                 obj_Shift.ShiftOTBefore= dt.Rows[i]["Tsh_OTBshift"].ToString();
                 obj_Shift.ShiftOTAfter= dt.Rows[i]["Tsh_OTAshift"].ToString();
                 obj_Shift.TotalHours = dt.Rows[i]["Tsh_Totalhours"].ToString();
+                //obj_Shift.GroupName = dt.Rows[i]["Tgi_Name"].ToString();
                 obj_Shift_lst.Add(obj_Shift);
             }
             return obj_Shift_lst;

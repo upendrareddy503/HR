@@ -7,8 +7,10 @@ using BLL;
 using System.Data;
 using System.IO;
 using System.Web.Helpers;
-
-
+using LinqToExcel;
+using System.Net;
+using System.Data.OleDb;
+using System.Configuration;
 
 namespace HRMS.Controllers
 {
@@ -30,6 +32,16 @@ namespace HRMS.Controllers
         {
             return Json(obj_Emp.Next_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Second_Employee(EmployeeDetails obj_EmpIns)
+        {
+            return Json(obj_Emp.Second_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Get_DesignationReport(string Id)
+        {
+            return Json(obj_Emp.Get_AllEmployee_GID(Id), JsonRequestBehavior.AllowGet);
+        }
+
+        
 
         [HttpPost]
         public JsonResult UploadFile()
@@ -71,10 +83,271 @@ namespace HRMS.Controllers
             return Json(Convert.ToString(_imgname), JsonRequestBehavior.AllowGet);
         }
 
-        //public JsonResult GetAllowances(Allowance obj_Allw)
-        //{
-        //    return Json();
-        //}
+
+        public ActionResult Import()
+        {
+            return View();
+        }
+        public JsonResult UploadExcelsheet()
+        {
+            if (Request.Files.Count > 0)
+            {
+                var file = Request.Files[0];
+                List<EmployeeDetails> _lstProductMaster = new List<EmployeeDetails>();
+                string filePath = string.Empty;
+                if (Request.Files != null)
+                {
+                    string path = Server.MapPath("~/Uploads/Product/");
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    filePath = path + Path.GetFileName("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                    string extension = Path.GetExtension("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                    file.SaveAs(filePath);
+
+                    string conString = string.Empty;
+                    switch (extension)
+                    {
+                        case ".xls": //Excel 97-03.
+                            conString = ConfigurationManager.ConnectionStrings["Excel03ConString"].ConnectionString;
+                            break;
+                        case ".xlsx": //Excel 07 and above.
+                            conString = ConfigurationManager.ConnectionStrings["Excel07ConString"].ConnectionString;
+                            break;
+                    }
+                    int total = 0;
+                    int entered = 0;
+                    int failed = 0;
+
+                    conString = string.Format(conString, filePath);
+
+                    using (OleDbConnection connExcel = new OleDbConnection(conString))
+                    {
+                        using (OleDbCommand cmdExcel = new OleDbCommand())
+                        {
+                            using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                            {
+                                DataTable dt = new DataTable();
+                                cmdExcel.Connection = connExcel;
+
+                                //Get the name of First Sheet.
+                                connExcel.Open();
+                                DataTable dtExcelSchema;
+                                dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                                string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+                                connExcel.Close();
+
+                                //Read Data from First Sheet.
+                                connExcel.Open();
+                                cmdExcel.CommandText = "SELECT * From [" + sheetName + "]";
+                                odaExcel.SelectCommand = cmdExcel;
+                                odaExcel.Fill(dt);
+                                connExcel.Close();
+
+
+                                if (dt.Rows.Count > 0)
+                                {
+
+                                    foreach (DataRow row in dt.Rows)
+                                    {
+                                        total++;
+                                        _lstProductMaster.Add(new EmployeeDetails
+                                        {
+                                            //Tei_Empno = row["ProductName"].ToString().Replace("'", "''"),
+                                            //ProductSKU = row["VendorSKU"].ToString().Trim() + "GL" + DateTime.Now.Year.ToString().Substring(2),
+                                            //VendorSKU = row["VendorSKU"].ToString().Trim(),
+                                            //DisplayText = row["DisplayText"].ToString().Trim(),
+                                            //ProductSpecification = row["ProductSpecification"].ToString().Replace("'", "''"),
+                                            //Description = row["Description"].ToString().Replace("'", "''"),
+                                            //ShortDescription = row["ShortDescription"].ToString().Replace("'", "''"),
+                                            //LongDescription = row["LongDescription"].ToString().Replace("'", "''"),
+                                            //InventoryCount = row["InventoryCount"].ToString().Trim(),
+                                            //ListPrice = row["ListPrice"].ToString().Trim(),
+                                            //SellingPrice = row["SellingPrice"].ToString().Trim(),
+                                            // if (chkMultiple.Checked == true && ProductSKU != "")
+                                            //{
+                                            //    ProductImage = Convert.ToString(VendorSKU).Trim() + "_1.jpg";
+                                            //}
+                                            //else if ((chkMultiple.Checked == false && details.SKU != ""))
+                                            //{
+                                            //    ProductImage = Convert.ToString(VendorSKU).Trim() + ".jpg";
+                                            //}
+                                        });
+                                        entered++;
+                                        if (entered > 0)
+                                        {
+                                           // GetOccassionRecipientMasters();
+                                        }
+                                    }
+                                }
+                            }
+                            failed = total - entered;
+                            if (failed > 0)
+                            {
+                                ViewBag.Fail = failed + " Records not entered";
+                            }
+                            else
+                            {
+                                ViewBag.Pass = entered + " Records entered";
+                                ViewBag.Fail = failed + " Records not entered";
+
+
+                            }
+                            ViewBag.Total = total + " Total Records";
+
+                        }
+                    }
+                }
+               
+                //List<ProductMaster> _productmaster = new List<ProductMaster>();
+                //ViewBag.maindata = _lstProductMaster;
+                ////return Json(_lstProductMaster, JsonRequestBehavior.AllowGet);
+                //return View("ImportProductsFromExcel", _lstProductMaster);
+            }
+            return Json(JsonRequestBehavior.AllowGet);
+
+
+        }
+
+
+        public JsonResult UploadHomeReport(string id)
+        {
+            var file = Request.Files[0];
+             string filePath = string.Empty;
+            if (Request.Files != null)
+            {
+                string path = Server.MapPath("~/Excels/");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                filePath = path + Path.GetFileName("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                string extension = Path.GetExtension("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                file.SaveAs(filePath);
+
+                string conString = string.Empty;
+                switch (extension)
+                {
+                    case ".xls": //Excel 97-03.
+                        conString = ConfigurationManager.ConnectionStrings["Excel03ConString"].ConnectionString;
+                        break;
+                    case ".xlsx": //Excel 07 and above.
+                        conString = ConfigurationManager.ConnectionStrings["Excel07ConString"].ConnectionString;
+                        break;
+                }
+                int total = 0;
+                int entered = 0;
+                int failed = 0;
+
+                conString = string.Format(conString, filePath);
+
+                using (OleDbConnection connExcel = new OleDbConnection(conString))
+                {
+                    using (OleDbCommand cmdExcel = new OleDbCommand())
+                    {
+                        using (OleDbDataAdapter odaExcel = new OleDbDataAdapter())
+                        {
+                            DataTable dt = new DataTable();
+                            cmdExcel.Connection = connExcel;
+
+                            //Get the name of First Sheet.
+                            connExcel.Open();
+                            DataTable dtExcelSchema;
+                            dtExcelSchema = connExcel.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, null);
+                            string sheetName = dtExcelSchema.Rows[0]["TABLE_NAME"].ToString();
+                            connExcel.Close();
+
+                            //Read Data from First Sheet.
+                            connExcel.Open();
+                            cmdExcel.CommandText = "SELECT * From [" + sheetName + "]";
+                            odaExcel.SelectCommand = cmdExcel;
+                            odaExcel.Fill(dt);
+                            connExcel.Close();
+                          
+
+                            if (dt.Rows.Count > 0)
+                            {
+
+                                foreach (DataRow row in dt.Rows)
+                                {
+                                    total++;
+
+                                    if(row["EmpNo"]!="")
+                                    { 
+                                    obj_Emp.Tei_Empno = row["EmpNo"].ToString();
+                                    }
+                                    obj_Emp.Tei_Title = row["Title"].ToString();
+                                    obj_Emp.Tei_FirstName = row["First Name"].ToString();
+                                    obj_Emp.Tei_LastName = row["Last Name"].ToString();
+                                    obj_Emp.Tei_Gender = row["Gender"].ToString();
+                                    obj_Emp.Tei_Phone = row["Phone"].ToString();
+                                    obj_Emp.Tei_Email = row["Email"].ToString();
+                                    obj_Emp.Tei_Type = row["Type"].ToString();
+                                    obj_Emp.Tei_Father = row["Father Name"].ToString();
+                                    if (row["DateofBirth"] != "")
+                                    {
+                                        obj_Emp.Tei_DateofBirth = Convert.ToDateTime(row["DateofBirth"].ToString());
+                                    }
+                                    if (row["JoiningDate"] != "")
+                                    {
+                                        obj_Emp.Tei_JoiningDate = Convert.ToDateTime(row["JoiningDate"].ToString());
+                                    }
+                                    obj_Emp.Tei_Address1 = row["Address"].ToString();
+                                    obj_Emp.Tei_AadharNo = row["AadharNo"].ToString();
+
+                                    string k = obj_Emp.Insert_Employee(obj_Emp);
+                                    //                        _lstProductMaster.Add(new EmployeeDetails
+                                    // {
+                                    //Tei_Empno = row["ProductName"].ToString().Replace("'", "''"),
+                                    //ProductSKU = row["VendorSKU"].ToString().Trim() + "GL" + DateTime.Now.Year.ToString().Substring(2),
+                                    //VendorSKU = row["VendorSKU"].ToString().Trim(),
+                                    //DisplayText = row["DisplayText"].ToString().Trim(),
+                                    //ProductSpecification = row["ProductSpecification"].ToString().Replace("'", "''"),
+                                    //Description = row["Description"].ToString().Replace("'", "''"),
+                                    //ShortDescription = row["ShortDescription"].ToString().Replace("'", "''"),
+                                    //LongDescription = row["LongDescription"].ToString().Replace("'", "''"),
+                                    //InventoryCount = row["InventoryCount"].ToString().Trim(),
+                                    //ListPrice = row["ListPrice"].ToString().Trim(),
+                                    //SellingPrice = row["SellingPrice"].ToString().Trim(),
+                                    // if (chkMultiple.Checked == true && ProductSKU != "")
+                                    //{
+                                    //    ProductImage = Convert.ToString(VendorSKU).Trim() + "_1.jpg";
+                                    //}
+                                    //else if ((chkMultiple.Checked == false && details.SKU != ""))
+                                    //{
+                                    //    ProductImage = Convert.ToString(VendorSKU).Trim() + ".jpg";
+                                    //}
+                                    //  });
+                                    //entered++;
+                                    ///if (entered > 0)
+                                    //{
+                                        // GetOccassionRecipientMasters();
+                                    //}
+                                }
+                            }
+                        }
+                        failed = total - entered;
+                        if (failed > 0)
+                        {
+                            ViewBag.Fail = failed + " Records not entered";
+                        }
+                        else
+                        {
+                            ViewBag.Pass = entered + " Records entered";
+                            ViewBag.Fail = failed + " Records not entered";
+
+
+                        }
+                        ViewBag.Total = total + " Total Records";
+
+                    }
+                }
+            }
+
+            // return Json("File uploaded successfully");
+            return Json(JsonRequestBehavior.AllowGet);
+        }
 
     }
 }

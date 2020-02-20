@@ -25,22 +25,26 @@ function loadData() {
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.StateName + '</td>';
-                html += '<td>' + item.CountryName + '</td>';
-                html += '<td>' + item.StateCode + '</td>';
-                html += '<td>' + item.StateGstCode + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.StateId + ')">Edit</a>|<a href="#" onclick="DeleteState(' + item.StateId + ')">Delete</a></td > ';
-                html += '</tr>';
-                i++;
-            });
-            $('.tbody').html(html);
+        success: function (data) {
+
+            $("#example").dataTable({
+                data: data,
+                columns: [
+                    { "data": "StateName" },
+                    { "data": "CountryName" },
+                    { "data": "StateCode" },
+                    { "data": "StateGstCode" },
+                    {
+                        "data": "StateId",
+                        "render": function (StateId) {
+                            return '<a href="#" onclick="getbyID(' + StateId + ')">Edit</a>|<a href="#" onclick="Delete(' + StateId + ')">Delete</a></td > '
+                        }
+                    }
+                ]
+            })
+
         },
+         
         error: function (errmsg) {
             alert(errmsg.responseText);
         }
@@ -67,7 +71,21 @@ function AddState() {
         success: function (r) {
             loadData();
             clearTextBox();
-            $('#MyModal').modal('hide');
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -89,7 +107,7 @@ function getbyID(Id) {
             $('#txt_StateCode').val(r.StateCode);
             $('#txt_StateGstCode').val(r.StateGstCode);
             $('#ddl_Country').val(r.CountryId);
-            $('#MyModal').modal('show');
+            $('#myModal').modal('show');
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },
@@ -122,7 +140,21 @@ function UpdateState() {
         dataType: 'json',
         success: function (r) {
             loadData();
-            $('#MyModal').modal('hide');
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
             clearTextBox();
         },
         error: function (errMsg) {
@@ -139,8 +171,23 @@ function DeleteState(Id) {
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
-            success: function (result) {
+            success: function (r) {
                 loadData();
+                var msg = r.split('$');
+
+                if (msg[1] == "True") {
+
+                    $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg').fadeOut('slow');
+                    }, 2000);
+                }
+                else {
+                    $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg1').fadeOut('slow');
+                    }, 2000);
+                }
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -160,7 +207,24 @@ function clearTextBox() {
     $("#btnAdd").show();
     $('#txt_StateName').css('border-color', 'lightgrey');
     $('#ddl_Country').css('border-color', 'lightgrey');
-    $('#MyModal').modal('hide');
+   
+}
+
+
+function CloseTextBox() {
+
+    $("#hdnStateID").val('');
+    $('#txt_StateName').val('');
+    $('#txt_StateCode').val('');
+    $('#txt_StateGstCode').val('');
+    $('#ddl_Country').val('0');
+    $("#btnUpdate").hide();
+    $("#btnAdd").show();
+    $('#txt_StateName').css('border-color', 'lightgrey');
+    $('#ddl_Country').css('border-color', 'lightgrey');
+    $('#txt_StateCode').css('border-color', 'lightgrey');
+    $('#txt_StateGstCode').css('border-color', 'lightgrey');
+    $('#myModal').modal('hide');
 }
 
 function validate() {

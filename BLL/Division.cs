@@ -13,22 +13,24 @@ namespace BLL
     public class Division:Group
     {
         DataAccess da = new DataAccess();
+        public int Sno { get; set; }
         public int DivisionId { get; set; }
         public string DivisionName { get; set; }
 
         public string Insert_Division(Division Obj_Div)
         {
 
-            SqlParameter[] parm = new SqlParameter[6];
+            SqlParameter[] parm = new SqlParameter[7];
             parm[0] = da.AddSPParameter("Division_Name", Obj_Div.DivisionName, ParameterDirection.Input, DbType.String, 50);
             parm[1] = da.AddSPParameter("Tgi_Id", Obj_Div.GroupId, ParameterDirection.Input, DbType.Int32, 100);
             parm[2] = da.AddSPParameter("Tdi_Userid", 1, ParameterDirection.Input, DbType.Int32, 10);
             parm[3] = da.AddSPParameter("CompanyId",3, ParameterDirection.Input, DbType.String, 100);
-            parm[4] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.String, 100);            
-            parm[5] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Division_Details", parm);
-
+            parm[4] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.String, 100);
+            parm[5] = da.AddSPParameter("@Msg", null, ParameterDirection.Output, DbType.String, 500);
+            parm[6] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
+           
+            string id = da.ExecuteNonQuerySP("Usp_Division_Details", parm,true);
+            
             return id;
         }
 
@@ -74,6 +76,7 @@ namespace BLL
             for (int i = 0; i < dt.Rows.Count; i++)
             {
                 Division obj_Div = new Division();
+                obj_Div.Sno= Convert.ToInt32(dt.Rows[i]["Sno"]);
                 obj_Div.DivisionId = Convert.ToInt32(dt.Rows[i]["Tdi_Id"]);
                 obj_Div.DivisionName = dt.Rows[i]["Tdi_Name"].ToString();
                 obj_Div.GroupId = Convert.ToInt32(dt.Rows[i]["Tgi_Id"]);

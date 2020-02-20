@@ -99,7 +99,7 @@ namespace DLL
             {
                 return ExecuteNonQuerySP(spname, parm);
             }
-           
+
         }
         public DataSet GetDataSetSP(string spName, SqlParameter[] parm)
         {

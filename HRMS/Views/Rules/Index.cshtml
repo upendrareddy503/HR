@@ -1,0 +1,131 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/JS/Attndiffrule.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h3>  Attendance Group Based Rules</h3>
+        <hr />
+        <div>
+
+            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddAttrule();">Add</button>
+            <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateAttrule();" style="display:none">Update</button>
+            <input type="hidden" id="hdnattn" />
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Attendance Rules</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Rules&Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        Cut off Day
+                    </td>
+                    <td> cut off day</td>
+                    <td><input type="text" id="txtCuttDay" style="width:40px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>
+                        Ratio of OT calculation in normal days
+                    </td>
+                    <td>OT calculation on normal days</td>
+                    <td><input type="text"  id="txtOTN" style="width:30px" value="1">:<input type="text"  id="txtOTNr" style="width:30px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th> 
+                    <td>
+                        Ratio of OT calculation in week days
+                    </td>
+                    <td>OT calcualtion on holiday and week end days</td>
+                    <td><input type="text" style="width:30px" id="txtOTW" value="1">:<input type="text" style="width:30px" id="txtOTWr"></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>
+                        Coff leave enchancement
+
+                    </td>
+                    <td>Coff Leave encashment is allowed are not</td>
+                    
+                    <td>
+                        @*<input type="checkbox" class="custom-control-input" id="CoffAllow">*@
+                        <input type="text" style="width:30px" id="CoffAllow">
+                    </td>
+                </tr>
+                @*<tr>
+                    <th scope="row">5</th>
+                    <td>
+                        leaves combination allow or not
+
+                    </td>
+                    <td>Combination of leaves allowed in a month are not</td>
+                    <td>
+                        <input type="checkbox" class="custom-control-input" id="combineL">
+                    </td>
+                </tr>*@
+                <tr>
+                    <th scope="row">5</th>
+                    <td>
+                        leave approve within days
+
+                    </td>
+                    <td>Leave Approve Days</td>
+                    <td><input type="text" id="txtLeaveA" style="width:40px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>
+                        OD approve within days
+
+                    </td>
+                    <td>OD Approve days</td>
+                    <td><input type="text" id="txtODA" style="width:40px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>
+                        Earned leave based on month or fixed.
+
+                    </td>
+                    <td>Earned leaves allowed in a month it is fixed or variable.</td>
+                    <td>
+                        @*<input type="checkbox" class="custom-control-input" id="defaultUnchecked">*@
+                        <select id="ddl_earntype" class="form-control" >
+                            <option value="0">Select</option>
+                            <option value="m">Month</option>
+                            <option value="f">Fixed</option>
+
+                        </select>
+                        <input type="text" id="txtMonth" style="width:40px">
+                       
+
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

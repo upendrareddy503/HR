@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    loadData();
+    load_Company();
     getCountry();
     getState();
     $('#datepicker').datepicker();
@@ -93,24 +93,28 @@ function getState() {
         }
     });
 }
-function loadData() {
+
+function load_Company() {
     $.ajax({
         url: "/Master/Company_List",
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.Tci_Name + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.CompanyId + ')">Edit</a>|<a href="#" onclick="Delete(' + item.CompanyId + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+            $("#tblCompany").dataTable({
+                data: r,
+                "bDestroy": true,
+                columns: [
+                    { "data": "Tci_Name" },
+                    {
+                        "data": "CompanyId",
+                        "render": function (CompanyId) {
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Company" onclick="GetID(' + CompanyId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + CompanyId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ]
+            })
+            
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -161,7 +165,7 @@ function Add() {
     });
 }
 
-function getbyID(Id) {
+function getID(Id) {
 
     $("#Tci_Name").css('border-color', 'lightngrey');
     $.ajax({
@@ -235,7 +239,7 @@ function Update() {
         }
     });
 }
-function Delete(Id) {
+function Deleted(Id) {
     var ans = confirm("Are you sure you want to delete this Record?");
     if (ans) {
         $.ajax({

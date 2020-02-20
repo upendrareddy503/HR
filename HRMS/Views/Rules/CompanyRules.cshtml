@@ -1,0 +1,111 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CompanyRules</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+    <script src="~/JS/Comprules.js"></script>
+   
+</head>
+<body>
+    <div class="container">
+        <h3>Company Based Rules</h3>
+        <hr />
+        <div>
+            <input type="hidden" id="hdncomp"  />
+            <button type="button" class="btn btn-primary" id="btnAddc" onclick="return AddComrule();">Add</button>
+            <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateComprule();" style="display:none">Update</button>
+
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Company Rules</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Rules&Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        No of Lates coming in month
+
+                    </td>
+                    <td>
+                        No of Lates coming in month
+                    </td>
+                    <td><input type="text" id="txtlates" style="width:40px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>
+                        Ratio of salary deduction as per above set no of late coming
+
+                    </td>
+                    <td>
+                        Ratio of salary deduction as per above set no of late coming
+                    </td>
+                    <td><input type="text" id="txtsalded" style="width:30px" value="1">:<input type="text" id="txtsaldedr" style="width:30px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>
+                        Ratio of salary deduction for an absent
+
+                    </td>
+                    <td>
+                        Ratio of salary deduction for an absent
+                    </td>
+                    <td><input type="text" style="width:30px" id="txtSAbsen" value="1">:<input type="text" style="width:30px" id="txtsaldedabsn"></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>
+                        No of permissions allow in a month
+
+
+                    </td>
+                    <td>
+                        No of permissions allow in a month
+                    </td>
+
+                    <td>
+                        <input type="text" style="width:30px" id="txtpermission">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>
+                        No of hours allowed for each permission
+
+
+                    </td>
+                    <td>
+                        No of hours allowed for each permission
+                    </td>
+                    <td>
+                        <input type="text" style="width:30px" id="txtpermissionH">
+                    </td>
+                </tr>
+                
+                
+                
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

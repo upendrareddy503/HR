@@ -34,9 +34,9 @@ namespace BLL
             parm[3] = da.AddSPParameter("Tgi_Name",Obj_Grp.GroupName, ParameterDirection.Input, DbType.String, 100);
             parm[4] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm);
+            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm,true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Update_Group(Group Obj_Grp)
@@ -51,7 +51,7 @@ namespace BLL
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Delete_Group(int GrpId, int CompanyID, int LocationID)
@@ -68,7 +68,7 @@ namespace BLL
             {
                 id = string.Empty;
             }
-            return id;
+            return id.TrimEnd(' ');
         }
 
 

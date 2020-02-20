@@ -1,227 +1,164 @@
-﻿<!DOCTYPE html>
-<html>
+﻿@model HRMS.Models.Menu
+
+@{
+    Layout = null;
+}
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <meta name="description" content="Smarthr - Bootstrap Admin Template">
+    <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+    <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Departments - HRMS admin template</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/Content/assets/img/favicon.png">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/bootstrap.min.css">
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/font-awesome.min.css">
+
+    <!-- Lineawesome CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/line-awesome.min.css">
+
+    <!-- Datatable CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/dataTables.bootstrap4.min.css">
 
 
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/bootstrap-extend.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/site.min.css">
-    <link rel="stylesheet" href="~/Content/assets/css/style.css">
-    <!-- Fonts -->
-    <link rel="stylesheet" href="~/Content/assets/fonts/web-icons/web-icons.min.css">
-    <link rel="stylesheet" href="~/Content/assets/fonts/brand-icons/brand-icons.min.css">
-    <link rel='stylesheet' href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic">
-    <link rel="stylesheet" href="~/Content/assets/fonts/weather-icons/weather-icons.min.css">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/Content/assets/css/style.css">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-        <script src="assets/vendor/html5shiv/html5shiv.min.js?v4.0.2"></script>
-        <![endif]-->
-    <!--[if lt IE 10]>
-        <script src="assets/vendor/media-match/media.match.min.js?v4.0.2"></script>
-        <script src="assets/vendor/respond/respond.min.js?v4.0.2"></script>
-        <![endif]-->
-    <!-- Scripts -->
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Content/assets/vendor/breakpoints/breakpoints.min.js"></script>
-    <script src="~/Scripts/jquery-ui-1.12.1.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />    
+    <script src="/Content/assets/js/popper.min.js"></script>
+    <script src="/Content/assets/js/bootstrap.min.js"></script>
+    <link href="~/Content/themes/base/datepicker.css" rel="stylesheet" />
+    <!-- Slimscroll JS -->
+    <script src="/Content/assets/js/jquery.slimscroll.min.js"></script>
 
+    <!-- Datatable JS -->
+    <script src="/Content/assets/js/jquery.dataTables.min.js"></script>
+    <script src="/Content/assets/js/dataTables.bootstrap4.min.js"></script>
 </head>
 <body>
-    <nav class="site-navbar navbar navbar-default navbar-fixed-top navbar-mega navbar-inverse bg-indigo-600"
-         role="navigation">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggler hamburger hamburger-close navbar-toggler-left hided"
-                    data-toggle="menubar">
-                <span class="sr-only">Toggle navigation</span> <span class="hamburger-bar"></span>
-            </button>
-            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-collapse"
-                    data-toggle="collapse">
-                <i class="icon wb-more-horizontal" aria-hidden="true"></i>
-            </button>
-            <div class="navbar-brand navbar-brand-center"> <img class="navbar-brand-logo" src="~/Content/assets/images/logo.png" title="Remark"> <span class="navbar-brand-text hidden-xs-down">HRMS</span> </div>
-            <button type="button" class="navbar-toggler collapsed" data-target="#site-navbar-search"
-                    data-toggle="collapse">
-                <span class="sr-only">Toggle Search</span> <i class="icon wb-search" aria-hidden="true"></i>
-            </button>
-        </div>
-        <div class="navbar-container container-fluid">
-            <!-- Navbar Collapse -->
-            <div class="collapse navbar-collapse navbar-collapse-toolbar" id="site-navbar-collapse">
-                <!-- Navbar Toolbar -->
-                <ul class="nav navbar-toolbar">
-                    <li class="nav-item hidden-float" id="toggleMenubar"> <a class="nav-link" data-toggle="menubar" href="#" role="button"> <i class="icon hamburger hamburger-arrow-left"> <span class="sr-only">Toggle menubar</span> <span class="hamburger-bar"></span> </i> </a> </li>
-                    <li class="nav-item hidden-sm-down" id="toggleFullscreen"> <a class="nav-link icon icon-fullscreen" data-toggle="fullscreen" href="#" role="button"> <span class="sr-only">Toggle fullscreen</span> </a> </li>
-                    <li class="nav-item hidden-float">
-                        <a class="nav-link icon wb-search" data-toggle="collapse" href="#" data-target="#site-navbar-search"
-                           role="button"><span class="sr-only">Toggle Search</span></a>
-                    </li>
-                </ul>
-                <!-- End Navbar Toolbar -->
-                <!-- Navbar Toolbar Right -->
-                <ul class="nav navbar-toolbar navbar-right navbar-toolbar-right">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link navbar-avatar" data-toggle="dropdown" href="#" aria-expanded="false"
-                           data-animation="scale-up" role="button"><span class="avatar avatar-online"> <img src="~/Content/assets/portraits/5.jpg" alt="..."> <i></i> </span></a>
-                        <div class="dropdown-menu" role="menu">
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-user" aria-hidden="true"></i> Profile</a> <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-payment" aria-hidden="true"></i> Billing</a> <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-settings" aria-hidden="true"></i> Settings</a>
-                            <div class="dropdown-divider" role="presentation"></div>
-                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> Logout</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Notifications"
-                           aria-expanded="false" data-animation="scale-up" role="button"><i class="icon wb-bell" aria-hidden="true"></i><span class="badge badge-pill badge-danger up">5</span></a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                            <div class="dropdown-menu-header">
-                                <h5>NOTIFICATIONS</h5>
-                                <span class="badge badge-round badge-danger">New 5</span>
-                            </div>
-                            <div class="list-group">
-                                <div data-role="container">
-                                    <div data-role="content">
-                                        <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10"> <i class="icon wb-order bg-red-600 white icon-circle" aria-hidden="true"></i> </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">A new order has been placed</h6>
-                                                    <time class="media-meta" datetime="2018-06-12T20:50:48+08:00">5 hours ago</time>
-                                                </div>
-                                            </div>
-                                        </a> <a class="list-group-item dropdown-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10"> <i class="icon wb-chat bg-orange-600 white icon-circle" aria-hidden="true"></i> </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Message received</h6>
-                                                    <time class="media-meta" datetime="2018-06-10T12:34:48+08:00">3 days ago</time>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-footer"> <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button"> <i class="icon wb-settings" aria-hidden="true"></i> </a> <a class="dropdown-item" href="javascript:void(0)" role="menuitem"> All notifications </a> </div>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" data-toggle="dropdown" href="javascript:void(0)" title="Messages"
-                           aria-expanded="false" data-animation="scale-up" role="button"><i class="icon wb-envelope" aria-hidden="true"></i><span class="badge badge-pill badge-info up">3</span></a>
-                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-media" role="menu">
-                            <div class="dropdown-menu-header" role="presentation">
-                                <h5>MESSAGES</h5>
-                                <span class="badge badge-round badge-info">New 3</span>
-                            </div>
-                            <div class="list-group" role="presentation">
-                                <div data-role="container">
-                                    <div data-role="content">
-                                        <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10"> <span class="avatar avatar-sm avatar-online"> <img src="~/Content/assets/portraits/2.jpg" alt="..." /> <i></i> </span> </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Mary Adams</h6>
-                                                    <div class="media-meta">
-                                                        <time datetime="2018-06-17T20:22:05+08:00">30 minutes ago</time>
-                                                    </div>
-                                                    <div class="media-detail">Anyways, i would like just do it</div>
-                                                </div>
-                                            </div>
-                                        </a> <a class="list-group-item" href="javascript:void(0)" role="menuitem">
-                                            <div class="media">
-                                                <div class="pr-10"> <span class="avatar avatar-sm avatar-away"> <img src="~/Content/assets/portraits/5.jpg" alt="..." /> <i></i> </span> </div>
-                                                <div class="media-body">
-                                                    <h6 class="media-heading">Edward Fletcher</h6>
-                                                    <div class="media-meta">
-                                                        <time datetime="2018-06-15T20:34:48+08:00">3 days ago</time>
-                                                    </div>
-                                                    <div class="media-detail">Dolor et irure cupidatat commodo nostrud nostrud.</div>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-menu-footer" role="presentation"> <a class="dropdown-menu-footer-btn" href="javascript:void(0)" role="button"> <i class="icon wb-settings" aria-hidden="true"></i> </a> <a class="dropdown-item" href="javascript:void(0)" role="menuitem"> See all messages </a> </div>
-                        </div>
-                    </li>
-                </ul>
-                <!-- End Navbar Toolbar Right -->
-            </div>
-            <!-- End Navbar Collapse -->
-            <!-- Site Navbar Seach -->
-            <div class="collapse navbar-search-overlap" id="site-navbar-search">
-                <form role="search">
-                    <div class="form-group">
-                        <div class="input-search">
-                            <i class="input-search-icon wb-search" aria-hidden="true"></i>
-                            <input type="text" class="form-control" name="site-search" placeholder="Search...">
-                            <button type="button" class="input-search-close icon wb-close" data-target="#site-navbar-search"
-                                    data-toggle="collapse" aria-label="Close"></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <!-- End Site Navbar Seach -->
-        </div>
-    </nav>
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
 
-    <div class="site-menubar site-menubar-light">
-        <div class="site-menubar-body">
-            <ul class="site-menu" data-plugin="menu">
-                <li class="site-menu-item has-sub">
-                    <a href="javascript:void(0)">
-                        <i class="site-menu-icon wb-dashboard" aria-hidden="true"></i> <span class="site-menu-title">Dashboard</span>
-                        <div class="site-menu-badge"> <span class="badge badge-pill badge-success">3</span> </div>
+        <!-- Header -->
+        <div class="header">
+
+            <!-- Logo -->
+            <div class="header-left">
+                <a href="index-2.html" class="logo">
+                    <img src="/Content/assets/img/logo.png" width="40" height="40" alt="">
+                </a>
+            </div>
+            <!-- /Logo -->
+
+            <a id="toggle_btn" href="javascript:void(0);">
+                <span class="bar-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </span>
+            </a>
+
+            <!-- Header Title -->
+            <div class="page-title-box">
+                <h3>Dreamguy's Technologies</h3>
+            </div>
+            <!-- /Header Title -->
+
+            <a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
+
+            <!-- Header Menu -->
+            <ul class="nav user-menu">
+
+                <!-- Search -->
+                <li class="nav-item">
+                    <div class="top-nav-search">
+                        <a href="javascript:void(0);" class="responsive-search">
+                            <i class="fa fa-search"></i>
+                        </a>
+                        <form action="https://dreamguys.co.in/smarthr/blue/search.html">
+                            <input class="form-control" type="text" placeholder="Search here">
+                            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </li>
+                <!-- /Search -->
+
+
+                <li class="nav-item dropdown has-arrow main-drop">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <span class="user-img">
+                            <img src="/Content/assets/img/profiles/avatar-21.jpg" alt="">
+                            <span class="status online"></span>
+                        </span>
+                        <span>Admin</span>
                     </a>
-                    <ul class="site-menu-sub">
-                        <li class="site-menu-item active"> <a href="index.html"> <span class="site-menu-title">Employees</span> </a> </li>
-                        <li class="site-menu-item"> <a href="#"> <span class="site-menu-title">Earnings</span> </a> </li>
-                        <li class="site-menu-item"> <a href="#"> <span class="site-menu-title">Expenses</span> </a> </li>
-                    </ul>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="profile.html">My Profile</a>
+                        <a class="dropdown-item" href="settings.html">Settings</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
                 </li>
             </ul>
+            <!-- /Header Menu -->
+            <!-- Mobile Menu -->
+            <div class="dropdown mobile-user-menu">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="settings.html">Settings</a>
+                    <a class="dropdown-item" href="login.html">Logout</a>
+                </div>
+            </div>
+            <!-- /Mobile Menu -->
+
         </div>
+        <!-- /Header -->
+        <!-- Sidebar -->
+
+        @{Html.RenderAction("GetAccordionMenu", "Menu");}
+        <!-- /Sidebar -->
+        <!-- Page Wrapper -->
+        <div class="page-wrapper">
+            @RenderBody()
+        </div>
+
+        <!-- /Page Wrapper -->
     </div>
-    <div class="page">
-        @RenderBody()
+    <!-- /Main Wrapper -->
+    <!-- jQuery -->
+    <!-- Bootstrap Core JS -->
 
 
-    </div>
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="site-footer-legal">©  @DateTime.Now.Year<a href="">Copyright</a></div>
-        <div class="site-footer-right"> Developed <i class="red-600 wb wb-heart"></i> by <a href="#">Developer</a> </div>
-    </footer>
-    <!-- Core  -->
-    <script src="~/Content/assets/vendor/babel-external-helpers/babel-external-helpers.js"></script>
-    
-    <script src="~/Content/assets/vendor/popper-js/umd/popper.min.js"></script>
-    <script src="~/Content/assets/vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="~/Content/assets/vendor/animsition/animsition.min.js"></script>
-    <script src="~/Content/assets/vendor/mousewheel/jquery.mousewheel.js"></script>
-    <script src="~/Content/assets/vendor/asscrollbar/jquery-asScrollbar.min.js"></script>
-    <script src="~/Content/assets/vendor/asscrollable/jquery-asScrollable.min.js"></script>
-    <script src="~/Content/assets/vendor/ashoverscroll/jquery-asHoverScroll.min.js"></script>
-    <!-- Scripts -->
-    <script src="~/Content/assets/js/Component.min.js"></script>
-    <script src="~/Content/assets/js/Plugin.min.js"></script>
-    <script src="~/Content/assets/js/Base.min.js"></script>
-    <script src="~/Content/assets/js/Config.min.js"></script>
-    <script src="~/Content/assets/js/Section/Menubar.min.js"></script>
-    <script src="~/Content/assets/js/Section/Sidebar.min.js"></script>
-    <script src="~/Content/assets/js/Section/PageAside.min.js"></script>
-    <script src="~/Content/assets/js/plugin/menu.min.js"></script>
-    <!-- Page -->
-    <script src="~/Content/assets/js/Site.min.js"></script>
-    <script src="~/Content/assets/js/plugin/asscrollable.min.js"></script>
-    <script src="~/Content/assets/js/plugin/slidepanel.min.js"></script>
-    <script src="~/Content/assets/js/plugin/switchery.min.js"></script>
-    <script src="~/Content/assets/js/plugin/matchheight.min.js"></script>
-    <script src="~/Content/assets/js/plugin/jvectormap.min.js"></script>
-    <script src="~/Content/assets/examples/js/dashboard/v1.min.js"></script>
 
-    
- 
+
+    <!-- Custom JS -->
+    <script src="/Content/assets/js/app.js"></script>
+    <script src="~/JS/Menu.js"></script>
+
+    <script src="~/JS/Common.js"></script>
 </body>
 </html>
+
+
+
+
+
+

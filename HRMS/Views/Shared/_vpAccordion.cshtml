@@ -1,0 +1,52 @@
+﻿@model HRMS.Models.Menu
+
+
+@using System.Globalization
+
+@{
+    TextInfo textCase = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo;
+}
+
+
+
+<div class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title">
+                    <span>Main</span>
+                </li>
+                <li class="submenu">
+                    <a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
+
+                </li>
+                @foreach (var menu in Model.accList)
+                {
+
+                    var catid = "ct" + menu.Description.ToLower().Replace(" ", "-");
+
+                    <li class="menu-title">
+                        <span>@textCase.ToTitleCase(menu.Description)</span>
+                    </li>
+                    <li class="submenu">
+                        <a href="#" class="noti-dot"><i class="la la-user"></i> <span></span>@textCase.ToTitleCase(menu.Description) <span class="menu-arrow"></span></a>
+                        @foreach (var subcat in menu.SubMenudetails)
+                        {
+                            
+
+                        <ul style="display: none;">
+                            <li><a href="~/"@textCase.ToTitleCase(subcat.MenuName)> @textCase.ToTitleCase(subcat.MenuName)</a></li>
+
+                        </ul>
+
+
+
+
+                        }
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div>
+</div>

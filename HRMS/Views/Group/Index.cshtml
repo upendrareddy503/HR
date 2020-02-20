@@ -1,59 +1,118 @@
-﻿
-@{
-    Layout = null;
-}
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Groups</title>
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Scripts/Group.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h2>Add Group</h2>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearText();">Add Division</button>
-        <br /><br />
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Sno</th>
-                    <th>Group Name</th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
+﻿<!-- Page Content -->
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Group</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Group</li>
+                </ul>
+            </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add Group</a>
+            </div>
+        </div>
     </div>
-    <div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Group</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        
-                            <input type="hidden" class="form-control" id="GroupId" placeholder="Group ID" disabled="disabled" />
-                       
-                        <div class="form-group">
-                            <label for="GroupName">Name</label>
-                            <input type="text" class="form-control" id="GroupName" placeholder="Group Name" />
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
-                    <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update();" style="display:none">Update</button>
-                    <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-0">
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="tblGroup" class="table table-stripped mb-0">
+                            <thead>
+                                <tr>
+                                    @*<th style="width: 30px;">#</th>*@
+
+                                    <th>Group Name </th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+
+
+
+</div>
+<!-- /Page Content -->
+<!-- Add Department Modal -->
+<div id="add_department" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Group</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <input type="hidden" class="form-control" id="GroupId" placeholder="Group ID" disabled="disabled" />
+                        <label>Group Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="GroupName" placeholder="Group Name" />
+                    </div>
+                    <div class="submit-section">
+
+                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert();">Add</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Updated();" style="display:none">Update</button>
+
+                    </div>
+
+                  
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
+                @*<button type="button" class="close" data-dismiss="alert" >
+                    <span aria-hidden="true">×</span>
+                </button>*@
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
+                @*<button type="button" class="close" data-dismiss="alert" >
+                    <span aria-hidden="true">×</span>
+                </button>*@
+            </div>
+        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add Department Modal -->
+<!-- Delete Department Modal -->
+<div class="modal custom-modal fade" id="delete_department" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-header">
+                    <h3>Delete Group</h3>
+                    <p>Are you sure want to delete?</p>
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row">
+                        <div class="col-6">
+
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn"  onclick="return FinalDelete();">Delete</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn" onclick="return clearTextBox();">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Department Modal -->
+
+<script src="~/JS/Group.js"></script>

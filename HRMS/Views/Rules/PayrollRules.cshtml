@@ -1,0 +1,139 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>PayrollRules</title>
+</head>
+<body>
+    <div class="container">
+        <h3>Payroll Based Rules</h3>
+        <hr />
+        <div>
+
+            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddPayAttrule();">Add</button>
+            <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update();" style="display:none">Update</button>
+
+        </div>
+        <br />
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">Payroll Rules</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Rules&Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>
+                        Based on days or month salary
+
+
+                    </td>
+                    <td>
+                        Based on days or month salary
+
+                    </td>
+                    <td> <input type="checkbox" class="custom-control-input" id="basedon"></td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>
+                        OT calculation Based on Salary or basic
+
+
+
+                    </td>
+                    <td>
+                        OT calculation Based on Salary or basic
+
+                    </td>
+                    <td><input type="text" id="txtsalded" style="width:30px" value="1">:<input type="text" id="txtsaldedr" style="width:30px"></td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>
+                        ESI calculation
+
+                    </td>
+                    <td>
+                        ESI calculation
+
+                    </td>
+                    <td>  <input type="checkbox" class="custom-control-input" id="Esical"></td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>
+                        PF calculation
+                    </td>
+                    <td>
+                        PF calculation
+
+                    </td>
+
+                    <td>
+                        <input type="checkbox" class="custom-control-input" id="Pfcal">
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>
+                        PT calculation
+
+
+
+                    </td>
+                    <td>
+                        PT calculation
+
+                    </td>
+                    <td>
+                        <input type="checkbox" class="custom-control-input" id="Ptcal">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">6</th>
+                    <td>
+                        Health Insurance
+                    </td>
+                    <td>
+                        Health Insurance
+
+                    </td>
+                    <td>
+                        <input type="checkbox" class="custom-control-input" id="HealthIn">
+                    </td>
+                </tr>
+
+                <tr>
+                    <th scope="row">7</th>
+                    <td>
+                        Gradity based on Basic %
+
+                    </td>
+                    <td>
+                        Gradity based on Basic %
+
+
+                    </td>
+                    <td>
+                        <input type="checkbox" class="custom-control-input" id="HealthIn">
+                    </td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

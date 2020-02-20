@@ -23,15 +23,19 @@ namespace HRMS.Controllers
         Holidaydetails Obj_Holi = new Holidaydetails();
         #endregion #
         // GET: Master
-
-        #region Divison
         public ActionResult Index()
+        {
+            return View();
+        }
+        #region Divison
+        public ActionResult Division()
         {
             return View();
         }
 
         public JsonResult Division_List()
         {
+
             return Json(obj_Div.Get_AllDivision(1,1), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Division(Division obj_Div)
@@ -193,13 +197,13 @@ namespace HRMS.Controllers
         {
             return Json(Obj_Dep.Get_AllDepartment(1,1), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Insert_Department(DepartmentDetails obj_ComInser)
+        public JsonResult Insert_Department(DepartmentDetails Obj_Dep_Insert)
         {
-            return Json(Obj_Dep.Insert_Department(Obj_Dep), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Dep.Insert_Department(Obj_Dep_Insert), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Update_Department(DepartmentDetails obj_ComUpd)
+        public JsonResult Update_Department(DepartmentDetails Obj_Dep_Update)
         {
-            return Json(Obj_Dep.Update_Department(Obj_Dep), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Dep.Update_Department(Obj_Dep_Update), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetDepartmentByID(int ID)
         {

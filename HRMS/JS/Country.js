@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {
     loadData();
-    alert("test");
+   
 
 });
 function loadData() {
@@ -9,19 +9,34 @@ function loadData() {
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 1;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.CountryName + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.CountryId + ')">Edit</a>|<a href="#" onclick="Delete(' + item.CountryId + ')">Delete</a></td > ';
-                html += '</tr>';
-                i++;
-            });
-            $('.tbody').html(html);
+        success: function (data) {
+
+            $("#example").dataTable({
+                data: data,
+                columns: [
+                    { "data": "CountryName" },
+                    {
+                        "data": "CountryId",
+                        "render": function (CountryId) {
+                            return '<a href="#" onclick="getbyID(' + CountryId + ')">Edit</a>|<a href="#" onclick="Delete(' + CountryId +')">Delete</a></td > '
+                        }
+                    }
+                ]
+            })
+
         },
+        //    var html = '';
+        //    var i = 1;
+        //    $.each(r, function (key, item) {
+        //        html += '<tr>';
+        //        html += '<td>' + parseInt(i) + '</td>';
+        //        html += '<td>' + item.CountryName + '</td>';
+        //        html += '<td><a href="#"  onclick="getbyID(' + item.CountryId + ')">Edit</a>|<a href="#" onclick="Delete(' + item.CountryId + ')">Delete</a></td > ';
+        //        html += '</tr>';
+        //        i++;
+        //    });
+        //    $('.tbody').html(html);
+        //},
         error: function (errmsg) {
             alert(errmsg.responseText);
         }
@@ -47,8 +62,23 @@ function Add() {
         success: function (r) {
             loadData();
             clearTextBox();
-            $('#MyModal').modal('hide');
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
         },
+        
         error: function (errMsg) {
             alert(errMsg.responseText);
         }
@@ -56,7 +86,7 @@ function Add() {
 }
 
 function getbyID(Id) {
-
+  
     $("#CountryName").css('border-color', 'lightngrey');
     $.ajax({
         url: "/Master/GetCountryByID/" + Id,
@@ -64,9 +94,10 @@ function getbyID(Id) {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
+
             $('#CountryId').val(r.CountryId);
             $('#CountryName').val(r.CountryName);
-            $('#MyModal').modal('show');
+            $('#myModal').modal('show');
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },
@@ -95,10 +126,26 @@ function Update() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
+            
+            var msg = r.split('$');
+            ;
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
             loadData();
-            $('#MyModal').modal('hide');
             clearTextBox();
         },
+        
         error: function (errMsg) {
             alert(errMsg.responseText);
         }
@@ -112,8 +159,23 @@ function Delete(Id) {
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
-            success: function (result) {
+            success: function (r) {
                 loadData();
+                var msg = r.split('$');
+
+                if (msg[1] == "True") {
+
+                    $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg').fadeOut('slow');
+                    }, 2000);
+                }
+                else {
+                    $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg1').fadeOut('slow');
+                    }, 2000);
+                }
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -123,12 +185,20 @@ function Delete(Id) {
 }
 
 function clearTextBox() {
-
+    
     $('#CountryName').val('');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
     $('#CountryName').css('border-color', 'lightgrey');
-    $('#MyModal').modal('hide');
+    
+}
+function CloseTextBox() {
+    
+    $('#CountryName').val('');
+    $("#btnUpdate").hide();
+    $("#btnAdd").show();
+    $('#CountryName').css('border-color', 'lightgrey');
+    $('#myModal').modal('hide');
 }
 function validate() {
 

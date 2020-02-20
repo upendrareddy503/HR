@@ -14,22 +14,7 @@
     $('#spPhoneValid').hide();
     $('#PreviousEx').hide();
 
-    $('#chkAll').change(function () {        
-        if ($("#tblAllowance tbody tr").length > 0) {
-            for (var i = 1; i <= $("#tblAllowance tbody tr").length; i++) {
-                if ($(this).prop("checked") == true) {
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(2) .chkAllow").attr('checked', true);
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(4) .ddlAllwType").removeAttr('disabled');
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(5) .txtAmt").removeAttr('disabled');
-                }
-                else {
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(2) .chkAllow").attr('checked', false);
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(4) .ddlAllwType").attr('disabled', 'disabled');
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(5) .txtAmt").attr('disabled', 'disabled');
-                }
-            }
-        }
-    });
+
     $("#userimage").change(function () {
         // $('.input-group.date').datepicker();
         var data = new FormData();
@@ -84,7 +69,6 @@
         if ($(this).val() != "0") {
 
             getDivision();
-            getAllowances($(this).val());
         }
     });
 
@@ -95,30 +79,30 @@
         }
     });
 
-    //$('#ddl_Group').change(function () {
-    //    var Id;
+    $('#ddl_Group').change(function () {
+        var Id;
         
-    //    Id = $('#ddl_Group').val();
-    //    alert(Id);
-    //    $.ajax({
-    //        url: "/Payroll/Get_Dropdown/" + Id,
-    //        type: "Post",
-    //        contentType: "application/json;charset=utf-8",
-    //        dataType: "json",
-    //        success: function (r) {
-    //            //$('#ddl_allowance').empty().append('<option selected="selected" value="0">Select</option>');
-    //            //$.each(r, function (key, item) {
-    //            //    $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-    //            //});
-    //            //$('[id*=ddl_allowance]').multiselect({
-    //            //    includeSelectAllOption: true
+        Id = $('#ddl_Group').val();
+        alert(Id);
+        $.ajax({
+            url: "/Payroll/Get_Dropdown/" + Id,
+            type: "Post",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                $('#ddl_allowance').empty().append('<option selected="selected" value="0">Select</option>');
+                $.each(r, function (key, item) {
+                    $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
+                });
+                $('[id*=ddl_allowance]').multiselect({
+                    includeSelectAllOption: true
 
-    //            //});
+                });
                 
-    //        }
-    //    });
+            }
+        });
 
-    //});
+    });
     $("[id*=txt_EmailID]").focusout(function () {
 
 
@@ -132,70 +116,31 @@
         }
     });
 
-    function getAllowances(Id) {
+    $('#ddl_DesignationReport').change(function () {
+        var Id;
 
+        Id = $('#ddl_DesignationReport').val();
+        alert(Id);
         $.ajax({
-            url: "/Payroll/Allowance_List/" + Id,
-            type: "Get",
+            url: "/Employee/Get_DesignationReport/" + Id,
+            type: "Post",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
-            success: function (r) {               
-                //$('#ddl_allowance').empty();
-                //$.each(r, function (key, item) {
-                //    $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-                //});
-                //$('[id*=ddlBasedOn]').multiselect({
-                //    includeSelectAllOption: true
-
-                //});               
-                var html = '';
-                var i = 0;
-                $.each(r, function (key, item) {                    
-                    html += '<tr>';                    
-                    html += '<td style="display:none">' + item.Alw_Id + '</td>';
-                    html += '<td><input type="checkbox" id="chkAllow" class="chkAllow" onchange="f1(' + i + ', this)"></td>';
-                    html += '<td>' + item.Alw_Name + '</td>';
-                    html += '<td><select id="ddlAllwType" disabled="disabled" class="ddlAllwType"><option value="A">Amt</option><option value="P">%</option></select>'
-                    html += "<td><input type='text' class='txtAmt' maxlength='8' disabled='disabled' class='txtAmt' style='width:80px' value='" + item.Alw_Val + "'></td>"                    
-                    html += '</tr>';
-                    $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(4) .ddlAllwType").val(item.Alw_Type);
-                    i = i + 1;
+            success: function (r) {
+              
+                $.each(r, function (key, item) {
+                    $('#ddl_ReportingTo').append($("<option></option>").val(item.Tei_Id).html(item.Tei_FirstName));
                 });
-                $('.tbody').html(html);
-            },
-            error: function (errmsg) {
-                alert(errmsg.responseText);
+                $('[id*=ddl_ReportingTo]').multiselect({
+                    includeSelectAllOption: true
+
+                });
+
             }
         });
-    }
 
-    //$('#ddl_allowance').change(function () {
-    //    var allowances = "";
-    //    $('[id*=ddl_allowance] > option:selected').each(function () {
-    //        allowances += $(this).val() + ',';
-    //    });
-    //    var obj_Allw = {           
-    //        Alw_BasedOn: allowances
+    });
 
-    //    };
-    //    $.ajax({
-    //        url: "/Employee/GetAllowances",
-    //        type: "Post",
-    //        contentType: "application/json;charset=utf-8",
-    //        data: JSON.stringify(obj_Allw),
-    //        dataType: "json",
-    //        success: function (r) {
-    //            $('#ddlBasedOn').empty();
-    //            $.each(r, function (key, item) {
-    //                $('#ddlBasedOn').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-    //            });
-    //            $('[id*=ddlBasedOn]').multiselect({
-    //                includeSelectAllOption: true
-
-    //            });
-    //        }
-    //    });
-    //})
 
     function getDivision() {
 
@@ -242,7 +187,8 @@
 function ValidateEmail(email) {
     var expr = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     return expr.test(email);
-}
+    }
+   
 
 
 
@@ -403,7 +349,8 @@ function NextAdd() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            var msg = r;            
+            var msg = r;
+            alert(msg);
             $('#hid').val(r.Tei_ID);
             $('#hid').val(msg);
             //loadData();
@@ -416,6 +363,9 @@ function NextAdd() {
     });
      }
 }
+
+
+
 
 function Add() {
 
@@ -464,23 +414,71 @@ function Add() {
     });
 }
 
-function f1(index, x) {    
-    if ($(x).prop("checked") == true) {
-        $("#tblAllowance tbody tr:nth-child(" + (index + 1) + ") td:nth-child(4) .ddlAllwType").removeAttr('disabled');
-        $("#tblAllowance tbody tr:nth-child(" + (index + 1) + ") td:nth-child(5) .txtAmt").removeAttr('disabled');
-    }
-    else {
-        $("#tblAllowance tbody tr:nth-child(" + (index + 1) + ") td:nth-child(4) .ddlAllwType").attr('disabled', 'disabled');
-        $("#tblAllowance tbody tr:nth-child(" + (index + 1) + ") td:nth-child(5) .txtAmt").attr('disabled', 'disabled');
-    }
-}
 
 function Forword() {
+
+    //var res = validate();
+    //if (res == false) {
+
+    //    return false;
+    //}
+    //else {
+    //    $('#Secound').show();
+    //    $('#first').hide();
 
     $('#Third').show();
     $('#Secound').hide();
     $('#first').hide();
+    var Rules = "";
+    $('[id*=ddl_Rules] > option:selected').each(function () {
+        Rules += $(this).val() + ',';
+    });
+    var ReportingTo = "";
+    $('[id*=ddl_ReportingTo] > option:selected').each(function () {
+        ReportingTo += $(this).val() + ',';
+    });
+
+    var obj_EmpIns = {
+            Tei_Id: $('#hid').val(),
+            Tegi_Shift_Group: $('#ddl_Shift').val(),
+            Tegi_GroupId: $('#ddl_Group').val(),
+            Tegi_DivisionId: $('#ddl_Division').val(),
+            Tegi_DepartmentId: $('#ddl_Department').val(),
+            Tegi_DesignationId: $('#ddl_Designation').val(),
+            Tei_PfNo: $('#txt_PfNo').val(),
+            Tei_EsiNo: $('#txt_ESno').val(),
+            Tegi_Weekoff: $('#ddl_WeekOff').val(),
+            Tegi_ReportingLevel: ReportingTo,
+            Tegi_UANNumber: $('#txt_UANNumber').val(),
+            Tegi_PF_Type: $('#ddl_PFType').val(),
+            Tegi_Emp_Rules: Rules,
+            Tegi_Grade: $('#ddl_Grade').val(),
+        };
+
+        $.ajax({
+            url: "/Employee/Second_Employee",
+            type: "Post",
+            data: JSON.stringify(obj_EmpIns),
+            contentType: "application/json;charset=utf-8",
+            dataType: 'json',
+            success: function (r) {
+                var msg = r;
+                alert(msg);
+                $('#hid').val(r.Tei_ID);
+                $('#hid').val(msg);
+                //loadData();
+                //clearTextBox();
+                //$('#MyModal').modal('hide');
+            },
+            error: function (errMsg) {
+                alert(errMsg.responseText);
+            }
+        });
+    //}
 }
+
+
+
 function Previous2() {
     
     $('#Third').hide();
@@ -535,23 +533,6 @@ function getbyID(Id) {
         }
     });
     return false;
-}
-
-function FinalAdd2() {
-    var AllowanceId = "";
-    var AllowanceValue = "";
-    var AllowanceType = "";
-    var Allowances = "";
-    if ($("#tblAllowance tbody tr").length > 0) {
-        for (var i = 1; i <= $("#tblAllowance tbody tr").length; i++) {
-            if ($("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(2) .chkAllow").prop("checked") == true) {
-                AllowanceId =$("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(1)").html();
-                AllowanceValue = $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(4) .ddlAllwType").val();
-                AllowanceType = $("#tblAllowance tbody tr:nth-child(" + i + ") td:nth-child(5) .txtAmt").val();
-                Allowances += "|" + AllowanceId + "," + AllowanceValue + "," + AllowanceType;               
-            }
-        }
-    }
 }
 function Update() {
 
@@ -690,6 +671,37 @@ function validateNext() {
     return isValid;
 }
 
+
+$('#fileUploadExcel').click(function () {
+    // $('.input-group.date').datepicker();
+    var files = $('#fileUpload').files();
+    //var myID = 3; //uncomment this to make sure the ajax URL works
+    if (files.length > 0) {
+        if (window.FormData !== undefined) {
+            var data = new FormData();
+            for (var x = 0; x < files.length; x++) {
+                data.append("file" + x, files[x]);
+            }
+           
+            $.ajax({
+                url: "/Employee/UploadHomeReport",
+                type: "POST",
+                processData: false,
+                contentType: false,
+                data: data,
+                success: function (result) {
+                    alert("fff");
+                    console.log(result);
+                },
+                error: function (er) {
+                    alert(er);
+                }
+
+            });
+        }
+    }
+    return false;
+});
 //function checkEmpID() {
 //    if ($("[id*=txt_EmailID]").val() == '') {
 //        $('#spEmailValid').show();

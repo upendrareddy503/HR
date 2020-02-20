@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BLL;
 using System.Data;
+using HRMS.Models;
 
 namespace HRMS.Controllers
 {
@@ -73,6 +74,59 @@ namespace HRMS.Controllers
 
         #endregion Submenu
 
+
+        // AccordionMenu
+        public ActionResult GetAccordionMenu()
+        {
+            Menudetails mm = new Menudetails();
+            SubMenudetails mm1 = new SubMenudetails();
+            List<Menudetails> accList = new List<Menudetails>();
+
+            try
+            {
+                               
+
+                    //Get categories
+                    var qCategory = mm.Get_AllMenulist(1);
+                    foreach (var cat in qCategory)
+                    {
+                        mm = new Menudetails();
+                        mm.Description = Convert.ToString(cat.Description);
+
+                        List<SubMenudetails> sclist = new List<SubMenudetails>();
+                        mm.SubMenudetails = sclist;
+
+                    //Get subcategories
+                    var qSubcategory = mm1.Get_AllSubMenuList_id(cat.TxnId);
+                        foreach (var subcat in qSubcategory)
+                        {
+                            SubMenudetails sc = new SubMenudetails()
+                            {
+                                TxnId = Convert.ToInt32(subcat.TxnId),
+                                MenuName = Convert.ToString(subcat.Url_Name)
+                            };
+
+                            mm.SubMenudetails.Add(sc);
+                        }
+                        accList.Add(mm);
+                    }
+
+
+                
+            }
+            catch (Exception ex)
+            {
+                ViewBag.FormMessage = ex.Message;
+                ViewBag.AlertType = "alert-danger";
+                ViewBag.FormStatus = "Warning:";
+            }
+
+            mm.accList = accList;
+            Menu li_menu = new Menu();
+            li_menu.accList = accList;
+            return PartialView("_vpAccordion", li_menu);
+
+        }
     }
 
 }

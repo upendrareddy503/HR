@@ -82,5 +82,9 @@ namespace HRMS.Controllers
             return Json(Obj_rules.GetDetails_Rules(), JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult LeaveEntry()
+        {
+            return View();
+        }
     }
 }

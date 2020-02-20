@@ -25,7 +25,6 @@ namespace BLL
             parm[3] = da.AddSPParameter("CompanyId", 3, ParameterDirection.Input, DbType.String, 100);
             parm[4] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.String, 100);
             parm[5] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);           
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Department_Details", parm,true);
 
             return id;
@@ -38,8 +37,7 @@ namespace BLL
             parm[1] = da.AddSPParameter("Tdpi_Id", Obj_Dep.Department_Id, ParameterDirection.Input, DbType.Int32, 100);
             parm[2] = da.AddSPParameter("Tdi_Id", Obj_Dep.DivisionId, ParameterDirection.Input, DbType.Int32, 100);
             parm[3] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64, 10);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Department_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Department_Details", parm,true);
 
             return id;
         }
@@ -49,7 +47,7 @@ namespace BLL
             SqlParameter[] parm = new SqlParameter[2];
             parm[0] = da.AddSPParameter("Tdpi_Id", ID, ParameterDirection.Input, DbType.Int32);
             parm[1] = da.AddSPParameter("Flag", 4, ParameterDirection.Input, DbType.Int64, 10);
-            string id = da.ExecuteNonQuerySP("Usp_Department_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Department_Details", parm,true);
             if (id == null)
             {
                 id = string.Empty;

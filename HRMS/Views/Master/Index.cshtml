@@ -1,64 +1,100 @@
 ﻿
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<script src="~/JS/Master.js"></script>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Groups</title>
-    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/JS/Master.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h2>Division</h2>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearTextBox();">Add Division</button>
-        <br /><br />
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Sno</th>
-                    <th>Group Name</th>
-                    <th>Division Name</th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
+<div class="panel">
+    <div class="panel-heading">
+
+        <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <h3> Group Master </h3>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active">Forms</li>
+                </ol>
+            </div>
+        </div>
     </div>
-    <div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Division</h4>
-                </div>
-                <div class="modal-body">
-                    <form>
 
-                        <input type="hidden" id="hdnDivisionID" />
 
-                        <div class="form-group">
-                            <label for="GroupName">Group Name</label>
-                            <select id="ddl_Group"><option>Select</option></select>                            
+    <div class="panel-body">
+        <button type="button" class="btn-white" data-toggle="modal" data-target="#myModal" onclick="clearText();">Add Division</button>
+        <div class="container">
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Add Division</h4>
                         </div>
-                        <div class="form-group">
-                            <label for="DivisionName">Division Name</label>
-                            <input type="text" class="form-control" id="txt_DivName" placeholder="Division Name" />
+                        <div class="modal-body">
+                            <form>
+
+                                <input type="hidden" id="hdnDivisionID" />
+
+                                <div class="form-group">
+                                    <label for="GroupName">Group Name</label>
+                                    <select id="ddl_Group"><option>Select</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="DivisionName">Division Name</label>
+                                    <input type="text" class="form-control" id="txt_DivName" placeholder="Division Name" />
+                                </div>
+                            </form>
                         </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddDivision();">Add</button>
-                    <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateDivision();" style="display:none">Update</button>
-                    <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddDivision();">Add</button>
+                            <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateDivision();" style="display:none">Update</button>
+                            <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</body>
-</html>
+</div>
+
+
+
+
+<div class="panel">
+    <div class="panel-heading">
+        <h3>Country Data  </h3>
+    </div>
+    <div class="panel-body">
+
+        <div class="table-responsive">
+            <table id="example" class="table table-hover  datatable table-striped">
+                <thead>
+                    <tr>
+
+                        <th>Group Name</th>
+                        <th>Division Name</th>
+                    </tr>
+                </thead>
+                <tbody class="tbody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>

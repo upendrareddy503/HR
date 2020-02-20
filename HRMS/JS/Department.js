@@ -23,19 +23,49 @@ function loadData() {
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 0;
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i+1) + '</td>';
-                html += '<td>' + item.DivisionName + '</td>';
-                html += '<td>' + item.Department_Name + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.Department_Id + ')">Edit</a>|<a href="#" onclick="Delete(' + item.Department_Id + ')">Delete</a></td > ';
-                html += '</tr>';
+        success: function (data) {
 
-            });
-            $('.tbody').html(html);
+            $("#tblDepartment").dataTable({
+                data: r,
+                "bDestroy": true,
+                columns: [
+                    { "data": "DivisionName" },
+                    { "data": "Department_Name" },
+                    {
+                        "data": "Department_Id",
+                        "render": function (Department_Id) {
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + Department_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + Department_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ]
+            })
+
+
+            //$("#example").dataTable({
+            //    data: data,
+            //    columns: [
+            //        { "data": "DivisionName" },
+            //        { "data": "Department_Name" },
+            //        {
+            //            "data": "Department_Id",
+            //            "render": function (Department_Id) {
+            //                return '<a href="#" onclick="getbyID(' + Department_Id + ')">Edit</a>|<a href="#" onclick="Delete(' + Department_Id + ')">Delete</a></td > '
+            //            }
+            //        }
+            //    ]
+            //})
+            ////var html = '';
+            ////var i = 0;
+            ////$.each(r, function (key, item) {
+            ////    html += '<tr>';
+            ////    html += '<td>' + parseInt(i+1) + '</td>';
+            ////    html += '<td>' + item.DivisionName + '</td>';
+            ////    html += '<td>' + item.Department_Name + '</td>';
+            ////    html += '<td><a href="#"  onclick="getbyID(' + item.Department_Id + ')">Edit</a>|<a href="#" onclick="Delete(' + item.Department_Id + ')">Delete</a></td > ';
+            ////    html += '</tr>';
+
+            ////});
+            
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -61,9 +91,23 @@ function AddDepartment() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
+           
+            var msg = r.split('$');
+              if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
             loadData();
             clearTextBox();
-            $('#MyModal').modal('hide');
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -72,6 +116,7 @@ function AddDepartment() {
 }
 
 function getbyID(Id) {
+  
     $("#ddl_Division").css('border-color', 'lightngrey');
     $("#txt_DepName").css('border-color', 'lightngrey');
     $.ajax({
@@ -83,7 +128,7 @@ function getbyID(Id) {
             $('#hdnDepartmentID').val(r.Department_Id);
             $('#txt_DepName').val(r.Department_Name);
             $('#ddl_Division').val(r.DivisionId);
-            $('#MyModal').modal('show');
+            $('#myModal').modal('show');
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },
@@ -114,7 +159,21 @@ function UpdateDepartment() {
         dataType: 'json',
         success: function (r) {
             loadData();
-            $('#MyModal').modal('hide');
+            var msg = r.split('$');
+            alert(msg);
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
             clearTextBox();
         },
         error: function (errMsg) {
@@ -130,8 +189,22 @@ function Delete(Id) {
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
-            success: function (result) {
+            success: function (r) {
                 loadData();
+                var msg = r.split('$');
+                if (msg[1] == "True") {
+
+                    $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg').fadeOut('slow');
+                    }, 2000);
+                }
+                else {
+                    $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                    setTimeout(function () {
+                        $('.errMsg1').fadeOut('slow');
+                    }, 2000);
+                }
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -149,7 +222,19 @@ function clearTextBox() {
     $("#btnAdd").show();
     $('#txt_DepName').css('border-color', 'lightgrey');
     $('#ddl_Division').css('border-color', 'lightgrey');
-    $('#MyModal').modal('hide');
+   
+}
+
+function closeTextBox() {
+
+    $("#hdnDepartmentID").val('');
+    $('#txt_DepName').val('');
+    $('#ddl_Division').val('0');
+    $("#btnUpdate").hide();
+    $("#btnAdd").show();
+    $('#txt_DepName').css('border-color', 'lightgrey');
+    $('#ddl_Division').css('border-color', 'lightgrey');
+    $('#myModal').modal('hide');
 }
 function validate() {
 

@@ -31,9 +31,9 @@ namespace BLL
             parm[1] = da.AddSPParameter("Tci_Name", Obj_Contry.CountryName, ParameterDirection.Input, DbType.String, 100);
             parm[2] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm,true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Update_Country(Country Obj_Contry)
@@ -44,9 +44,9 @@ namespace BLL
             parm[2] = da.AddSPParameter("Tci_Userid", 1, ParameterDirection.Input, DbType.Int32);
             parm[3] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm,true);
 
-            return id;
+            return id.TrimEnd(' '); 
         }
 
         public string Delete_Country(int GrpId)
@@ -56,12 +56,12 @@ namespace BLL
             parm[1] = da.AddSPParameter("Tci_Userid", 1, ParameterDirection.Input, DbType.Int32);
             parm[2] = da.AddSPParameter("Flag", (int)Flag.Delete, ParameterDirection.Input, DbType.Int64);
             //parm[5] = da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Country_Details", parm,true);
             if (id == null)
             {
                 id = string.Empty;
             }
-            return id;
+            return id.TrimEnd(' ');
         }
 
 

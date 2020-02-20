@@ -1,0 +1,136 @@
+﻿
+
+
+    <title>LeaveEntry</title>
+    <script src="~/JS/Leave-Entry.js"></script>    
+
+    <div class="container">
+        
+        @*<div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">X</button>
+                        <h4 class="modal-title" id="myModalLabel">Add Group</h4>
+                    </div>*@
+        <div>
+            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Save</button>
+            <button type="button" class="btn btn-primary" id="btnShow" onclick="Show();">Show</button>
+            <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+        </div>
+
+        <div class="modal-body">
+            <form>
+
+                <input type="hidden" id="empruleId" />
+                <input type="hidden" id="hdnLength" />
+                <div class="form-group">
+                    <label for="GroupName">Group</label>
+                    <select id="ddl_Group"><option value="0">Select</option></select>
+
+                </div>
+
+                <div class="form-group">
+                    <label for="DivisionName">DivisionName</label>
+                    <select id="ddl_Division"><option value="0">Select</option></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="EmployeeId">EmployeeId</label>
+                    <input type="text" class="form-control" id="txt_EmloyeeId" placeholder="EmployeeId" maxlength="15" />
+                    <input type="hidden" id="hdnEmpId" />
+                </div>
+
+                <div class="form-group">
+                    <label for="Employeename">Employee Name</label>
+                    <input type="text" class="form-control" id="txt_Employeename" placeholder="Employee Name" maxlength="15" />
+                </div>
+                <div class="form-group">
+                    <label for="Type">Type</label>
+                    <select id="ddl_type">
+                        <option value="0">Select</option>
+                        <option value="1">Leave</option>
+                        <option value="2">OD</option>
+                        <option value="3">Permission</option>
+                    </select>
+                </div>
+
+
+                <div style="display:none;" id="leave">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="Leavetype">Leave type</label>
+                            <select id="ddl_type" class="form-control">
+                                <option value="0">Select</option>
+                                <option value="1">CL</option>
+                                <option value="2">SL</option>
+                                <option value="3">EL</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="openingbalence">Opening Balence</label>
+                            <input type="text" class="form-control" id="txt_OPbalence" placeholder="Opening Balence" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Sanctioned By">Appliaction Date</label>
+                            <input type="text" id="tApplicstionDate" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Cause/Reason">Cause/Reason</label>
+                            <input type="text" class="form-control" id="txt_cause" placeholder="Cause/Reason" />
+                        </div>
+
+                    </div>
+                    </div>
+                <div style="display:none;" id="datatype">
+                    <fieldset>
+                        <legend>Date Particulars</legend>
+                        <div class="col-md-6">
+                            <input type=button id='b1' value='Reset all ' style="display:none">
+                            <div class="form-group">
+                                <label id="datwiselabel">Day Wise</label>
+                                <input type="radio" name="Daywise" value="Daywise" id="daywisee"> <br>
+                            </div>
+                            <div id="daywiseleave">
+                                <div class="form-group">
+                                    <label for="Fromdate" id="Fromdate">From Date</label>
+                                    <input type="text" id="txtfromdate" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="TOdate" id="TOdate">To Date</label>
+                                    <input type="text" id="txttodate" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Noof" id="Noof">No of days</label>
+                                    <input type="text" id="txtnoofdays" class="form-control" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <label id="HalfDaylable">HalfDay Wise</label>
+                            <input type="radio" name="Daywise" value="Daywise" id="halfdaywisee"><br>
+                            <div id="halfwiseleave">
+                                <div class="form-group">
+                                    <label for="Fromdate" id="halfFromdate">From Date</label>
+                                    <input type="text" id="txtHalffromdate" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="Fromtime" id="halfFromtime">From Time</label>
+                                    <input type="text" id="txtfromtime" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="TOtime" id="halfTOtime">To time</label>
+                                    <input type="text" id="txttotime" class="form-control" />
+                                </div>
+                                
+                            </div>
+                        </div>
+
+
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+        </div>

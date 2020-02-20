@@ -622,204 +622,433 @@ G:\HRMS\New folder\HRMS-14-06-2019\HRMS\bin\DLL.dll.config
 G:\HRMS\New folder\HRMS-14-06-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
 G:\HRMS\New folder\HRMS-14-06-2019\HRMS\obj\Debug\HRMS.dll
 G:\HRMS\New folder\HRMS-14-06-2019\HRMS\obj\Debug\HRMS.pdb
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.dll.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.pdb
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.rsp
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.rsp
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.AppContext.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Console.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.rsp
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\WebGrease.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.pdb
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.pdb
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.dll.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.xml
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.xml
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.pdb
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.dll.config
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.dll
-C:\Users\HOME\Downloads\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\HRMS.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csc.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\csi.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.AppContext.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Console.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\WebGrease.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\BLL.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.xml
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.xml
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\bin\DLL.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\HRMS.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\HRMS.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\HRMS.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csc.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csc.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csc.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csi.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csi.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\csi.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.AppContext.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Console.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\vbc.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\vbc.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\vbc.rsp
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\Antlr3.Runtime.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\BLL.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\Newtonsoft.Json.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\System.Web.Optimization.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\WebGrease.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\DLL.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\Antlr3.Runtime.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\BLL.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\BLL.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\Newtonsoft.Json.xml
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\System.Web.Optimization.xml
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\DLL.pdb
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\bin\DLL.dll.config
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\obj\Debug\HRMS.dll
-C:\Users\SAAZ\Downloads\HRMS-06-07-2019\HRMS-05-07-2019\HRMS-17-07-2019\HRMS\obj\Debug\HRMS.pdb
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\HRMS.dll.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\HRMS.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\HRMS.pdb
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csc.rsp
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\csi.rsp
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Console.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.rsp
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\BLL.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\WebGrease.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\DLL.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\BLL.pdb
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\BLL.dll.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\DLL.pdb
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\bin\DLL.dll.config
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.dll
+G:\HRMS\New folder\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.pdb
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\HRMS.dll.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\HRMS.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\HRMS.pdb
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csc.exe.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csc.rsp
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csi.exe.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\csi.rsp
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Console.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.exe.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\vbc.rsp
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\BLL.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\WebGrease.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\DLL.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\BLL.pdb
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\BLL.dll.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\Newtonsoft.Json.xml
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\System.Web.Optimization.xml
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\DLL.pdb
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\bin\DLL.dll.config
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.dll
+C:\Users\dc tech\Downloads\HRMS-05-07-2019\HRMS\obj\Debug\HRMS.pdb
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\HRMS.dll.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\HRMS.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\HRMS.pdb
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csc.exe
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csc.exe.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csc.rsp
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csi.exe
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csi.exe.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\csi.rsp
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Console.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\vbc.exe
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\vbc.exe.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\vbc.rsp
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\BLL.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\WebGrease.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\DLL.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\BLL.pdb
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\BLL.dll.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\DLL.pdb
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\bin\DLL.dll.config
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\obj\Debug\HRMS.dll
+G:\HRMS\New folder\HRMS-06-07-2019\HRMS\obj\Debug\HRMS.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\HRMS.dll.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\HRMS.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\HRMS.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csc.exe
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csc.exe.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csc.rsp
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csi.exe
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csi.exe.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\csi.rsp
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Console.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\vbc.exe
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\vbc.exe.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\vbc.rsp
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\BLL.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\WebGrease.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\DLL.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\BLL.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\BLL.dll.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\DLL.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\bin\DLL.dll.config
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\obj\Debug\HRMS.dll
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\obj\Debug\HRMS.pdb
+G:\HRMS\New folder\HRMS-16-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csc.exe
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\HRMS.dll.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\HRMS.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\HRMS.pdb
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csc.exe.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csc.rsp
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csi.exe
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csi.exe.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\csi.rsp
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Console.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.exe
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.exe.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.rsp
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Antlr3.Runtime.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\BLL.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\LinqToExcel.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Newtonsoft.Json.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Remotion.Data.Linq.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Remotion.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Remotion.Interfaces.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.Common.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.License.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.Pdf.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.XLS.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\System.Web.Optimization.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\WebGrease.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\DLL.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Microsoft.mshtml.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\BLL.pdb
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\BLL.dll.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\LinqToExcel.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Newtonsoft.Json.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.Common.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.License.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.Pdf.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\Spire.XLS.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\System.Web.Optimization.xml
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\DLL.pdb
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\bin\DLL.dll.config
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.dll
+G:\HRMS\New folder\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.pdb
+D:\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csprojAssemblyReference.cache
+D:\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csproj.CoreCompileInputs.cache
+D:\HRMS-20-07-2019\HRMS\bin\HRMS.dll.config
+D:\HRMS-20-07-2019\HRMS\bin\HRMS.dll
+D:\HRMS-20-07-2019\HRMS\bin\HRMS.pdb
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csc.exe
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csc.exe.config
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csc.rsp
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csi.exe
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csi.exe.config
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\csi.rsp
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.Managed.Core.targets
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.AppContext.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Collections.Immutable.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Console.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Compression.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.IO.Pipes.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Reflection.Metadata.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.AccessControl.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Claims.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Security.Principal.Windows.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.ValueTuple.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XmlDocument.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XPath.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.exe
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.exe.config
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\vbc.rsp
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe
+D:\HRMS-20-07-2019\HRMS\bin\roslyn\VBCSCompiler.exe.config
+D:\HRMS-20-07-2019\HRMS\bin\Antlr3.Runtime.dll
+D:\HRMS-20-07-2019\HRMS\bin\BLL.dll
+D:\HRMS-20-07-2019\HRMS\bin\LinqToExcel.dll
+D:\HRMS-20-07-2019\HRMS\bin\Newtonsoft.Json.dll
+D:\HRMS-20-07-2019\HRMS\bin\Remotion.Data.Linq.dll
+D:\HRMS-20-07-2019\HRMS\bin\Remotion.dll
+D:\HRMS-20-07-2019\HRMS\bin\Remotion.Interfaces.dll
+D:\HRMS-20-07-2019\HRMS\bin\Spire.Common.dll
+D:\HRMS-20-07-2019\HRMS\bin\Spire.License.dll
+D:\HRMS-20-07-2019\HRMS\bin\Spire.Pdf.dll
+D:\HRMS-20-07-2019\HRMS\bin\Spire.XLS.dll
+D:\HRMS-20-07-2019\HRMS\bin\System.Web.Optimization.dll
+D:\HRMS-20-07-2019\HRMS\bin\WebGrease.dll
+D:\HRMS-20-07-2019\HRMS\bin\DLL.dll
+D:\HRMS-20-07-2019\HRMS\bin\Microsoft.mshtml.dll
+D:\HRMS-20-07-2019\HRMS\bin\Antlr3.Runtime.pdb
+D:\HRMS-20-07-2019\HRMS\bin\BLL.pdb
+D:\HRMS-20-07-2019\HRMS\bin\BLL.dll.config
+D:\HRMS-20-07-2019\HRMS\bin\LinqToExcel.xml
+D:\HRMS-20-07-2019\HRMS\bin\Newtonsoft.Json.xml
+D:\HRMS-20-07-2019\HRMS\bin\Spire.Common.xml
+D:\HRMS-20-07-2019\HRMS\bin\Spire.License.xml
+D:\HRMS-20-07-2019\HRMS\bin\Spire.Pdf.xml
+D:\HRMS-20-07-2019\HRMS\bin\Spire.XLS.xml
+D:\HRMS-20-07-2019\HRMS\bin\System.Web.Optimization.xml
+D:\HRMS-20-07-2019\HRMS\bin\DLL.pdb
+D:\HRMS-20-07-2019\HRMS\bin\DLL.dll.config
+D:\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.csproj.CopyComplete
+D:\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.dll
+D:\HRMS-20-07-2019\HRMS\obj\Debug\HRMS.pdb

@@ -20,6 +20,11 @@ namespace BLL
        // public System.DateTime ModifiedDate { get; set; }      
         public int Order_No { get; set; }
 
+        public List<Menudetails> menuList { get; set; }
+        public List<SubMenudetails> SubMenudetails { get; set; }
+        public IEnumerable<Menudetails> accList { get; set; }
+
+
         public enum Flag
         {
             Insert = 1, Select = 2, Update = 3, Delete = 4, Edit = 5

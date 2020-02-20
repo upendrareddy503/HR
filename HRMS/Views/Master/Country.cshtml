@@ -1,43 +1,100 @@
 ﻿
     <script src="~/JS/Country.js"></script>
+    <script src="~/JS/Common.js"></script>
 
-    <div class="container">
-        <h2>Add Country</h2>
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearTextBox();">Add Country</button>
-        <br /><br />
-        <table class="table table-bordered table-hover">
-            <thead>
-                <tr>
-                    <th>Sno</th>
-                    <th>Country Name</th>
-                </tr>
-            </thead>
-            <tbody class="tbody"></tbody>
-        </table>
-    </div>
-    <div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">X</button>
-                    <h4 class="modal-title" id="myModalLabel">Add Country</h4>
+
+    <div class="panel">
+        <div class="panel-heading">
+
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h3> Country Master </h3>
                 </div>
-                <div class="modal-body">
-                    <form>
-
-                        <input type="hidden" class="form-control" id="CountryId" placeholder="Country ID" disabled="disabled" />
-
-                        <div class="form-group">
-                            <label for="CountryName">Name</label>
-                            <input type="text" class="form-control" id="CountryName" placeholder="Country Name" />
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
-                    <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update();" style="display:none">Update</button>
-                    <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Country</li>
+                    </ol>
                 </div>
             </div>
         </div>
-    </div>
+
+
+        <div class="panel-body">
+            <button type="button" class="btn-white" data-toggle="modal" data-target="#myModal" onclick="CloseTextBox();">Add Country</button>
+            <div class="container">
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" onclick="CloseTextBox();">&times;</button>
+                                <h4 class="modal-title">Add Country</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <form>
+
+                                    <input type="hidden" class="form-control" id="CountryId" placeholder="Country ID" disabled="disabled" />
+
+                                    <div class="form-group">
+                                        <label for="GroupName">Country Name</label>
+                                        <input type="text" class="form-control" id="CountryName" placeholder="Country Name" onkeypress="return onlyString(event)" maxlength="60" />
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-blue" id="btnAdd" onclick="return Add();">Add</button>
+                                <button type="button" class="btn btn-primary btn-blue" id="btnUpdate" onclick="Update();" style="display:none">Update</button>
+                                <button type="button" class="btn btn-default btn-blue" onclick="CloseTextBox();">Close</button>
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                    <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">×</span>
+                                        </button>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <div class="panel">
+                <div class="panel-heading">
+                    <h3>Country Data  </h3>
+                </div>
+                <div class="panel-body">
+
+                    <div class="table-responsive">
+                        <table id="example" class="table table-hover  datatable table-striped">
+                            <thead>
+                                <tr>
+
+                                    <th>Country Name</th>
+                                    <th>Edit/Delete</th>
+                                </tr>
+                            </thead>
+
+                            <tbody class="tbody"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+
+
+
