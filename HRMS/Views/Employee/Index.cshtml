@@ -1,410 +1,327 @@
 ﻿
-@*<link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
-<link href="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
-<script src="http://cdn.rawgit.com/davidstutz/bootstrap-multiselect/master/dist/js/bootstrap-multiselect.js" type="text/javascript"></script>*@
-
 <script src="~/JS/Employee.js"></script>
 <script src="~/JS/Common.js"></script>
-<style>
-    .multi-select-container {
-        display: inline-block;
-        position: relative;
-    }
 
-    .multi-select-menu {
-        position: absolute;
-        left: 0;
-        top: 0.8em;
-        float: left;
-        min-width: 100%;
-        background: #fff;
-        margin: 1em 0;
-        padding: 0.4em 0;
-        border: 1px solid #aaa;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        display: none;
-    }
-
-        .multi-select-menu input {
-            margin-right: 0.3em;
-            vertical-align: 0.1em;
-        }
-
-    .multi-select-button {
-        display: inline-block;
-        font-size: 0.875em;
-        padding: 0.2em 0.6em;
-        max-width: 20em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        vertical-align: -0.5em;
-        background-color: #fff;
-        border: 1px solid #aaa;
-        border-radius: 4px;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-        cursor: default;
-    }
-
-        .multi-select-button:after {
-            content: "";
-            display: inline-block;
-            width: 0;
-            height: 0;
-            border-style: solid;
-            border-width: 0.4em 0.4em 0 0.4em;
-            border-color: #999 transparent transparent transparent;
-            margin-left: 0.4em;
-            vertical-align: 0.1em;
-        }
-
-    .multi-select-container--open .multi-select-menu {
-        display: block;
-    }
-
-    .multi-select-container--open .multi-select-button:after {
-        border-width: 0 0.4em 0.4em 0.4em;
-        border-color: transparent transparent #999 transparent;
-    }
-</style>
-<div class="page-content">
-    <div class="panel">
-        <div class="panel-header">
-            <h3 class="example-title">Employee</h3>
-        </div>
-        <div  class="panel-body">
-            <div class="row row-lg">
-                <div class="col-md-6">
-                    <!-- Example Basic Form (Form grid) -->
-                    <form>
-
-                        <div id="first">
-
-
-                            <input type="hidden" id="hid" />
-
-                            <input class="col-md-8" type="file" name="userimage" id="userimage">
-
-                            <img src="" class="img-circle" id="imgPreview">
-
-                            <div class="form-group">
-                                <label for="Type">Type</label>
-                                <select id="ddl_Type">
-                                    <option value="0">Select</option>
-                                    <option value="1">Tempery</option>
-                                    <option value="2">Perment</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="Title">Title</label>
-                                <select id="ddl_Title">
-                                    <option value="0">Select</option>
-                                    <option>Mr.</option>
-                                    <option>Miss.</option>
-                                </select>
-
-                            </div>
-                            <div class="form-group">
-                                <label for="FirstName">Emp Number</label>
-                                <input type="text" class="form-control" id="txt_emp" placeholder="Employee number" maxlength="6" />
-                            </div>
-                            <div class="form-group">
-                                <label for="FirstName">First Name</label>
-                                <input type="text" class="form-control" id="txt_FirstName" placeholder="First Name" maxlength="25" onkeypress="return onlyString(event)" />
-                            </div>
-                            <div class="form-group">
-                                <label for="LastName">Last Name</label>
-                                <input type="text" class="form-control" id="txt_LastName" placeholder="Last Name" maxlength="25" onkeypress="return onlyString(event)" />
-                            </div>
-                            <div class="form-group">
-                                <label for="Father">Father Name</label>
-                                <input type="text" class="form-control" id="txt_FatherName" placeholder="Father Name" maxlength="25" onkeypress="return onlyString(event)" />
-                            </div>
-                            <div class="form-group">
-                                <label for="Gender">Gender</label>
-                                <input type="radio" id="rdbgenderM" name="gender" class="radio-label rblGender" value="M" />Male
-                                <input type="radio" id="rdbgenderF" name="gender" class="radio-label rblGender" value="F" />Female
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="PhoneNo">PhoneNo</label>
-                                <input type="text" class="form-control" id="txt_PhoneNo" placeholder="PhoneNo" maxlength="12" onkeypress="return isNumberKey(event)" />
-                                <span class="error_show form-text has-danger" id="spPhoneValid">Please Enter Valid Phone!.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="Dateofbirth">Date of birth</label>
-
-                                <input type="text" id="txt_DOB" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
-
-                            </div>
-                            <div class="form-group">
-                                <label for="Dateofjoining">Date of joining</label>
-                                <input type="text" id="txt_DOJ" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
-                            </div>
-                            <div class="form-group">
-                                <label for="EmailID">EmailID</label>
-                                <input type="text" class="form-control" id="txt_EmailID" placeholder="EmailID" maxlength="50" />
-                                <span class="error_show form-text has-danger" id="spEmailValid">Please Enter Valid Email!.</span>
-                            </div>
-                            <div class="form-group">
-                                <label for="Address">Address</label>
-                                <input type="text" class="form-control" id="txt_Address" placeholder="Address" maxlength="250" />
-                            </div>
-                            <div class="form-group">
-                                <label for="Address1">Address1</label>
-                                <input type="text" class="form-control" id="txt_Address1" placeholder="Address" maxlength="250" />
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="Country">Country</label>
-                                <select id="ddl_Country"><option value="0">Select</option></select>
-
-                            </div>
-
-                            <div class="form-group">
-                                <label for="State">State</label>
-                                <select id="ddl_State"><option value="0">Select</option></select>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="BloodGroup">
-                                    Blood Group
-                                </label>
-                                <select id="ddl_BloodGroup">
-                                    <option value="0">Select</option>
-                                    <option>A+</option>
-                                    <option>A-</option>
-                                    <option>B+</option>
-                                    <option>B-</option>
-                                    <option>O+</option>
-                                    <option>O-</option>
-                                    <option>AB+</option>
-                                    <option>AB-</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label for="AadharNo">Aadhar Number</label>
-                                <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="16" />
-                            </div>
-                            <div class="form-group">
-                                <label for="Experience">
-                                    Type Experience
-                                </label>
-                                <select id="ddl_Experience">
-                                    <option value="0">Select</option>
-                                    <option value="1">Fresher</option>
-                                    <option value="2">Experience</option>
-                                </select>
-                            </div>
-                            <div id="PreviousEx">
-
-                                <div class="form-group">
-                                    <label for="CompanyName">
-                                        Company Name
-                                    </label>
-                                    <input type="text" class="form-control" id="txt_CompanyName" placeholder="Company Name" maxlength="16" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Previous Designation">
-                                        Previous Designation
-                                    </label>
-                                    <input type="text" class="form-control" id="txt_PreviousDeg" placeholder="Previous Designation" maxlength="16" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Noofyears">
-                                        No of years
-                                    </label>
-                                    <input type="text" class="form-control" id="txt_Noofyears" placeholder="No of years" maxlength="16" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Salary/CTC">
-                                        Salary/CTC
-
-                                    </label>
-                                    <input type="text" class="form-control" id="txt_SalaryCTC" placeholder="Salary/CTC" maxlength="16" />
-                                </div>
-
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Add</button>
-                                <button type="button" class="btn btn-primary" id="btnNext" onclick="return NextAdd();" style="display:none">Next</button>
-                                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update();" style="display:none">Update</button>
-                                <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
-                            </div>
-
-
-                        </div>
-
-
-                        <div id="Secound" style="display:none;">
-
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <label for="group">Group</label>
-                                    <select id="ddl_Group">
-                                        <option value="0">Select</option>
-                                    </select>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="Division">Division</label>
-                                    <select id="ddl_Division">
-                                        <option value="0">Select</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="Department">Department</label>
-                                    <select id="ddl_Department">
-                                        <option value="0">Select</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="Designation">Designation</label>
-                                    <select id="ddl_Designation">
-                                        <option value="0">Select</option>
-                                    </select>
-                                </div>
-                                <div class="form-Shift">
-                                    <label for="Shift">Shift</label>
-                                    <select id="ddl_Shift">
-                                        <option value="0">Select</option>
-                                    </select>
-                                </div>
-                                <div class="form-WeekOff">
-                                    <label for="WeekOff">Week Off</label>
-                                    <select id="ddl_WeekOff">
-                                        <option value="0">Select</option>
-                                        <option value="1">Sunday</option>
-                                        <option value="2">Monday</option>
-                                        <option value="3">Tuesday</option>
-                                        <option value="4">Wednesday</option>
-                                        <option value="5">Thursday</option>
-                                        <option value="6">Friday</option>
-                                        <option value="7">Saturday</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-WeekOff">
-                                    <label for="WeekOff">Rules</label>
-                                    <select id="ddl_Rules" multiple="multiple">
-                                       
-                                    </select>
-                                </div>
-
-                                <div class="form-WeekOff">
-                                    <label for="PFType">PF_Type</label>
-                                    <select id="ddl_PFType">
-                                        <option value="0">Government</option>
-                                        <option value="1">Trust</option>
-                                    </select>
-                                </div>
-                                <div class="form-Reporting Designation">
-                                    <label for="DesignationReport">Designation Report</label>
-                                    <select id="ddl_DesignationReport" multiple="multiple">
-                                                                            </select>
-                                </div>
-
-                                <div class="form-Reporting">
-                                    <label for="ReportingTo">ReportingTo</label>
-                                    <select id="ddl_ReportingTo"  multiple="multiple">
-                                        
-                                    </select>
-                                </div>
-
-                                <div class="form-Grade">
-                                    <label for="Grade">Grade</label>
-                                    <select id="ddl_Grade">
-                                        <option value="0">Select</option>
-                                        <option value="0">A</option>
-                                        <option value="0">B</option>
-                                        <option value="0">C</option>
-                                        <option value="0">D</option>
-                                        <option value="0">E</option>
-                                        <option value="0">F</option>
-                                        <option value="0">G</option>
-                                        <option value="0">H</option>
-                                        <option value="0">I</option>
-                                        <option value="0">J</option>
-                                        <option value="0">K</option>
-                                        <option value="0">L</option>
-                                        <option value="0">M</option>
-                                        <option value="0">N</option>
-                                    </select>
-                                </div>
-
-                                <div class="form-UANNumber">
-                                    <label for="UANNumber">UAN Number</label>
-                                    <input type="text" class="form-control" id="txt_UANNumber" placeholder="UANNumber" maxlength="25" />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="PfNo">PF Number</label>
-                                    <input type="text" class="form-control" id="txt_PfNo" placeholder="PFNo" maxlength="25" />
-                                </div>
-                                <div class="form-group">
-                                    <label for="ESI">ESI Number</label>
-                                    <input type="text" class="form-control" id="txt_ESno" placeholder="ESI Number" maxlength="25" />
-                                </div>
-                               
-
-
-
-                            </div>
-
-                            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return FinalAdd();">Add</button>
-                            <button type="button" class="btn btn-primary" id="btnNext" onclick="return Previous2();" >Previous</button>
-                            <button type="button" class="btn btn-primary" id="btnForword" onclick="return Forword();" >Next</button>
-                            <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
-                        </div>
-
-                        <div id="Third" style="display:none;">
-                            <div class="form-group">
-                                <label for="Type">Salary Type</label>
-                                <select id="ddl_SalaryType">
-                                    <option value="0">Select</option>
-                                    <option value="1">Salary</option>
-                                    <option value="2">CTC</option>
-                                    <option value="3">Day wise</option>
-                                </select>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="SalaryEffectiveDate">Salary Effective Date</label>
-                                <input type="text" id="txt_SalEffectivedate" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Salary">
-                                    Salary
-                                </label>
-                                <input type="text" class="form-control" id="txt_Salary" placeholder="Salary" maxlength="16" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="allowance">Allowance</label>
-                                <select id="ddl_allowance" multiple="multiple">
-                                    <option value="0">Select</option>
-                                </select>
-                            </div>
-
-                            <button type="button" class="btn btn-primary" id="btnAdd1" onclick="return FinalAdd2();">Add</button>
-                            <button type="button" class="btn btn-primary" id="btnNext1" onclick="return Previous3();">Previous</button>
-                            <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
-                        </div>
-
-
-                    </form>
-                </div>
+<!-- Page Content -->
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Employee</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Employee</li>
+                </ul>
             </div>
         </div>
     </div>
-</div>
+    <!-- /Page Header -->
+    <form>
+        <div id="first" class="row">
 
+            <div class="col-md-12">
+                <input type="hidden" id="hid" />
+                <div class="form-group">
+                    <input class="col-md-8" type="file" name="userimage" id="userimage">
+
+                    <img src="" class="img-circle" id="imgPreview">
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="Type">Type</label>
+                    <select id="ddl_Type" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Tempary</option>
+                        <option value="2">Perment</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FirstName">Emp Number</label>
+                    <input type="text" class="form-control" id="txt_emp" placeholder="Employee number" maxlength="6" />
+                </div>
+                <div class="form-group">
+                    <label for="LastName">Last Name</label>
+                    <input type="text" class="form-control" id="txt_LastName" placeholder="Last Name" maxlength="25" onkeypress="return onlyString(event)" />
+                </div>
+                <div class="form-group">
+                    <label for="Gender">Gender</label>
+                    <div class="form-control">
+                        <input type="radio" id="rdbgenderM" name="gender" class="radio-label rblGender" value="M" />Male
+                        <input type="radio" id="rdbgenderF" name="gender" class="radio-label rblGender" value="F" />Female
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Dateofbirth">Date of birth</label>
+
+                    <input type="text" id="txt_DOB" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
+
+                </div>
+                <div class="form-group">
+                    <label for="EmailID">EmailID</label>
+                    <input type="text" class="form-control" id="txt_EmailID" placeholder="EmailID" maxlength="50" />
+                    <span class="error_show form-text has-danger" id="spEmailValid">Please Enter Valid Email!.</span>
+                </div>
+                <div class="form-group">
+                    <label for="Address1">Address1</label>
+                    <input type="text" class="form-control" id="txt_Address1" placeholder="Address" maxlength="250" />
+                </div>
+                <div class="form-group">
+                    <label for="State">State</label>
+                    <select id="ddl_State" class="form-control"><option value="0">Select</option></select>
+                </div>
+                <div class="form-group">
+                    <label for="AadharNo">Aadhar Number</label>
+                    <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="16" />
+                </div>
+                <div id="PreviousEx">
+                    <div class="form-group">
+                        <label for="CompanyName">
+                            Company Name
+                        </label>
+                        <input type="text" class="form-control" id="txt_CompanyName" placeholder="Company Name" maxlength="16" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Noofyears">
+                            No of years
+                        </label>
+                        <input type="text" class="form-control" id="txt_Noofyears" placeholder="No of years" maxlength="16" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="Title">Title</label>
+                    <select id="ddl_Title" class="form-control">
+                        <option value="0">Select</option>
+                        <option>Mr.</option>
+                        <option>Miss.</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="FirstName">First Name</label>
+                    <input type="text" class="form-control" id="txt_FirstName" placeholder="First Name" maxlength="25" onkeypress="return onlyString(event)" />
+                </div>
+                <div class="form-group">
+                    <label for="Father">Father Name</label>
+                    <input type="text" class="form-control" id="txt_FatherName" placeholder="Father Name" maxlength="25" onkeypress="return onlyString(event)" />
+                </div>
+                <div class="form-group">
+                    <label for="PhoneNo">PhoneNo</label>
+                    <input type="text" class="form-control" id="txt_PhoneNo" placeholder="PhoneNo" maxlength="12" onkeypress="return isNumberKey(event)" />
+                    <span class="error_show form-text has-danger" id="spPhoneValid">Please Enter Valid Phone!.</span>
+                </div>
+                <div class="form-group">
+                    <label for="Dateofjoining">Date of joining</label>
+                    <input type="text" id="txt_DOJ" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="Address">Address</label>
+                    <input type="text" class="form-control" id="txt_Address" placeholder="Address" maxlength="250" />
+                </div>
+                <div class="form-group">
+                    <label for="Country">Country</label>
+                    <select id="ddl_Country" class="form-control"><option value="0">Select</option></select>
+
+                </div>
+                <div class="form-group">
+                    <label for="BloodGroup">
+                        Blood Group
+                    </label>
+                    <select id="ddl_BloodGroup" class="form-control">
+                        <option value="0" class="form-control">Select</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Experience">
+                        Type Experience
+                    </label>
+                    <select id="ddl_Experience" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Fresher</option>
+                        <option value="2">Experience</option>
+                    </select>
+                </div>
+                <div id="PreviousEx1">
+                    <div class="form-group">
+                        <label for="Previous Designation">
+                            Previous Designation
+                        </label>
+                        <input type="text" class="form-control" id="txt_PreviousDeg" placeholder="Previous Designation" maxlength="16" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Salary/CTC">
+                            Salary/CTC
+
+                        </label>
+                        <input type="text" class="form-control" id="txt_SalaryCTC" placeholder="Salary/CTC" maxlength="16" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12" align="center">
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="AddShift();">Add</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateShift();" style="display:none">Update</button>
+                <button type="button" class="btn btn-primary" onclick="clearTextBox();">Clear</button>
+            </div>
+        </div>
+
+        <div id="Secound" class="row" style="display:none;">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="group">Group</label>
+                    <select id="ddl_Group" class="form-control">
+                        <option value="0">Select</option>
+                    </select>
+
+                </div>
+                <div class="form-group">
+                    <label for="Department">Department</label>
+                    <select id="ddl_Department" class="form-control">
+                        <option value="0">Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Shift">Shift</label>
+                    <select id="ddl_Shift" class="form-control">
+                        <option value="0">Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="WeekOff">Rules</label>
+                    <select id="ddl_Rules" multiple="multiple" class="form-control"></select>
+                </div>
+                <div class="form-group Designation">
+                    <label for="DesignationReport">Designation Report</label>
+                    <select id="ddl_DesignationReport" class="form-control" multiple="multiple"></select>
+                </div>
+
+                <div class="form-group">
+                    <label for="Grade">Grade</label>
+                    <select id="ddl_Grade" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="0">A</option>
+                        <option value="0">B</option>
+                        <option value="0">C</option>
+                        <option value="0">D</option>
+                        <option value="0">E</option>
+                        <option value="0">F</option>
+                        <option value="0">G</option>
+                        <option value="0">H</option>
+                        <option value="0">I</option>
+                        <option value="0">J</option>
+                        <option value="0">K</option>
+                        <option value="0">L</option>
+                        <option value="0">M</option>
+                        <option value="0">N</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PfNo">PF Number</label>
+                    <input type="text" class="form-control" id="txt_PfNo" placeholder="PFNo" maxlength="25" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Division">Division</label>
+                    <select id="ddl_Division" class="form-control">
+                        <option value="0">Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Designation">Designation</label>
+                    <select id="ddl_Designation" class="form-control">
+                        <option value="0">Select</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="WeekOff">Week Off</label>
+                    <select id="ddl_WeekOff" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Sunday</option>
+                        <option value="2">Monday</option>
+                        <option value="3">Tuesday</option>
+                        <option value="4">Wednesday</option>
+                        <option value="5">Thursday</option>
+                        <option value="6">Friday</option>
+                        <option value="7">Saturday</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="PFType">PF_Type</label>
+                    <select id="ddl_PFType" class="form-control">
+                        <option value="0">Government</option>
+                        <option value="1">Trust</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="ReportingTo">ReportingTo</label>
+                    <select id="ddl_ReportingTo" class="form-control" multiple="multiple"></select>
+                </div>
+                <div class="form-group">
+                    <label for="UANNumber">UAN Number</label>
+                    <input type="text" class="form-control" id="txt_UANNumber" placeholder="UANNumber" maxlength="25" />
+                </div>
+                <div class="form-group">
+                    <label for="ESI">ESI Number</label>
+                    <input type="text" class="form-control" id="txt_ESno" placeholder="ESI Number" maxlength="25" />
+                </div>
+            </div>
+            <div class="col-md-12" align="center">
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return FinalAdd();">Add</button>
+                <button type="button" class="btn btn-primary" id="btnNext" onclick="return Previous2();">Previous</button>
+                <button type="button" class="btn btn-primary" id="btnForword" onclick="return Forword();">Next</button>
+                <button type="button" class="btn btn-primary" onclick="clearTextBox();">Close</button>
+            </div>
+        </div>
+
+        <div id="Third" class="row" style="display:none;">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="Type">Salary Type</label>
+                    <select id="ddl_SalaryType" class="form-control">
+                        <option value="0">Select</option>
+                        <option value="1">Salary</option>
+                        <option value="2">CTC</option>
+                        <option value="3">Day wise</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="Salary">
+                        Salary
+                    </label>
+                    <input type="text" class="form-control" id="txt_Salary" placeholder="Salary" maxlength="16" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="SalaryEffectiveDate">Salary Effective Date</label>
+                    <input type="text" id="txt_SalEffectivedate" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
+                </div>
+                <div class="form-group">
+                    <label for="allowance">Allowance</label>
+                    <select id="ddl_allowance" multiple="multiple">
+                        <option value="0">Select</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button type="button" class="btn btn-primary" id="btnAdd1" onclick="return FinalAdd2();">Add</button>
+                <button type="button" class="btn btn-primary" id="btnNext1" onclick="return Previous3();">Previous</button>
+                <button type="button" class="btn btn-primary" onclick="clearTextBox();">Close</button>
+            </div>
+        </div>
+
+    </form>
+
+
+</div>
+<!-- /Page Content -->

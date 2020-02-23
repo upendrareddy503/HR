@@ -13,6 +13,7 @@
     $('#Secound').hide();
     $('#spPhoneValid').hide();
     $('#PreviousEx').hide();
+    $('#PreviousEx1').hide();
 
 
     $("#userimage").change(function () {
@@ -58,10 +59,12 @@
     $('#ddl_Experience').change(function () {
         if ($(this).val() == "2") {
             $('#PreviousEx').show();
+            $('#PreviousEx1').show();
 
         }
         else {
             $('#PreviousEx').hide();
+            $('#PreviousEx1').hide();
         }
     });
 
