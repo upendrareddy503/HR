@@ -1,9 +1,8 @@
 ﻿$(document).ready(function () {
-    loadData();
+    loadCountry();
    
-
 });
-function loadData() {
+function loadCountry() {
     $.ajax({
         url: "/Master/Country_List",
         type: "Get",
@@ -11,14 +10,15 @@ function loadData() {
         dataType: "json",
         success: function (data) {
 
-            $("#example").dataTable({
+            $("#tblCountry").dataTable({
                 data: data,
+                "bDestroy": true,
                 columns: [
                     { "data": "CountryName" },
                     {
                         "data": "CountryId",
                         "render": function (CountryId) {
-                            return '<a href="#" onclick="getbyID(' + CountryId + ')">Edit</a>|<a href="#" onclick="Delete(' + CountryId +')">Delete</a></td > '
+                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_country" onclick="GetID(' + CountryId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_country" onclick="Deleted(' + CountryId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
                 ]
@@ -43,7 +43,7 @@ function loadData() {
     });
 }
 
-function Add() {
+function Insert_Country() {
     var res = validate();
     if (res == false) {
 
@@ -60,8 +60,8 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
-            clearTextBox();
+            loadCountry();
+            clearConFields();
             var msg = r.split('$');
 
             if (msg[1] == "True") {
@@ -85,7 +85,7 @@ function Add() {
     });
 }
 
-function getbyID(Id) {
+function GetID(Id) {
   
     $("#CountryName").css('border-color', 'lightngrey');
     $.ajax({
@@ -107,7 +107,7 @@ function getbyID(Id) {
     });
     return false;
 }
-function Update() {
+function Update_Country() {
     var res = validate();
     if (res == false) {
 
@@ -128,7 +128,7 @@ function Update() {
         success: function (r) {
             
             var msg = r.split('$');
-            ;
+
             if (msg[1] == "True") {
 
                 $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
@@ -142,8 +142,8 @@ function Update() {
                     $('.errMsg1').fadeOut('slow');
                 }, 2000);
             }
-            loadData();
-            clearTextBox();
+            loadCountry();
+            clearConFields();
         },
         
         error: function (errMsg) {
@@ -151,16 +151,23 @@ function Update() {
         }
     });
 }
-function Delete(Id) {
-    var ans = confirm("Are you sure you want to delete this Record?");
-    if (ans) {
+
+function Deleted(Id) {
+
+    $('#CountryId').val(Id)
+   // var ans = confirm(errormessage.responseText);
+
+}
+
+function DeleteCountry() {
+    var Id = $('#CountryId').val();
         $.ajax({
             url: "/Master/Delete_Country/" + Id,
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (r) {
-                loadData();
+                loadCountry();
                 var msg = r.split('$');
 
                 if (msg[1] == "True") {
@@ -181,25 +188,26 @@ function Delete(Id) {
                 alert(errormessage.responseText);
             }
         });
-    }
+    
 }
 
-function clearTextBox() {
-    
+function clearConFields() {
+
+    $("#CountryId").val('');
     $('#CountryName').val('');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
     $('#CountryName').css('border-color', 'lightgrey');
     
 }
-function CloseTextBox() {
-    
-    $('#CountryName').val('');
-    $("#btnUpdate").hide();
-    $("#btnAdd").show();
-    $('#CountryName').css('border-color', 'lightgrey');
-    $('#myModal').modal('hide');
-}
+//function CloseTextBox() {
+
+//    $('#CountryName').val('');
+//    $("#btnUpdate").hide();
+//    $("#btnAdd").show();
+//    $('#CountryName').css('border-color', 'lightgrey');
+//    $('#myModal').modal('hide');
+//}
 function validate() {
 
     var isValid = true;

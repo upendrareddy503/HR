@@ -34,15 +34,17 @@ function validate() {
 
     var isValid = true;
     $('.validate').each(function () {
-        if ($.trim($(this).val()) == '' || $.trim($(this).val()) == '0') {
-            isValid = false;
-            $(this).css("border", "1px solid red");
-        }
-        else {
-            $(this).css({
-                "border": "",
-                "background": ""
-            });
+        if ($(this).length > 0) {
+            if ($.trim($(this).val()) == '' || $.trim($(this).val()) == '0') {
+                isValid = false;
+                $(this).css("border", "1px solid red");
+            }
+            else {
+                $(this).css({
+                    "border": "",
+                    "background": ""
+                });
+            }
         }
     });
     return isValid;

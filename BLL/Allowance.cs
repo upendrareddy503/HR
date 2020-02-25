@@ -16,7 +16,7 @@ namespace BLL
         public string Alw_Name { get; set; }
         public int Alw_Type { get; set; }
         public string Alw_Val_Type { get; set; }
-        public int Alw_Val { get; set; }
+        public double Alw_Val { get; set; }
         public string Alw_BasedOn { get; set; }
         public string Alw_Fixed { get; set; }
 
@@ -29,8 +29,11 @@ namespace BLL
             parm[1] = da.AddSPParameter("Teai_Name", Obj_Alw.Alw_Name, ParameterDirection.Input, DbType.String, 200);
             parm[2] = da.AddSPParameter("Teai_Type", Obj_Alw.Alw_Type, ParameterDirection.Input, DbType.Int32, 10);
             parm[3] = da.AddSPParameter("Teai_Cal_Type", Obj_Alw.Alw_Val_Type, ParameterDirection.Input, DbType.String, 10);
-            parm[4] = da.AddSPParameter("Teai_Value", Obj_Alw.Alw_Val, ParameterDirection.Input, DbType.Int32, 10);
-            parm[5] = da.AddSPParameter("Teai_Basedon", Obj_Alw.Alw_BasedOn, ParameterDirection.Input, DbType.String, 500);
+            parm[4] = da.AddSPParameter("Teai_Value", Obj_Alw.Alw_Val, ParameterDirection.Input, DbType.Double, 10);
+            if (Obj_Alw.Alw_BasedOn != "" && Obj_Alw.Alw_BasedOn != null)
+                parm[5] = da.AddSPParameter("Teai_Basedon", Obj_Alw.Alw_BasedOn.TrimEnd(','), ParameterDirection.Input, DbType.String, 500);
+            else
+                parm[5] = da.AddSPParameter("Teai_Basedon", null, ParameterDirection.Input, DbType.String, 500);
             parm[6] = da.AddSPParameter("Teai_Fixed", Obj_Alw.Alw_Fixed, ParameterDirection.Input, DbType.String, 10);
             parm[7] = da.AddSPParameter("UserId", Obj_Alw.UserID, ParameterDirection.Input, DbType.Int32, 10);
             parm[8] = da.AddSPParameter("Tci_Id", Obj_Alw.CompanyID, ParameterDirection.Input, DbType.Int32, 10);
@@ -136,7 +139,7 @@ namespace BLL
                 allw.Alw_Name = dt.Rows[0]["Teai_Name"].ToString();
                 allw.Alw_Val_Type = dt.Rows[0]["Teai_Cal_Type"].ToString();
                 if (dt.Rows[0]["Teai_Value"].ToString() != null && dt.Rows[0]["Teai_Value"].ToString() != "")
-                    allw.Alw_Val = Convert.ToInt32(dt.Rows[0]["Teai_Value"]);
+                    allw.Alw_Val = Convert.ToDouble(dt.Rows[0]["Teai_Value"]);
                 allw.Alw_BasedOn = dt.Rows[0]["Teai_Basedon"].ToString();
                 allw.Alw_Fixed = dt.Rows[0]["Teai_Fixed"].ToString();
                 if (dt.Rows[0]["Teai_Type"].ToString() != null && dt.Rows[0]["Teai_Type"].ToString() != "")
@@ -165,7 +168,7 @@ namespace BLL
                 Allowance allw = new Allowance();
                 if (dt.Rows[i]["Teai_Id"].ToString() != null && dt.Rows[i]["Teai_Id"].ToString() != "")
                     allw.Alw_Id = Convert.ToInt32(dt.Rows[i]["Teai_Id"]);
-                allw.Alw_Name = dt.Rows[i]["Teai_Name"].ToString();                
+                allw.Alw_Name = dt.Rows[i]["Teai_Name"].ToString();
                 obj_Allw.Add(allw);
             }
 

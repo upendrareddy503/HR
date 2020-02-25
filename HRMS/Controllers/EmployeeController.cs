@@ -28,20 +28,28 @@ namespace HRMS.Controllers
         {
             return Json(obj_Emp.Insert_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Next_Employee(EmployeeDetails obj_EmpIns)
+        public JsonResult Next_Employee(EmployeeDetails obj_EmpNxt)
         {
-            return Json(obj_Emp.Next_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
+            return Json(obj_Emp.Next_Employee(obj_EmpNxt), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Second_Employee(EmployeeDetails obj_EmpIns)
         {
             return Json(obj_Emp.Second_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Third_Employee(EmployeeDetails obj_EmpIns)
+        {
+            return Json(obj_Emp.Salary_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult Get_DesignationReport(string Id)
         {
             return Json(obj_Emp.Get_AllEmployee_GID(Id), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Get_EmpID(string Id)
+        {
+            return Json(obj_Emp.Get_EmpID(Id, 1, 1), JsonRequestBehavior.AllowGet);
+        }
 
-        
+
 
         [HttpPost]
         public JsonResult UploadFile()
@@ -54,10 +62,19 @@ namespace HRMS.Controllers
                 {
                     var fileName = Path.GetFileName(pic.FileName);
                     var _ext = Path.GetExtension(pic.FileName);
-
-                    _imgname = "1";//WebSecurity.CurrentUserId.ToString();
-                    var _comPath = Server.MapPath("/Images/Emp/User_") + _imgname + _ext;
-                    _imgname = "User_" + _imgname + _ext;
+                    int CompanyId = 1,LocationId=1;
+                   
+                    DataTable dt = obj_Emp.Get_Top_EmpID(CompanyId, CompanyId);
+                    if (dt.Rows.Count > 0)
+                    {
+                        _imgname = dt.Rows[0]["Tei_Id"].ToString();
+                    }
+                    else
+                    {
+                        _imgname = "1";//WebSecurity.CurrentUserId.ToString();
+                    }
+                    var _comPath = Server.MapPath("/Images/Emp/User_")+CompanyId+"_"+LocationId+"_"+ _imgname + _ext;
+                    _imgname = "User_" + CompanyId + "_" + LocationId + "_" + _imgname + _ext;
 
                     ViewBag.Msg = _comPath;
                     var path = _comPath;

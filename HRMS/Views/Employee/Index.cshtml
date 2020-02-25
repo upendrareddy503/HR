@@ -18,12 +18,14 @@
     </div>
     <!-- /Page Header -->
     <form>
+        <input type="hidden" id="hid" />
         <div id="first" class="row">
+            <div class="col-md-6">
+            </div>
+            <div class="col-md-6">
 
-            <div class="col-md-12">
-                <input type="hidden" id="hid" />
                 <div class="form-group">
-                    <input class="col-md-8" type="file" name="userimage" id="userimage">
+                    <input  type="file" name="userimage" id="userimage">
 
                     <img src="" class="img-circle" id="imgPreview">
                 </div>
@@ -31,7 +33,7 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="Type">Type</label>
-                    <select id="ddl_Type" class="form-control">
+                    <select id="ddl_Type" tabindex="1" class="form-control validate">
                         <option value="0">Select</option>
                         <option value="1">Tempary</option>
                         <option value="2">Perment</option>
@@ -39,61 +41,68 @@
                 </div>
                 <div class="form-group">
                     <label for="FirstName">Emp Number</label>
-                    <input type="text" class="form-control" id="txt_emp" placeholder="Employee number" maxlength="6" />
+                    <input type="text" class="form-control validate" id="txt_emp" placeholder="Employee number" maxlength="6" tabindex="3" />
+                    <span class="alert-danger" id="spEmpCode" style="display:none">Employee Already Exist!.</span>
                 </div>
                 <div class="form-group">
                     <label for="LastName">Last Name</label>
-                    <input type="text" class="form-control" id="txt_LastName" placeholder="Last Name" maxlength="25" onkeypress="return onlyString(event)" />
+                    <input type="text" class="form-control validate" id="txt_LastName" placeholder="Last Name" maxlength="25" onkeypress="return onlyString(event)" tabindex="5" />
                 </div>
                 <div class="form-group">
                     <label for="Gender">Gender</label>
                     <div class="form-control">
-                        <input type="radio" id="rdbgenderM" name="gender" class="radio-label rblGender" value="M" />Male
-                        <input type="radio" id="rdbgenderF" name="gender" class="radio-label rblGender" value="F" />Female
+                        <input type="radio" id="rdbgenderM" name="gender" class="radio-label rblGender" value="M" tabindex="7" />Male
+                        <input type="radio" id="rdbgenderF" name="gender" class="radio-label rblGender" value="F" tabindex="8" />Female
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="Dateofbirth">Date of birth</label>
 
-                    <input type="text" id="txt_DOB" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
+                    <input type="text" id="txt_DOB" class="form-control datepicker validate" placeholder="01/01/1999" maxlength="10" tabindex="10">
 
                 </div>
                 <div class="form-group">
                     <label for="EmailID">EmailID</label>
-                    <input type="text" class="form-control" id="txt_EmailID" placeholder="EmailID" maxlength="50" />
-                    <span class="error_show form-text has-danger" id="spEmailValid">Please Enter Valid Email!.</span>
+                    <input type="text" class="form-control validate" id="txt_EmailID" placeholder="EmailID" maxlength="50" tabindex="12" />
+                    <span class="alert-danger" id="spEmailValid">Please Enter Valid Email!.</span>
                 </div>
                 <div class="form-group">
                     <label for="Address1">Address1</label>
-                    <input type="text" class="form-control" id="txt_Address1" placeholder="Address" maxlength="250" />
+                    <input type="text" class="form-control" id="txt_Address1" placeholder="Address" maxlength="250" tabindex="14" />
                 </div>
                 <div class="form-group">
                     <label for="State">State</label>
-                    <select id="ddl_State" class="form-control"><option value="0">Select</option></select>
+                    <select id="ddl_State" class="form-control" tabindex="16"><option value="0">Select</option></select>
                 </div>
                 <div class="form-group">
                     <label for="AadharNo">Aadhar Number</label>
-                    <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="16" />
+                    <input type="text" class="form-control" id="txt_AadharNo" placeholder="Aadhar Number" maxlength="18" tabindex="18" />
                 </div>
                 <div id="PreviousEx">
                     <div class="form-group">
                         <label for="CompanyName">
                             Company Name
                         </label>
-                        <input type="text" class="form-control" id="txt_CompanyName" placeholder="Company Name" maxlength="16" />
+                        <input type="text" class="form-control" id="txt_CompanyName" placeholder="Company Name" maxlength="16" tabindex="20" />
                     </div>
                     <div class="form-group">
                         <label for="Noofyears">
                             No of years
                         </label>
-                        <input type="text" class="form-control" id="txt_Noofyears" placeholder="No of years" maxlength="16" />
+                        <input type="text" class="form-control" id="txt_Noofyears" placeholder="No of years" maxlength="16" tabindex="22" />
+                    </div>
+                    <div class="form-group">
+                        <label for="RegnationDate">
+                            Resignation Date
+                        </label>
+                        <input type="text" class="form-control datepicker" id="txt_ResDate" placeholder="No of years" maxlength="16" tabindex="24" />
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="Title">Title</label>
-                    <select id="ddl_Title" class="form-control">
+                    <select id="ddl_Title" class="form-control validateFirst" tabindex="2">
                         <option value="0">Select</option>
                         <option>Mr.</option>
                         <option>Miss.</option>
@@ -101,36 +110,36 @@
                 </div>
                 <div class="form-group">
                     <label for="FirstName">First Name</label>
-                    <input type="text" class="form-control" id="txt_FirstName" placeholder="First Name" maxlength="25" onkeypress="return onlyString(event)" />
+                    <input type="text" class="form-control validate" id="txt_FirstName" placeholder="First Name" maxlength="25" onkeypress="return onlyString(event)" tabindex="4" />
                 </div>
                 <div class="form-group">
                     <label for="Father">Father Name</label>
-                    <input type="text" class="form-control" id="txt_FatherName" placeholder="Father Name" maxlength="25" onkeypress="return onlyString(event)" />
+                    <input type="text" class="form-control" id="txt_FatherName" placeholder="Father Name" maxlength="25" onkeypress="return onlyString(event)" tabindex="6" />
                 </div>
                 <div class="form-group">
                     <label for="PhoneNo">PhoneNo</label>
-                    <input type="text" class="form-control" id="txt_PhoneNo" placeholder="PhoneNo" maxlength="12" onkeypress="return isNumberKey(event)" />
+                    <input type="text" class="form-control validate" id="txt_PhoneNo" placeholder="PhoneNo" maxlength="12" onkeypress="return isNumberKey(event)" tabindex="9" />
                     <span class="error_show form-text has-danger" id="spPhoneValid">Please Enter Valid Phone!.</span>
                 </div>
                 <div class="form-group">
                     <label for="Dateofjoining">Date of joining</label>
-                    <input type="text" id="txt_DOJ" class="form-control datepicker" placeholder="01/01/1999" maxlength="10">
+                    <input type="text" id="txt_DOJ" class="form-control datepicker validate" placeholder="01/01/1999" maxlength="10" tabindex="11">
                 </div>
                 <div class="form-group">
                     <label for="Address">Address</label>
-                    <input type="text" class="form-control" id="txt_Address" placeholder="Address" maxlength="250" />
+                    <input type="text" class="form-control validate" id="txt_Address" placeholder="Address" maxlength="250" tabindex="13" />
                 </div>
                 <div class="form-group">
                     <label for="Country">Country</label>
-                    <select id="ddl_Country" class="form-control"><option value="0">Select</option></select>
+                    <select id="ddl_Country" class="form-control" tabindex="15"><option value="0">Select</option></select>
 
                 </div>
                 <div class="form-group">
                     <label for="BloodGroup">
                         Blood Group
                     </label>
-                    <select id="ddl_BloodGroup" class="form-control">
-                        <option value="0" class="form-control">Select</option>
+                    <select id="ddl_BloodGroup" class="form-control" tabindex="17">
+                        <option value="0">Select</option>
                         <option>A+</option>
                         <option>A-</option>
                         <option>B+</option>
@@ -145,7 +154,7 @@
                     <label for="Experience">
                         Type Experience
                     </label>
-                    <select id="ddl_Experience" class="form-control">
+                    <select id="ddl_Experience" class="form-control" tabindex="19">
                         <option value="0">Select</option>
                         <option value="1">Fresher</option>
                         <option value="2">Experience</option>
@@ -156,57 +165,58 @@
                         <label for="Previous Designation">
                             Previous Designation
                         </label>
-                        <input type="text" class="form-control" id="txt_PreviousDeg" placeholder="Previous Designation" maxlength="16" />
+                        <input type="text" class="form-control" id="txt_PreviousDeg" placeholder="Previous Designation" maxlength="16" tabindex="21" />
                     </div>
                     <div class="form-group">
                         <label for="Salary/CTC">
                             Salary/CTC
 
                         </label>
-                        <input type="text" class="form-control" id="txt_SalaryCTC" placeholder="Salary/CTC" maxlength="16" />
+                        <input type="text" class="form-control" id="txt_SalaryCTC" placeholder="Salary/CTC" maxlength="16" tabindex="23" />
                     </div>
                 </div>
             </div>
             <div class="col-md-12" align="center">
-                <button type="button" class="btn btn-primary" id="btnAdd" onclick="AddShift();">Add</button>
-                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateShift();" style="display:none">Update</button>
-                <button type="button" class="btn btn-primary" onclick="clearTextBox();">Clear</button>
+                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddTemp();" tabindex="25">Add</button>
+                <button type="button" class="btn btn-primary" id="btnNext" onclick="return NextAdd();" style="display:none" tabindex="26">Next</button>
+                <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update();" style="display:none" tabindex="27">Update</button>
+                <button type="button" class="btn btn-primary" onclick="clearTextBox();" tabindex="28">Close</button>
             </div>
         </div>
 
-        <div id="Secound" class="row" style="display:none;">
+        <div id="Second" class="row" style="display:none;">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="group">Group</label>
-                    <select id="ddl_Group" class="form-control">
+                    <select id="ddl_Group" class="form-control validateSec" tabindex="29">
                         <option value="0">Select</option>
                     </select>
 
                 </div>
                 <div class="form-group">
                     <label for="Department">Department</label>
-                    <select id="ddl_Department" class="form-control">
+                    <select id="ddl_Department" class="form-control validateSec" tabindex="31">
                         <option value="0">Select</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="Shift">Shift</label>
-                    <select id="ddl_Shift" class="form-control">
+                    <select id="ddl_Shift" class="form-control" tabindex="33">
                         <option value="0">Select</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="WeekOff">Rules</label>
-                    <select id="ddl_Rules" multiple="multiple" class="form-control"></select>
+                    <select id="ddl_Rules" multiple="multiple" class="form-control validateSec" tabindex="35"></select>
                 </div>
-                <div class="form-group Designation">
-                    <label for="DesignationReport">Designation Report</label>
-                    <select id="ddl_DesignationReport" class="form-control" multiple="multiple"></select>
+                <div class="form-group">
+                    <label for="ReportingTo">ReportingTo</label>
+                    <select id="ddl_ReportingTo" class="form-control" multiple="multiple" tabindex="37"></select>
                 </div>
 
                 <div class="form-group">
                     <label for="Grade">Grade</label>
-                    <select id="ddl_Grade" class="form-control">
+                    <select id="ddl_Grade" class="form-control" tabindex="39">
                         <option value="0">Select</option>
                         <option value="0">A</option>
                         <option value="0">B</option>
@@ -226,25 +236,25 @@
                 </div>
                 <div class="form-group">
                     <label for="PfNo">PF Number</label>
-                    <input type="text" class="form-control" id="txt_PfNo" placeholder="PFNo" maxlength="25" />
+                    <input type="text" class="form-control" id="txt_PfNo" placeholder="PFNo" maxlength="25" tabindex="41"/>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="Division">Division</label>
-                    <select id="ddl_Division" class="form-control">
-                        <option value="0">Select</option>
-                    </select>
-                </div>
+                @*<div class="form-group">
+            <label for="Division">Division</label>
+            <select id="ddl_Division" class="form-control">
+                <option value="0">Select</option>
+            </select>
+        </div>*@
                 <div class="form-group">
                     <label for="Designation">Designation</label>
-                    <select id="ddl_Designation" class="form-control">
+                    <select id="ddl_Designation" class="form-control validateSec" tabindex="30">
                         <option value="0">Select</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="WeekOff">Week Off</label>
-                    <select id="ddl_WeekOff" class="form-control">
+                    <select id="ddl_WeekOff" class="form-control" tabindex="32">
                         <option value="0">Select</option>
                         <option value="1">Sunday</option>
                         <option value="2">Monday</option>
@@ -257,29 +267,30 @@
                 </div>
                 <div class="form-group">
                     <label for="PFType">PF_Type</label>
-                    <select id="ddl_PFType" class="form-control">
+                    <select id="ddl_PFType" class="form-control" tabindex="34">
                         <option value="0">Government</option>
                         <option value="1">Trust</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="ReportingTo">ReportingTo</label>
-                    <select id="ddl_ReportingTo" class="form-control" multiple="multiple"></select>
+                <div class="form-group Designation">
+                    <label for="DesignationReport">Designation Report</label>
+                    <select id="ddl_DesignationReport" class="form-control" multiple="multiple" tabindex="36"></select>
                 </div>
+                
                 <div class="form-group">
                     <label for="UANNumber">UAN Number</label>
-                    <input type="text" class="form-control" id="txt_UANNumber" placeholder="UANNumber" maxlength="25" />
+                    <input type="text" class="form-control" id="txt_UANNumber" placeholder="UANNumber" maxlength="25" tabindex="38" />
                 </div>
                 <div class="form-group">
                     <label for="ESI">ESI Number</label>
-                    <input type="text" class="form-control" id="txt_ESno" placeholder="ESI Number" maxlength="25" />
+                    <input type="text" class="form-control" id="txt_ESno" placeholder="ESI Number" maxlength="25" tabindex="40" />
                 </div>
             </div>
             <div class="col-md-12" align="center">
-                <button type="button" class="btn btn-primary" id="btnAdd" onclick="return FinalAdd();">Add</button>
-                <button type="button" class="btn btn-primary" id="btnNext" onclick="return Previous2();">Previous</button>
-                <button type="button" class="btn btn-primary" id="btnForword" onclick="return Forword();">Next</button>
-                <button type="button" class="btn btn-primary" onclick="clearTextBox();">Close</button>
+               
+                <button type="button" class="btn btn-primary" id="btnNext" onclick="return Previous2();" tabindex="43">Previous</button>
+                <button type="button" class="btn btn-primary" id="btnForword" onclick="return Forword();" tabindex="44">Next</button>
+                <button type="button" class="btn btn-primary" onclick="clearTextBox();" tabindex="45">Close</button>
             </div>
         </div>
 

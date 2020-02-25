@@ -1,21 +1,17 @@
-﻿
-<script src="~/JS/Country.js"></script>
-<script src="~/JS/Common.js"></script>
-
-<!-- Page Content -->
+﻿<!-- Page Content -->
 <div class="content container-fluid">
     <!-- Page Header -->
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">Group</h3>
+                <h3 class="page-title">Designation</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Country</li>
+                    <li class="breadcrumb-item active">Designation</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_country"><i class="fa fa-plus"></i> Add Country</a>
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_Designation"><i class="fa fa-plus"></i> Add Designation</a>
             </div>
         </div>
     </div>
@@ -26,12 +22,13 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tblCountry" class="table table-stripped mb-0">
+                        <table id="tblDesignation" class="table table-stripped mb-0">
                             <thead>
                                 <tr>
                                     @*<th style="width: 30px;">#</th>*@
 
-                                    <th>Country Name</th>
+                                    <th>Designation Name</th>
+                                    <th>Level Id</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -42,17 +39,14 @@
             </div>
         </div>
     </div>
-
-
-
 </div>
 <!-- /Page Content -->
-<!-- Add Country Modal -->
-<div id="add_country" class="modal custom-modal fade" role="dialog">
+<!-- Add Designation Modal -->
+<div id="add_Designation" class="modal custom-modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Country</h5>
+                <h5 class="modal-title">Designation</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -60,15 +54,29 @@
             <div class="modal-body">
                 <form>
                     <div class="form-group">
-                        <input type="hidden" class="form-control" id="CountryId" placeholder="Country ID" />
-
-                        <label for="GroupName">Country Name</label>
-                        <input type="text" class="form-control" id="CountryName" placeholder="Country Name" onkeypress="return onlyString(event)" maxlength="60" />
+                        <input type="hidden" id="hdnDesignationID" />
+                        <label>Designation Name <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control validate" id="txt_DesignationName" placeholder="Designation Name" />
+                    </div>
+                    <div class="form-group">
+                        <select id="ddl_Designation" class="form-control validate">
+                            <option value="0">Select</option>
+                            <option value="1">Level1</option>
+                            <option value="2">Level2</option>
+                            <option value="3">Level3</option>
+                            <option value="4">Level4</option>
+                            <option value="5">Level5</option>
+                            <option value="6">Level6</option>
+                            <option value="7">Level7</option>
+                            <option value="8">Level8</option>
+                            <option value="9">Level9</option>
+                            <option value="10">Level10</option>
+                        </select>
                     </div>
                     <div class="submit-section">
 
-                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_Country();">Add</button>
-                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Country();" style="display:none">Update</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_Des();">Add</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Des();" style="display:none">Update</button>
 
                     </div>
 
@@ -93,24 +101,24 @@
         </div>
     </div>
 </div>
-<!-- /Add Country Modal -->
-<!-- Delete Department Modal -->
-<div class="modal custom-modal fade" id="delete_country" role="dialog">
+<!-- /Add Designation Modal -->
+<!-- Delete Designation Modal -->
+<div class="modal custom-modal fade" id="delete_Designation" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-body">
                 <div class="form-header">
-                    <h3>Delete Country</h3>
+                    <h3>Delete Designation</h3>
                     <p>Are you sure want to delete?</p>
                 </div>
                 <div class="modal-btn delete-action">
                     <div class="row">
                         <div class="col-6">
 
-                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn" onclick="return DeleteCountry();">Delete</a>
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn" onclick="return DeleteDes();">Delete</a>
                         </div>
                         <div class="col-6">
-                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn" onclick="return clearTextBox();">Cancel</a>
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn" onclick="return clearDes();">Cancel</a>
                         </div>
                     </div>
                 </div>
@@ -118,8 +126,8 @@
         </div>
     </div>
 </div>
-<!-- /Delete Department Modal -->
+<!-- /Delete Designation Modal -->
 
 
-
-
+<script src="~/JS/Designation.js"></script>
+<script src="~/JS/Common.js"></script>

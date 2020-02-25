@@ -1,84 +1,17 @@
-﻿
-
-
-
-<div class="panel-body">
-    <button type="button" class="btn-white" data-toggle="modal" data-target="#myModal" onclick="CloseTextBox();">Add State</button>
-    <div class="container">
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
-                <!-- Modal content-->
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" onclick="CloseTextBox();">&times;</button>
-                        <h4 class="modal-title">Add State</h4>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <input type="hidden" id="hdnStateID" />
-
-                            <div class="form-group">
-                                <label for="CountryName">Country Name</label>
-                                <select id="ddl_Country"><option>Select</option></select>
-                            </div>
-                            <div class="form-group">
-                                <label for="StateName">State Name</label>
-                                <input type="text" class="form-control" id="txt_StateName" placeholder="State Name" onkeypress="return onlyString(event)" maxlength="100" />
-                            </div>
-                            <div class="form-group">
-                                <label for="StateName">State Code</label>
-                                <input type="text" class="form-control" id="txt_StateCode" placeholder="State Code" />
-                            </div>
-                            <div class="form-group">
-                                <label for="StateGstCode">State GST Code</label>
-                                <input type="text" class="form-control" id="txt_StateGstCode" placeholder="State Gst Code" onkeypress="return isNumberKey(event)" />
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary btn-blue" id="btnAdd" onclick="return AddState();">Add</button>
-                        <button type="button" class="btn btn-primary btn-blue" id="btnUpdate" onclick="UpdateState();" style="display:none">Update</button>
-                        <button type="button" class="btn btn-default btn-blue" onclick="CloseTextBox();">Close</button>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-
-
+﻿<!-- Page Content -->
 <div class="content container-fluid">
     <!-- Page Header -->
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">State Data</h3>
+                <h3 class="page-title">Group</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">State </li>
+                    <li class="breadcrumb-item active">State</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_department"><i class="fa fa-plus"></i> Add State</a>
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_state"><i class="fa fa-plus"></i>Add State</a>
             </div>
         </div>
     </div>
@@ -89,11 +22,10 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="example" class="table table-hover  datatable table-striped">
+                        <table id="tblState" class="table table-stripped mb-0">
                             <thead>
                                 <tr>
                                     @*<th style="width: 30px;">#</th>*@
-
                                     <th>State Name</th>
                                     <th>Country Name</th>
                                     <th>State Code</th>
@@ -101,7 +33,7 @@
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
-                            <tbody class="tbody"></tbody>
+                            <tbody></tbody>
                         </table>
                     </div>
                 </div>
@@ -112,9 +44,99 @@
 
 
 </div>
+<!-- /Page Content -->
+<!-- Add State Modal -->
+<div id="add_state" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Country</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+
+                    <div class="form-group">
+                        <input type="hidden" id="hdnStateID" />
+                        <label for="CountryName">Country Name</label>
+                        <select id="ddl_Country" class="form-control validate"><option>Select</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="StateName">State Code</label>
+                        <input type="text" class="form-control validate" id="txt_StateCode" placeholder="State Code" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="StateName">State Name</label>
+                        <input type="text" class="form-control validate" id="txt_StateName" placeholder="State Name" onkeypress="return onlyString(event)" maxlength="100" />
+                    </div>
+                    <div class="form-group">
+                        <label for="StateGstCode">State GST Code</label>
+                        <input type="text" class="form-control validate" id="txt_StateGstCode" placeholder="State Gst Code" onkeypress="return isNumberKey(event)" />
+                    </div>
+
+                    <div class="submit-section">
+
+                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_State();">Add</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_State();" style="display:none">Update</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Clear_State();">Clear</button>
+
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
+                            @*<button type="button" class="close" data-dismiss="alert" >
+                                    <span aria-hidden="true">×</span>
+                                </button>*@
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
+                            @*<button type="button" class="close" data-dismiss="alert" >
+                                    <span aria-hidden="true">×</span>
+                                </button>*@
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add State Modal -->
+<!-- Delete State Modal -->
+<div class="modal custom-modal fade" id="delete_state" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-header">
+                    <h3>Delete State</h3>
+                    <p>Are you sure want to delete?</p>
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row">
+                        <div class="col-6">
+
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn" onclick="return DeleteState();">Delete</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn" onclick="return Clear_State();">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete State Modal -->
 
 
 
 
+
+<script src="~/JS/Common.js"></script>
 
 <script src="~/JS/State.js"></script>

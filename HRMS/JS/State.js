@@ -1,6 +1,8 @@
-﻿$(document).ready(function () {
+﻿
 
-    loadData();
+$(document).ready(function () {
+
+    loadState();
     getCountry();
 
 });
@@ -19,7 +21,7 @@ function getCountry() {
         }
     });
 }
-function loadData() {
+function loadState() {
     $.ajax({
         url: "/Master/State_List",
         type: "Get",
@@ -27,8 +29,9 @@ function loadData() {
         dataType: "json",
         success: function (data) {
 
-            $("#example").dataTable({
+            $("#tblState").dataTable({
                 data: data,
+                "bDestroy": true,
                 columns: [
                     { "data": "StateName" },
                     { "data": "CountryName" },
@@ -37,7 +40,7 @@ function loadData() {
                     {
                         "data": "StateId",
                         "render": function (StateId) {
-                            return '<a href="#" onclick="getbyID(' + StateId + ')">Edit</a>|<a href="#" onclick="Delete(' + StateId + ')">Delete</a></td > '
+                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_state" onclick="GetID(' + StateId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_state" onclick="Deleted(' + StateId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
                 ]
@@ -51,7 +54,7 @@ function loadData() {
     });
 }
 
-function AddState() {
+function Insert_State() {
     var res = validate();
     if (res == false) {
         return false;
@@ -69,8 +72,9 @@ function AddState() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
-            clearTextBox();
+            loadState();
+            Clear_State();
+          
             var msg = r.split('$');
 
             if (msg[1] == "True") {
@@ -93,9 +97,8 @@ function AddState() {
     });
 }
 
-function getbyID(Id) {
-    $("#ddl_Country").css('border-color', 'lightngrey');
-    $("#txt_StateName").css('border-color', 'lightngrey');
+function GetID(Id) {
+    clearCSS();
     $.ajax({
         url: "/Master/GetStateByID/" + Id,
         type: "Post",
@@ -118,7 +121,7 @@ function getbyID(Id) {
     return false;
 }
 
-function UpdateState() {
+function Update_State() {
     var res = validate();
     if (res == false) {
 
@@ -139,7 +142,7 @@ function UpdateState() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
+            loadState();
             var msg = r.split('$');
 
             if (msg[1] == "True") {
@@ -155,7 +158,7 @@ function UpdateState() {
                     $('.errMsg1').fadeOut('slow');
                 }, 2000);
             }
-            clearTextBox();
+            Clear_State();
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -164,15 +167,14 @@ function UpdateState() {
 }
 
 function DeleteState(Id) {
-    var ans = confirm("Are you sure you want to delete this Record?");
-    if (ans) {
+  
         $.ajax({
             url: "/Master/Delete_State/" + Id,
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (r) {
-                loadData();
+                loadState();
                 var msg = r.split('$');
 
                 if (msg[1] == "True") {
@@ -193,10 +195,10 @@ function DeleteState(Id) {
                 alert(errormessage.responseText);
             }
         });
-    }
+    
 }
 
-function clearTextBox() {
+function Clear_State() {
 
     $("#hdnStateID").val('');
     $('#txt_StateName').val('');
@@ -205,42 +207,9 @@ function clearTextBox() {
     $('#ddl_Country').val('0');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
-    $('#txt_StateName').css('border-color', 'lightgrey');
-    $('#ddl_Country').css('border-color', 'lightgrey');
+    clearCSS();
    
 }
 
 
-function CloseTextBox() {
 
-    $("#hdnStateID").val('');
-    $('#txt_StateName').val('');
-    $('#txt_StateCode').val('');
-    $('#txt_StateGstCode').val('');
-    $('#ddl_Country').val('0');
-    $("#btnUpdate").hide();
-    $("#btnAdd").show();
-    $('#txt_StateName').css('border-color', 'lightgrey');
-    $('#ddl_Country').css('border-color', 'lightgrey');
-    $('#txt_StateCode').css('border-color', 'lightgrey');
-    $('#txt_StateGstCode').css('border-color', 'lightgrey');
-    $('#myModal').modal('hide');
-}
-
-function validate() {
-
-    var isValid = true;
-    $('[id*=txt_StateName],[id*=txt_StateCode],[id*=txt_StateGstCode],[id*=ddl_Country]').each(function () {
-        if ($.trim($(this).val()) == '' || $.trim($(this).val()) == '0') {
-            isValid = false;
-            $(this).css("border", "1px solid red");
-        }
-        else {
-            $(this).css({
-                "border": "",
-                "background": ""
-            });
-        }
-    });
-    return isValid;
-}

@@ -1,8 +1,8 @@
 ﻿$(document).ready(function () {
     getGroup();
-    $('#ddl_EmpGroup').focusout(function () {
+    $('#ddl_EmpGroup').change(function () {
         if ($(this).val() != '0')
-            loadData($(this).val());
+            loadAllw($(this).val());
     });
     $('#ddl_AllwType').change(function () {
         if ($(this).val() != '0') {
@@ -17,12 +17,12 @@
 });
 
 function getAdditionAllow() {
-    
+
     var obj_Allw = {
 
-        GroupId: $('#ddl_EmpGroup').val(),        
-        Alw_Type: $('#ddl_AllwType').val()        
-       
+        GroupId: $('#ddl_EmpGroup').val(),
+        Alw_Type: $('#ddl_AllwType').val()
+
     };
     $.ajax({
         url: "/Payroll/GetAlwByAddition",
@@ -30,15 +30,21 @@ function getAdditionAllow() {
         contentType: "application/json;charset=utf-8",
         data: JSON.stringify(obj_Allw),
         dataType: "json",
+        async: false,
         success: function (r) {
             $('#ddlBasedOn').empty();
-            $.each(r, function (key, item) {
-                $('#ddlBasedOn').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-            });
             $('[id*=ddlBasedOn]').multiselect({
                 includeSelectAllOption: true
 
             });
+            $.each(r, function (key, item) {
+                $('#ddlBasedOn').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
+
+            });
+
+            $('#ddlBasedOn').multiselect('rebuild');
+
+
         }
     });
 }
@@ -58,25 +64,28 @@ function getGroup() {
     });
 }
 
-function loadData(Id) {
- 
+function loadAllw(Id) {
+
     $.ajax({
         url: "/Payroll/Allowance_List/" + Id,
         type: "Get",
-        contentType: "application/json;charset=utf-8",        
+        contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (r) {
-            var html = '';
-            var i = 0;
-            $.each(r, function (key, item) {
-
-                html += '<tr>';
-                html += '<td>' + parseInt(i + 1) + '</td>';
-                html += '<td>' + item.Alw_Name + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.Alw_Id + ')">Edit</a>|<a href="#" onclick="Delete(' + item.Alw_Id + ')">Delete</a></td > ';
-                html += '</tr>';
+            $("#tblAllowance").dataTable({
+                data: r,
+                "bDestroy": true,
+                columns: [
+                    { "data": "Alw_Name" },
+                    {
+                        "data": "Alw_Id",
+                        "render": function (Alw_Id) {
+                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" onclick="GetID(' + Alw_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Allowance" onclick="Deleted(' + Alw_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ]
             });
-            $('.tbody').html(html);
+
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -84,18 +93,25 @@ function loadData(Id) {
     });
 }
 
-function Add() {
+function Insert_Allw() {
+    var res = validate();
+    if (res == false) {
+
+        return false;
+    }
+
     var Fixed;
     if ($('input[type="checkbox"]').prop("checked") == true)
         Fixed = 'Y';
     else
         Fixed = 'N';
     var BasedOn = '';
-    if ($('#ddl_AllwType').val() == 'D') {
+    if ($('#ddl_AllwType').val() == '2') {
         $('[id*=ddlBasedOn] > option:selected').each(function () {
             BasedOn += $(this).val() + ',';
         });
     }
+    alert(BasedOn);
 
     var obj_Alw = {
         GroupId: $('#ddl_EmpGroup').val(),
@@ -114,7 +130,8 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData($('#ddl_EmpGroup').val());
+            loadAllw($('#ddl_EmpGroup').val());
+            clearAllw();
             //clearTextBox();            
         },
         error: function (errMsg) {
@@ -123,19 +140,68 @@ function Add() {
     });
 }
 
-function Update() {
+
+function GetID(Id) {
+
+    clearCSS();
+    $.ajax({
+        url: "/Payroll/GetAllowanceByID/" + Id,
+        type: "Post",
+        contentType: "application/json;charset=utf-8",
+        dataType: 'json',
+        async: false,
+        success: function (r) {
+            //$('#ddl_EmpGroup').val(r.GroupId);
+            $('#hdnAllwId').val(r.Alw_Id);
+            $('#txt_AllwName').val(r.Alw_Name);
+            $('#ddl_AllwType').val(r.Alw_Type);
+            $('#ddl_AllwValType').val(r.Alw_Val_Type);
+            $('#txt_AllwValue').val(r.Alw_Val);
+            if (r.Alw_Fixed == "Y")
+                $('#chkFixed').prop('checked', true);
+            else
+                $('#chkFixed').prop('checked', false);
+            if ($('#ddl_AllwType').val() == '2') {
+                $('#divBasedOn').show();
+                getAdditionAllow();
+                var selectedOptions = r.Alw_BasedOn.split(',');
+
+                $("#ddlBasedOn").val(selectedOptions);
+
+                $("#ddlBasedOn").multiselect('refresh');
+            }
+            else
+                $('#divBasedOn').hide();
+            $('#btnUpdate').show();
+            $('#btnAdd').hide();
+
+
+        },
+        error: function (errmsg) {
+            alert(errmsg.responseText);
+        }
+    });
+    return false;
+}
+
+function Update_Allw() {
+    var res = validate();
+    if (res == false) {
+
+        return false;
+    }
+
     var Fixed;
     if ($('input[type="checkbox"]').prop("checked") == true)
         Fixed = 'Y';
     else
         Fixed = 'N';
     var BasedOn = '';
-    if ($('#ddl_AllwType').val() == 'D') {
+    if ($('#ddl_AllwType').val() == '2') {
         $('[id*=ddlBasedOn] > option:selected').each(function () {
             BasedOn += $(this).val() + ',';
         });
     }
-
     var obj_Alw = {
         Alw_Id: $('#hdnAllwId').val(),
         GroupId: $('#ddl_EmpGroup').val(),
@@ -148,17 +214,57 @@ function Update() {
     };
 
     $.ajax({
-        url: "/Payroll/Insert_Allowance",
+        url: "/Payroll/Update_Allowance",
         type: "Post",
         data: JSON.stringify(obj_Alw),
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData($('#ddl_EmpGroup').val());
+            loadAllw($('#ddl_EmpGroup').val());
+            clearAllw();
             //clearTextBox();            
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
         }
     });
+}
+
+function Deleted(Id) {
+
+    $('#hdnAllwId').val(Id)
+
+}
+
+function DeleteAllw() {
+    var Id = $('#hdnAllwId').val();
+
+    $.ajax({
+        url: "/Payroll/Delete_Allowance/" + Id,
+        type: "POST",
+        contentType: "application/json;charset=UTF-8",
+        dataType: "json",
+        success: function (r) {
+            loadAllw($('#ddl_EmpGroup').val());
+            clearAllw();
+        },
+        error: function (errormessage) {
+            alert(errormessage.responseText);
+        }
+    });
+}
+function clearAllw() {
+    $('#hdnAllwId').val('');
+    $('#txt_AllwName').val('');
+    $('#ddl_AllwType').val('0');
+    $('#ddl_AllwValType').val('A');
+    $('#txt_AllwValue').val('');
+    $('#chkFixed').prop('checked', false);
+    $('#divBasedOn').hide();
+
+    $("#ddlBasedOn").multiselect("deSelectAll");
+
+    $("#ddlBasedOn").multiselect('refresh');
+    $('#btnUpdate').hide();
+    $('#btnAdd').show();
 }

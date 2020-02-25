@@ -31,9 +31,9 @@ namespace HRMS.Controllers
         {            
             return Json(obj_Allw.Get_Allowance(1, 1, ID), JsonRequestBehavior.AllowGet);
         }
-        public JsonResult Delete_Allowance(int ID)
+        public JsonResult Delete_Allowance(int Id)
         {
-            return Json(obj_Allw.Delete_Allowance(ID,1,1,1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Allw.Delete_Allowance(Id, 1,1,1), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetAlwByAddition(Allowance obj_Allw)
         {
