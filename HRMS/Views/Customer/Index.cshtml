@@ -1,6 +1,6 @@
 ﻿
 
-<script src="~/JS/Company.js"></script>
+<script src="~/JS/Customer.js"></script>
 
 <script src="~/JS/Common.js"></script>
 
@@ -10,14 +10,14 @@
     <div class="page-header">
         <div class="row align-items-center">
             <div class="col">
-                <h3 class="page-title">Group</h3>
+                <h3 class="page-title">Customer</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Company Details</li>
+                    <li class="breadcrumb-item active">Customer Details</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
-                @*<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_Company"><i class="fa fa-plus"></i> Add Company</a>*@
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_Customer"><i class="fa fa-plus"></i> Add Customer</a>
             </div>
         </div>
     </div>
@@ -28,11 +28,11 @@
 
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="tblCompany" class="table table-stripped mb-0">
+                        <table id="tblCustomer" class="table table-stripped mb-0">
                             <thead>
                                 <tr>
                                     @*<th style="width: 30px;">#</th>*@
-                                    <th>Company Name</th>
+                                    <th>Customer Name</th>
                                     <th>Address</th>
                                     <th>EmailId</th>
                                     <th class="text-right">Action</th>
@@ -51,11 +51,11 @@
 </div>
 <!-- /Page Content -->
 
-<div id="add_Company" class="modal custom-modal fade" role="dialog">
+<div id="add_Customer" class="modal custom-modal fade" role="dialog">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Company Master</h5>
+                <h5 class="modal-title">Customer Master</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -63,14 +63,14 @@
             <div class="modal-body">
                 <form>
                     <div class="row">
-                        
+
                         <div class="col-sm-6">
 
                             <div class="form-group">
-                                <label for="CompanyName">Company Name</label>
+                                <label for="CompanyName">Customer Name</label>
                                 <input id="hcid" type="hidden" />
 
-                                <input type="text" class="form-control validate" id="txt_CompanyName" placeholder="Company Name" />
+                                <input type="text" class="form-control validate" id="txt_CustomerName" placeholder="Company Name" />
                             </div>
 
                             <div class="form-group">
@@ -83,40 +83,17 @@
                                 <input type="text" class="form-control validate" id="txt_Address" placeholder="Address" />
                             </div>
 
-                            <div class="form-group">
-                                <label for="City">City</label>
-                                <input type="text" class="form-control " id="txt_City" placeholder="City" />
-                            </div>
 
-                            <div class="form-group">
-                                <label for="District">District</label>
-                                <input type="text" class="form-control " id="txt_District" placeholder="District" />
-                            </div>
-
-                            <div class="form-group">
-                                <label for="State">State</label>
-                                <select id="ddl_State" class="select form-control"><option>Select</option></select>
-                                @*<input type="text" class="form-control" id="txt_State" placeholder="State" />*@
-                            </div>
-
-                            <div class="form-group">
-                                <label for="Country">Country</label>
-                                <select id="ddl_Country" class="select form-control validate"><option>Select</option></select>
-                                @*<input type="text" class="form-control" id="txt_Country" placeholder="Country" />*@
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                          
                             <div class="form-group">
                                 <label for="PhoneNo">PhoneNo</label>
-                                <input type="text" class="form-control" id="txt_PhoneNo validate" placeholder="PhoneNo" />
+                                <input type="text" class="form-control validate" id="txt_PhoneNo" placeholder="PhoneNo" />
                             </div>
-                            <div class="form-group">
-                                <label for="EstDate">EstDate</label>
 
-                                <input type="text" id="datepicker" class="form-control" placeholder="01/01/1999">
+                        </div>
+                        <div class="col-sm-6">
 
-                            </div>
+                          
+                          
                             <div class="form-group">
                                 <label for="EmailID">EmailID</label>
                                 <input type="text" class="form-control validate" id="txt_EmailID" placeholder="EmailID" />
@@ -125,26 +102,21 @@
                                 <label for="GST">GST</label>
                                 <input type="text" class="form-control validate" id="txt_GST" placeholder="GST" />
                             </div>
-                            <div class="form-group">
-                                <label for="Tan">Tan Number</label>
-                                <input type="text" class="form-control" id="txt_Tan" placeholder="Tan Number" />
-                            </div>
+                            
 
                             <div class="form-group">
                                 <label for="Pan">Pan No</label>
                                 <input type="text" class="form-control" id="Pan" placeholder="Pan Number" />
                             </div>
-                            <div class="form-group">
-                                <label for="Website">Website</label>
-                                <input type="text" class="form-control" id="txt_Website" placeholder="Website" />
-                            </div>
+                            
 
                         </div>
 
                     </div>
                     <div class="submit-section">
-                       
-                        <button type="button" class="btn btn-primary" id="btnUpdate" onclick="Update_company();" >Update</button>
+
+                        <button type="button" class="btn btn-primary" id="btnAdd" onclick="Add_Customer();">Add</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Customer();" style="display:none">Update</button>
                         <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
                     </div>
                 </form>

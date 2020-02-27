@@ -100,21 +100,26 @@ function load_Company() {
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
+        success: function (data) {
             $("#tblCompany").dataTable({
-                data: r,
+                data: data,
                 "bDestroy": true,
                 columns: [
+
                     { "data": "Tci_Name" },
+                    { "data": "Tci_Address" },
+                    { "data": "Tci_EmailID" },
+
                     {
                         "data": "CompanyId",
                         "render": function (CompanyId) {
-                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Company" onclick="GetID(' + CompanyId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + CompanyId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Company" onclick="Edit_Company(' + CompanyId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a></div>'
                         }
                     }
-                ]
+                ],
+
             })
-            
+
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -122,7 +127,7 @@ function load_Company() {
     });
 }
 
-function Add() {
+function Add_company() {
     var res = validate();
     if (res == false) {
 
@@ -140,7 +145,7 @@ function Add() {
         Tci_Country: $('#ddl_Country').val(),
         Tci_Logo: ($('#imgPreview').attr('src')),
         Tci_phoneNo: $('#txt_PhoneNo').val(),
-        Tci_EstDate: $('#txt_EstDate').val(),
+        Tci_EDate: $('#txt_EstDate').val(),
         Tci_EmailID: $('#txt_EmailID').val(),
         Tci_GST: $('#txt_GST').val(),
         Tci_Tan: $('#txt_Tan').val(),
@@ -165,16 +170,16 @@ function Add() {
     });
 }
 
-function getID(Id) {
+function Edit_Company(Id) {
 
-    $("#Tci_Name").css('border-color', 'lightngrey');
+    clearCSS();
     $.ajax({
         url: "/Master/GetCompanyByID/" + Id,
         type: "Post",
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            $('#hid').val(r.CompanyId);
+            $('#hcid').val(r.CompanyId);
             $('#txt_CompanyName').val(r.Tci_Name);
             $('#txt_Code').val(r.Tci_Code);
             $('#txt_Address').val(r.Tci_Address);
@@ -183,13 +188,19 @@ function getID(Id) {
             $('#txt_State').val(r.Tci_State);
             $('#ddl_Country').val(r.Tci_Country);
             $('#txt_PhoneNo').val(r.Tci_phoneNo);
-            $('#txt_EstDate').val(r.Tci_EstDate);
             $('#txt_EmailID').val(r.Tci_EmailID);
             $('#txt_GST').val(r.Tci_GST);
             $('#txt_Tan').val(r.Tci_Tan);
             $('#txt_Pan').val(r.Tci_Pan_No);
             $('#txt_Website').val(r.Tci_Website)
             $('#imgPreview').attr('src', r.Tci_Logo);
+            if (r.Tci_EDate != null && r.Tci_EDate != "") {
+                var date = new Date(parseInt(r.Tci_EstDate.substr(6)));
+                var month = date.getMonth() + 1;
+                alert(date);
+
+                $('#datepicker').val(date.getDate() + "-" + month + "-" + date.getFullYear());
+            }
 
             $('#MyModal').modal('show');
             $('#btnAdd').hide();
@@ -201,10 +212,17 @@ function getID(Id) {
     });
     return false;
 }
-function Update() {
+function Update_company() {
 
+    var res = validate();
+    if (res == false) {
+
+        return false;
+    }
+    
     var obj_ComUpd = {
-        CompanyId: $('#hid').val(),
+        CompanyId: $('#hcid').val(),
+        Tci_EDate: $('#datepicker').val(),
         Tci_Name: $('#txt_CompanyName').val(),
         Tci_Code: $('#txt_Code').val(),
         Tci_Address: $('#txt_Address').val(),
@@ -212,8 +230,7 @@ function Update() {
         Tci_District: $('#txt_District').val(),
         Tci_State: $('#txt_State').val(),
         Tci_Country: $('#ddl_Country').val(),
-        Tci_phoneNo: $('#txt_PhoneNo').val(),
-        Tci_EstDate: $('#txt_EstDate').val(),
+        Tci_phoneNo: $('#txt_PhoneNo').val(),      
         Tci_EmailID: $('#txt_EmailID').val(),
         Tci_GST: $('#txt_GST').val(),
         Tci_Tan: $('#txt_Tan').val(),
@@ -278,30 +295,6 @@ function clearTextBox() {
     $("#btnAdd").show();
     /// $('#DivisionName').css('border-color', 'lightgrey');    
     $('#MyModal').modal('hide');
-}
-function validate() {
-
-    var isValid = true;
-
-    $('[id*=txt_CompanyName],[id*=txt_Address],[id*=txt_GST],[id*=txt_PhoneNo],[id*=txt_EmailID],[id*=txt_Pan],[id*=txt_Code]').each(function () {
-        if ($(this).length > 0) {
-            if ($.trim($(this).val()) == '' || $.trim($(this).val()) == '0') {
-                isValid = false;
-                $(this).css("border", "1px solid red");
-            }
-            else {
-                $(this).css({
-                    "border": "",
-                    "background": ""
-                });
-            }
-        }
-    });
-    if (isValid == false) {
-        return false;
-    }
-
-    return isValid;
 }
 
 

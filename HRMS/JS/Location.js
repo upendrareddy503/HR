@@ -1,12 +1,10 @@
 ﻿$(document).ready(function () {
-    loadData();
+    loadData_location();
     getCountry();
     getState();
     $('#datepicker').datepicker();
     var error_Email = false;
     $('#spEmailValid').hide();
-
-   
 
     $("[id*=txt_EmailID]").focusout(function () {
 
@@ -66,24 +64,34 @@ function getState() {
     });
 }
 
-function loadData() {
+function loadData_location() {
     $.ajax({
         url: "/Master/Location_List",
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 1;
+        success: function (data) {
+            $("#tblLocation").dataTable({
+                data: data,
+                //"bDestroy": true,
+                columns: [
 
-            $.each(r, function (key, item) {
-                html += '<tr>';
-                html += '<td>' + parseInt(i) + '</td>';
-                html += '<td>' + item.Tli_Name + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.Tli_Id + ')">Edit</a>|<a href="#" onclick="Delete(' + item.Tli_id + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+                    { "data": "Tli_Name" },
+                    { "data": "Tli_Address" },
+                    { "data": "Tli_gst" },
+
+                    {
+                        "data": "Tli_Id",
+                        "render": function (Tli_Id) {
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Company" onclick="get_location(' + Tli_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a></div>'
+                        }
+                    }
+                ],
+
+            })
+
+
+
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -127,7 +135,7 @@ function Add() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
+            loadData_location();
             clearTextBox();
             $('#MyModal').modal('hide');
         },
@@ -137,7 +145,7 @@ function Add() {
     });
 }
 
-function getbyID(Id) {
+function get_location(Id) {
 
     $("#txt_Location").css('border-color', 'lightngrey');
     $.ajax({
@@ -156,14 +164,12 @@ function getbyID(Id) {
             $('#txt_State').val(r.Tsi_Id);
             $('#ddl_Country').val(r.Tci_Id);
             $('#txt_PhoneNo').val(r.Tli_phoneno);
-            alert(r.Tli_EstDate);
-            var date = r.Tli_EstDate;           
+
+            var date = r.Tli_EstDate;
             var nowDate = new Date(parseInt(date.substring(6, date.length - 2)));
-            //parseInt(date.substring(6, date.length - 2))
-            //var nowDate = new Date(parseInt(date.substr(6)));
             var Emp_Join_Date = "";
-            Emp_Join_Date = nowDate.format("yyyy-mm-dd");;;
-            alert(Emp_Join_Date);
+            Emp_Join_Date = nowDate.format("yyyy-mm-dd");
+
             $('#datepicker').val(Emp_Join_Date);
             $('#txt_EmailID').val(r.Tli_EmailID);
             $('#txt_GST').val(r.Tli_GST);
@@ -293,13 +299,3 @@ function validate() {
     return isValid;
 }
 
-//function checkEmpID() {
-//    if ($("[id*=txt_EmailID]").val() == '') {
-//        $('#spEmailValid').show();
-//        $(this).css("border", "1px solid red");
-//        error_EmpID = true;
-//    }
-//    else {
-//        $('#spEmailValid').hide();
-//    }
-//}
