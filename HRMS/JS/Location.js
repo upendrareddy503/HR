@@ -83,7 +83,7 @@ function loadData_location() {
                     {
                         "data": "Tli_Id",
                         "render": function (Tli_Id) {
-                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Company" onclick="get_location(' + Tli_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a></div>'
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_location" onclick="get_location(' + Tli_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a></div>'
                         }
                     }
                 ],
@@ -158,6 +158,7 @@ function get_location(Id) {
             $('#hid').val(r.Tli_Id);
             $('#txt_Location').val(r.Tli_Name);
             $('#txt_Code').val(r.Tli_code);
+            alert(r.Tli_code);
             $('#txt_Address').val(r.Tli_Address);
             $('#txt_City').val(r.Tli_City);
             $('#txt_District').val(r.Tli_District);
@@ -165,12 +166,12 @@ function get_location(Id) {
             $('#ddl_Country').val(r.Tci_Id);
             $('#txt_PhoneNo').val(r.Tli_phoneno);
 
-            var date = r.Tli_EstDate;
-            var nowDate = new Date(parseInt(date.substring(6, date.length - 2)));
-            var Emp_Join_Date = "";
-            Emp_Join_Date = nowDate.format("yyyy-mm-dd");
+            //var date = r.Tli_EstDate;
+            //var nowDate = new Date(parseInt(date.substring(6, date.length - 2)));
+            //var Emp_Join_Date = "";
+            //Emp_Join_Date = nowDate.format("yyyy-mm-dd");
 
-            $('#datepicker').val(Emp_Join_Date);
+            //$('#datepicker').val(Emp_Join_Date);
             $('#txt_EmailID').val(r.Tli_EmailID);
             $('#txt_GST').val(r.Tli_GST);
             $('#txt_Tan').val(r.Tli_Tan);
@@ -186,7 +187,7 @@ function get_location(Id) {
     });
     return false;
 }
-function Update() {
+function Update_Location() {
 
     var res = validate();
     if (res == false) {

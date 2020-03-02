@@ -47,7 +47,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Designation</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="clearDes()" >
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
@@ -56,7 +56,7 @@
                     <div class="form-group">
                         <input type="hidden" id="hdnDesignationID" />
                         <label>Designation Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control validate" id="txt_DesignationName" placeholder="Designation Name" />
+                        <input type="text" class="form-control validate" id="txt_DesignationName" onkeypress="return onlyString(event)" placeholder="Designation Name" />
                     </div>
                     <div class="form-group">
                         <select id="ddl_Designation" class="form-control validate">

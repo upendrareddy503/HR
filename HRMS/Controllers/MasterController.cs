@@ -27,41 +27,7 @@ namespace HRMS.Controllers
         {
             return View();
         }
-        #region Divison
-        public ActionResult Division()
-        {
-            return View();
-        }
-
-        public JsonResult Division_List()
-        {
-
-            return Json(obj_Div.Get_AllDivision(1,1), JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult Insert_Division(Division obj_Div)
-        {
-            return Json(obj_Div.Insert_Division(obj_Div), JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult Update_Division(Division obj_Div)
-        {
-            return Json(obj_Div.Update_Division(obj_Div), JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult GetDivisionByID(int ID)
-        {
-            var DivisionId = obj_Div.Get_AllDivision(1,1).Find(x => x.DivisionId.Equals(ID));
-            return Json(DivisionId, JsonRequestBehavior.AllowGet);
-        }
-
-        public JsonResult GetDivision_GID(int Id)
-        {
-            
-            return Json(obj_Div.Get_AllDivision_GID(1, 1, Id), JsonRequestBehavior.AllowGet);
-        }
-        public JsonResult Delete_Divsion(int ID)
-        {
-            return Json(obj_Div.Delete_Division(ID), JsonRequestBehavior.AllowGet);
-        }
-        #endregion Division
+        
 
         #region Group
         public ActionResult Group()
@@ -70,25 +36,29 @@ namespace HRMS.Controllers
         }
         public JsonResult Group_List()
         {
-            return Json(obj_Grp.Get_AllGroup(1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]),Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Group(Group obj_GrpIns)
         {
+            obj_GrpIns.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_GrpIns.LocationID = Convert.ToInt32(Session["LocationID"]);
             return Json(obj_Grp.Insert_Group(obj_GrpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_Group(Group obj_GrpUpd)
         {
+            obj_GrpUpd.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_GrpUpd.LocationID = Convert.ToInt32(Session["LocationID"]);
             return Json(obj_Grp.Update_Group(obj_GrpUpd), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetGroupByID(int ID)
         {
-            var GroupId = obj_Grp.Get_AllGroup(1, 1).Find(x => x.GroupId.Equals(ID));
+            var GroupId = obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["userid"])).Find(x => x.GroupId.Equals(ID));
 
             return Json(GroupId, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Group(int ID)
         {
-            return Json(obj_Grp.Delete_Group(ID, 1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Grp.Delete_Group(ID, Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         #endregion Group
 
@@ -128,19 +98,23 @@ namespace HRMS.Controllers
         }
         public JsonResult Company_List()
         {
-            return Json(Obj_comp.Get_AllCompany(1), JsonRequestBehavior.AllowGet);
+            return Json(Obj_comp.Get_AllCompany(Convert.ToInt32(Session["companyid"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Company(Company obj_ComInser)
         {
+            obj_ComInser.CompanyId = Convert.ToInt32(Session["companyid"]);
+            obj_ComInser.Tci_Userid = Convert.ToInt32(Session["userid"]);
             return Json(Obj_comp.Insert_Company(obj_ComInser), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_Company(Company obj_ComUpd)
         {
+            obj_ComUpd.CompanyId = Convert.ToInt32(Session["companyid"]);
+            obj_ComUpd.Tci_Userid = Convert.ToInt32(Session["userid"]);
             return Json(Obj_comp.Update_Copmpany(obj_ComUpd), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetCompanyByID(int ID)
         {
-            var CompanyID = Obj_comp.Get_AllCompany(1).Find(x => x.CompanyId.Equals(ID));
+            var CompanyID = Obj_comp.Get_AllCompany(Convert.ToInt32(Session["companyid"])).Find(x => x.CompanyId.Equals(ID));
             return Json(CompanyID, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Company(int ID)
@@ -195,26 +169,35 @@ namespace HRMS.Controllers
         }
         public JsonResult Department_List()
         {
-            return Json(Obj_Dep.Get_AllDepartment(1,1), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Dep.Get_AllDepartment(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult Insert_Department(DepartmentDetails Obj_Dep_Insert)
         {
+            Obj_Dep_Insert.Companyid = Convert.ToInt32(Session["companyid"]);
+            Obj_Dep_Insert.Locationid = Convert.ToInt32(Session["LocationID"]);
+            Obj_Dep_Insert.UserId = Convert.ToInt32(Session["userid"]);
             return Json(Obj_Dep.Insert_Department(Obj_Dep_Insert), JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult Update_Department(DepartmentDetails Obj_Dep_Update)
         {
+            Obj_Dep_Update.Companyid = Convert.ToInt32(Session["companyid"]);
+            Obj_Dep_Update.Locationid = Convert.ToInt32(Session["LocationID"]);
+            Obj_Dep_Update.UserId = Convert.ToInt32(Session["userid"]);
             return Json(Obj_Dep.Update_Department(Obj_Dep_Update), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetDepartmentByID(int ID)
         {
-            var CompanyID = Obj_Dep.Get_AllDepartment(1,1).Find(x => x.Department_Id.Equals(ID));
+
+            var CompanyID = Obj_Dep.Get_AllDepartment(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["userid"])).Find(x => x.Department_Id.Equals(ID));
             return Json(CompanyID, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult GetDepartment_ID(int Id)
         {
            
-            return Json(Obj_Dep.Get_AllDepartment_ID(1, 1, Id), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Dep.Get_AllDepartment_ID(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Id), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Department(int ID)
         {
@@ -230,19 +213,24 @@ namespace HRMS.Controllers
         }
         public JsonResult Location_List()
         {           
-            return Json(Obj_loc_D.Get_Location(1,1), JsonRequestBehavior.AllowGet);
+
+            return Json(Obj_loc_D.Get_Location(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Location(Location obj_LocInser)
         {
+            obj_LocInser.Tci_Companyid = Convert.ToInt32(Session["companyid"]);
+            obj_LocInser.Tli_Id = Convert.ToInt32(Session["LocationID"]);
+            obj_LocInser.Tli_UserId = Convert.ToInt32(Session["userid"]);
             return Json(Obj_loc_D.Insert_Location(obj_LocInser), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_Location(Location obj_locUpd)
         {
+            obj_locUpd.Tci_Companyid = 4;
             return Json(Obj_loc_D.Update_Location(obj_locUpd), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetLocationByID(int ID)
         {                                 
-            var LocationID = Obj_loc_D.Get_Location(1, 1).Find(x => x.Tli_Id.Equals(ID));
+            var LocationID = Obj_loc_D.Get_Location(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.Tli_Id.Equals(ID));
             return Json(LocationID, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Location(int ID)
@@ -289,19 +277,25 @@ namespace HRMS.Controllers
 
         public JsonResult Designation_List()
         {
-            return Json(obj_Desgi.Get_AllDesignation(1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Desgi.Get_AllDesignation(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Designation(Designation obj_Dig)
         {
+            obj_Dig.Companyid = Convert.ToInt32(Session["companyid"]);
+            obj_Dig.LocationId = Convert.ToInt32(Session["LocationID"]);
+            obj_Dig.UserId = Convert.ToInt32(Session["userid"]);
             return Json(obj_Dig.Insert_Designation(obj_Dig), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_Designation(Designation obj_Dig)
         {
+            obj_Dig.Companyid = Convert.ToInt32(Session["companyid"]);
+            obj_Dig.LocationId = Convert.ToInt32(Session["LocationID"]);
+            obj_Dig.UserId = Convert.ToInt32(Session["userid"]);
             return Json(obj_Dig.Update_Designation(obj_Dig), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetDesignationByID(int ID)
         {
-            var DesignationId = obj_Desgi.Get_AllDesignation(1, 1).Find(x => x.DesignationId.Equals(ID));
+            var DesignationId = obj_Desgi.Get_AllDesignation(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.DesignationId.Equals(ID));
             return Json(DesignationId, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Designation(int ID)
@@ -320,10 +314,12 @@ namespace HRMS.Controllers
 
         public JsonResult Holiday_List()
         {
-            return Json(Obj_Holi.Get_AllHolidays(1, 1), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_HolidayName(Holidaydetails Obj_Holi)
         {
+            Obj_Holi.Thi_Company = Convert.ToInt32(Session["companyid"]);
+            Obj_Holi.Thi_Userid = Convert.ToInt32(Session["userid"]);
             return Json(Obj_Holi.Insert_HolidayName(Obj_Holi), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_HolidayName(Holidaydetails Obj_Holi)
@@ -332,7 +328,7 @@ namespace HRMS.Controllers
         }
         public JsonResult GetHolidayByID(int ID)
         {
-            var holidayid = Obj_Holi.Get_AllHolidays(1, 1).Find(x => x.Thi_id.Equals(ID));
+            var holidayid = Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.Thi_id.Equals(ID));
             return Json(holidayid, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Holiday(int ID)

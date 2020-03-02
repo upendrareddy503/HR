@@ -1,9 +1,24 @@
 ﻿$(document).ready(function () {
     loadDept();
-
+    getGroup();
 });
 
 
+
+function getGroup() {
+    $.ajax({
+        url: "/Group/List",
+        type: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            $('#ddl_Group').empty().append('<option selected="selected" value="0">Select</option>');
+            $.each(r, function (key, item) {
+                $('#ddl_Group').append($("<option></option>").val(item.GroupId).html(item.GroupName));
+            });
+        }
+    });
+}
 function loadDept() {
     $.ajax({
         url: "/Master/Department_List",
@@ -15,7 +30,14 @@ function loadDept() {
             $("#tblDepartment").dataTable({
                 data: data,
                 "bDestroy": true,
-                columns: [                   
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    $("td:first", nRow).html(iDisplayIndex + 1);
+                    return nRow;
+                },
+                columns: [       
+                    {
+                        "data": "Department_Id"
+                    },
                     { "data": "Department_Name" },
                     {
                         "data": "Department_Id",
@@ -23,7 +45,14 @@ function loadDept() {
                             return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + Department_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + Department_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
-                ]
+                ],                
+                "columnDefs": [{
+                    'targets': [0, 2],
+                    'orderable': false
+
+                }],
+                "order": [1, 'asc']
+
             })            
             
         },
@@ -41,7 +70,8 @@ function Insert_Dept() {
         return false;
     }
     var Obj_Dep = {        
-        Department_Name: $('#txtDepName').val()
+        Department_Name: $('#txtDepName').val(),
+        GroupId: $('#ddl_Group').val()
     };
     $.ajax({
         url: "/Master/Insert_Department",
@@ -84,7 +114,8 @@ function GetID(Id) {
         dataType: 'json',
         success: function (r) {
             $('#hdnDepId').val(r.Department_Id);
-            $('#txtDepName').val(r.Department_Name);            
+            $('#txtDepName').val(r.Department_Name); 
+            $('#ddl_Group').val(r.GroupId); 
             $('#add_department').modal('show');
             $('#btnAdd').hide();
             $('#btnUpdate').show();
@@ -104,7 +135,8 @@ function Update_Dept() {
   
     var Obj_Dep = {
         Department_Id: $('#hdnDepId').val(),      
-        Department_Name: $('#txtDepName').val()
+        Department_Name: $('#txtDepName').val(),
+        GroupId: $('#ddl_Group').val()
     };
     $.ajax({
         url: "/Master/Update_Department",
@@ -131,6 +163,7 @@ function Update_Dept() {
                 }, 2000);
             }
             clearDept();
+            clearCSS();
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -147,7 +180,7 @@ function DeleteDept() {
     var Id = $('#hdnDepId').val();
 
         $.ajax({
-            url: "/Master/Delete_Allowance/" + Id,
+            url: "/Master/Delete_Department/" + Id,
             type: "POST",
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
@@ -164,6 +197,7 @@ function clearDept() {
     clearCSS();
     $("#hdnDepId").val('');
     $('#txtDepName').val('');
+    $('#ddl_Group').val('0');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
    
