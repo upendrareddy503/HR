@@ -16,6 +16,9 @@ namespace BLL
         public int LevelId { get; set; }
         public string DesignationName { get; set; }
         public string LevelName { get; set; }
+        public int Companyid { get; set; }
+        public int LocationId { get; set; }
+        public int UserId { get; set; }
 
         public string Insert_Designation(Designation Obj_Dig)
         {
@@ -23,15 +26,14 @@ namespace BLL
             SqlParameter[] parm = new SqlParameter[7];
             parm[0] = da.AddSPParameter("Tdg_Name", Obj_Dig.DesignationName, ParameterDirection.Input, DbType.String, 50);
             parm[1] = da.AddSPParameter("Tdg_LevelId", Obj_Dig.LevelId, ParameterDirection.Input, DbType.Int32, 100);
-            parm[2] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("CompanyId", 3, ParameterDirection.Input, DbType.String, 100);
-            parm[4] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.String, 100);
+            parm[2] = da.AddSPParameter("UserId", UserId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("CompanyId", Companyid, ParameterDirection.Input, DbType.String, 100);
+            parm[4] = da.AddSPParameter("LocationId", LocationId, ParameterDirection.Input, DbType.String, 100);
             parm[5] = da.AddSPParameter("Tdg_LevelName", Obj_Dig.LevelName, ParameterDirection.Input, DbType.String, 100);
             parm[6] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm, true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Update_Designation(Designation Obj_Dig)
@@ -39,14 +41,14 @@ namespace BLL
             SqlParameter[] parm = new SqlParameter[6];
             parm[0] = da.AddSPParameter("Tdg_Id", Obj_Dig.DesignationId, ParameterDirection.Input, DbType.Int32, 100);
             parm[1] = da.AddSPParameter("Tdg_Name", Obj_Dig.DesignationName, ParameterDirection.Input, DbType.String, 50);
-            parm[2] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 100);
+            parm[2] = da.AddSPParameter("UserId", UserId, ParameterDirection.Input, DbType.Int32, 100);
             parm[3] = da.AddSPParameter("Tdg_LevelId", Obj_Dig.LevelId, ParameterDirection.Input, DbType.Int32, 100);
             parm[4] = da.AddSPParameter("Tdg_LevelName", Obj_Dig.LevelName, ParameterDirection.Input, DbType.String, 100);
             parm[5] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64, 10);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
+            
             string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm, true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Delete_Designation(int ID)
@@ -67,8 +69,8 @@ namespace BLL
         {
             SqlParameter[] parm = new SqlParameter[4];
             parm[0] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("CompanyId", 3, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("LocationId", LocationID, ParameterDirection.Input, DbType.Int32, 10);
             parm[3] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
 
             DataTable dt = new DataTable();

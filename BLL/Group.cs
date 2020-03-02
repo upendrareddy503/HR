@@ -28,9 +28,9 @@ namespace BLL
         {
            
             SqlParameter[] parm = new SqlParameter[5];
-            parm[0] = da.AddSPParameter("Userid", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[0] = da.AddSPParameter("UserId", Obj_Grp.UserID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tci_Id", Obj_Grp.CompanyID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("Tli_Id", Obj_Grp.LocationID, ParameterDirection.Input, DbType.Int32, 10);
             parm[3] = da.AddSPParameter("Tgi_Name",Obj_Grp.GroupName, ParameterDirection.Input, DbType.String, 100);
             parm[4] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
@@ -44,11 +44,10 @@ namespace BLL
             SqlParameter[] parm = new SqlParameter[6];
             parm[0] = da.AddSPParameter("Tgi_Id", Obj_Grp.GroupId, ParameterDirection.Input, DbType.Int32);
             parm[1] = da.AddSPParameter("Tgi_Name", Obj_Grp.GroupName, ParameterDirection.Input, DbType.String);
-            parm[2] = da.AddSPParameter("userid", 1, ParameterDirection.Input, DbType.Int32);
-            parm[3] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32);
-            parm[4] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32);
+            parm[2] = da.AddSPParameter("userid", Obj_Grp.UserID, ParameterDirection.Input, DbType.Int32);
+            parm[3] = da.AddSPParameter("Tci_Id", Obj_Grp.CompanyID, ParameterDirection.Input, DbType.Int32);
+            parm[4] = da.AddSPParameter("Tli_Id", Obj_Grp.LocationID, ParameterDirection.Input, DbType.Int32);
             parm[5] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm, true);
 
             return id.TrimEnd(' ');
@@ -56,14 +55,10 @@ namespace BLL
 
         public string Delete_Group(int GrpId, int CompanyID, int LocationID)
         {
-            SqlParameter[] parm = new SqlParameter[5];
+            SqlParameter[] parm = new SqlParameter[2];
             parm[0] = da.AddSPParameter("Tgi_Id", GrpId, ParameterDirection.Input, DbType.Int32);
-            parm[1] = da.AddSPParameter("Userid", 1, ParameterDirection.Input, DbType.Int32);
-            parm[2] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32);
-            parm[3] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32);
-            parm[4] = da.AddSPParameter("Flag", (int)Flag.Delete, ParameterDirection.Input, DbType.Int64);
-            //parm[5] = da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm);
+            parm[1] = da.AddSPParameter("Flag", (int)Flag.Delete, ParameterDirection.Input, DbType.Int64);
+            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm,true);
             if (id == null)
             {
                 id = string.Empty;
@@ -72,12 +67,12 @@ namespace BLL
         }
 
 
-        public List<Group> Get_AllGroup(int CompanyID, int LocationID)
+        public List<Group> Get_AllGroup(int CompanyID, int LocationID,int UserId)
         {
             SqlParameter[] parm = new SqlParameter[4];
-            parm[0] = da.AddSPParameter("Userid", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[0] = da.AddSPParameter("Userid", UserId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32, 10);
             parm[3] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
            
             DataTable dt = new DataTable();
@@ -102,14 +97,12 @@ namespace BLL
         public DataTable Edit_Group(int GrpId, int CompanyID, int LocationID)
         {
             DataTable dt = new DataTable();
-            SqlParameter[] parm = new SqlParameter[5];
+            SqlParameter[] parm = new SqlParameter[4];
 
             parm[0] = da.AddSPParameter("Tgi_Id", GrpId, ParameterDirection.Input, DbType.Int32);
-            parm[1] = da.AddSPParameter("Userid", 1, ParameterDirection.Input, DbType.Int32);
-            parm[2] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32);
-            parm[3] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32);
-            parm[4] = da.AddSPParameter("Flag", 5, ParameterDirection.Input, DbType.Int64);
-            //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
+            parm[1] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32);
+            parm[2] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32);
+            parm[3] = da.AddSPParameter("Flag", 5, ParameterDirection.Input, DbType.Int64);
             dt = da.Sp_Datatable("Usp_Group_Details",parm);
             return dt;
         }

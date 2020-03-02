@@ -34,8 +34,8 @@ namespace BLL
         public string Tli_Esi_no { get; set; }
         public string Tli_pf_no { get; set; }
         public string Tli_otherinfo { get; set; }
-        public string Tli_UserId { get; set; }
-        public string Tci_Companyid { get; set; }
+        public int Tli_UserId { get; set; }
+        public int Tci_Companyid { get; set; }
 
 
         public string Insert_Location(Location Obj_Location)
@@ -67,10 +67,10 @@ namespace BLL
             parm[15] = da.AddSPParameter("Tli_pf_no", Obj_Location.Tli_pf_no, ParameterDirection.Input, DbType.String, 100);
             parm[16] = da.AddSPParameter("Tli_otherinfo", Obj_Location.Tli_otherinfo, ParameterDirection.Input, DbType.String, 100);
             parm[17] = da.AddSPParameter("Tli_UserId", 1, ParameterDirection.Input, DbType.Int32, 100); //Obj_Location.Tli_UserId
-             parm[18] = da.AddSPParameter("Tci_Companyid", 4, ParameterDirection.Input, DbType.Int32, 5);
+            parm[18] = da.AddSPParameter("Tci_Companyid", 4, ParameterDirection.Input, DbType.Int32, 5);
             parm[19] = da.AddSPParameter("Flag", Flag.Insert, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm, true);
+            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm);
 
             return id;
         }
@@ -107,13 +107,13 @@ namespace BLL
             parm[19] = da.AddSPParameter("Tli_Id", Obj_Location.Tli_Id, ParameterDirection.Input, DbType.Int32, 5);
             parm[20] = da.AddSPParameter("Flag", Flag.Update, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm, true);
+            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm);
 
 
             return id;
         }
 
-        public string Delete_Location(int LocationId,int CompanyID)
+        public string Delete_Location(int LocationId, int CompanyID)
         {
             SqlParameter[] parm = new SqlParameter[3];
             parm[0] = da.AddSPParameter("Tci_id", CompanyID, ParameterDirection.Input, DbType.Int32);
@@ -129,7 +129,7 @@ namespace BLL
         }
 
 
-        public List<Location> Get_Location(int userid,int Companyid)
+        public List<Location> Get_Location(int userid, int Companyid)
         {
             SqlParameter[] parm = new SqlParameter[3];
             parm[0] = da.AddSPParameter("Tci_Companyid", 4, ParameterDirection.Input, DbType.Int32, 10);
@@ -145,40 +145,43 @@ namespace BLL
                 {
                     obj_L.Tli_Id = Convert.ToInt32(dt.Rows[i]["Tli_id"]);
                 }
+
+
+                obj_L.Tci_Companyid = Convert.ToInt32(dt.Rows[i]["Tci_Companyid"]);
+
                 obj_L.Tli_Name = dt.Rows[i]["Tli_Name"].ToString();
 
-                obj_L.Tli_Address = dt.Rows[0]["Tli_Address"].ToString();
-                obj_L.Tli_code = dt.Rows[0]["Tli_Code"].ToString();
-                obj_L.Tli_District = dt.Rows[0]["Tli_District"].ToString();
-                obj_L.Tli_City = dt.Rows[0]["Tli_City"].ToString();
-                if (dt.Rows[0]["Tli_EstDate"].ToString() != null && dt.Rows[0]["Tli_EstDate"].ToString() != "")
+                obj_L.Tli_Address = dt.Rows[i]["Tli_Address"].ToString();
+                obj_L.Tli_code = dt.Rows[i]["Tli_Code"].ToString();
+                obj_L.Tli_District = dt.Rows[i]["Tli_District"].ToString();
+                obj_L.Tli_City = dt.Rows[i]["Tli_City"].ToString();
+                if (dt.Rows[0]["Tli_EstDate"].ToString() != null && dt.Rows[i]["Tli_EstDate"].ToString() != "")
                 {
-                    obj_L.Tli_EstDate = Convert.ToDateTime(dt.Rows[0]["Tli_EstDate"].ToString());
+                    obj_L.Tli_EstDate = Convert.ToDateTime(dt.Rows[i]["Tli_EstDate"].ToString());
                 }
-                if (dt.Rows[0]["Tsi_Id"].ToString() != null && dt.Rows[0]["Tsi_Id"].ToString() != "")
+                if (dt.Rows[0]["Tsi_Id"].ToString() != null && dt.Rows[i]["Tsi_Id"].ToString() != "")
                 {
-                    obj_L.Tsi_Id = Convert.ToInt32(dt.Rows[0]["Tsi_Id"]);
+                    obj_L.Tsi_Id = Convert.ToInt32(dt.Rows[i]["Tsi_Id"]);
                 }
-                if (dt.Rows[0]["Tci_Id"].ToString() != null && dt.Rows[0]["Tci_Id"].ToString() != "")
+                if (dt.Rows[0]["Tci_Id"].ToString() != null && dt.Rows[i]["Tci_Id"].ToString() != "")
                 {
-                    obj_L.Tci_Id = Convert.ToInt32(dt.Rows[0]["Tci_Id"]);
+                    obj_L.Tci_Id = Convert.ToInt32(dt.Rows[i]["Tci_Id"]);
                 }
-                obj_L.Tli_gst = dt.Rows[0]["Tli_gst"].ToString();
-                obj_L.Tli_Tan = dt.Rows[0]["Tli_Tan"].ToString();
-                obj_L.Tli_Pan_no = dt.Rows[0]["Tli_Pan_no"].ToString();
-                obj_L.Tli_phoneno = dt.Rows[0]["Tli_phoneno"].ToString();
-                obj_L.Tli_EmailId = dt.Rows[0]["Tli_EmailId"].ToString();
-                obj_L.Tli_Website = dt.Rows[0]["Tli_Website"].ToString();
-                obj_L.Tli_Esi_no = dt.Rows[0]["Tli_Esi_no"].ToString();
-                obj_L.Tli_pf_no = dt.Rows[0]["Tli_pf_no"].ToString();
-                obj_L.Tli_otherinfo = dt.Rows[0]["Tli_otherinfo"].ToString();
-
+                obj_L.Tli_gst = dt.Rows[i]["Tli_gst"].ToString();
+                obj_L.Tli_Tan = dt.Rows[i]["Tli_Tan"].ToString();
+                obj_L.Tli_Pan_no = dt.Rows[i]["Tli_Pan_no"].ToString();
+                obj_L.Tli_phoneno = dt.Rows[i]["Tli_phoneno"].ToString();
+                obj_L.Tli_EmailId = dt.Rows[i]["Tli_EmailId"].ToString();
+                obj_L.Tli_Website = dt.Rows[i]["Tli_Website"].ToString();
+                obj_L.Tli_Esi_no = dt.Rows[i]["Tli_Esi_no"].ToString();
+                obj_L.Tli_pf_no = dt.Rows[i]["Tli_pf_no"].ToString();
+                obj_L.Tli_otherinfo = dt.Rows[i]["Tli_otherinfo"].ToString();
                 Obj_Loc.Add(obj_L);
             }
             return Obj_Loc;
         }
 
-        public Location Edit_Location(int Tli_Id,  int CompanyId, int UserId)
+        public Location Edit_Location(int Tli_Id, int CompanyId, int UserId)
         {
             DataTable dtEdit = new DataTable();
             List<Location> Obj_locEdit = new List<Location>();
