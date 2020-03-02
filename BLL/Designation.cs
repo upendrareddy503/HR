@@ -29,7 +29,7 @@ namespace BLL
             parm[5] = da.AddSPParameter("Tdg_LevelName", Obj_Dig.LevelName, ParameterDirection.Input, DbType.String, 100);
             parm[6] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm, true);
 
             return id;
         }
@@ -44,7 +44,7 @@ namespace BLL
             parm[4] = da.AddSPParameter("Tdg_LevelName", Obj_Dig.LevelName, ParameterDirection.Input, DbType.String, 100);
             parm[5] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Designation_Details", parm, true);
 
             return id;
         }

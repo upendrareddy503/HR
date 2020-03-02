@@ -308,7 +308,7 @@ namespace BLL
             parm[24] = da.AddSPParameter("@LocationId", 1, ParameterDirection.Input, DbType.Int32, 30);
             parm[25] = da.AddSPParameter("@UserId", 1, ParameterDirection.Input, DbType.Int32, 30);
             parm[26] = da.AddSPParameter("Flag", 6, ParameterDirection.Input, DbType.Int32, 10);
-            
+
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Employee_Details", parm, true);
 
@@ -331,14 +331,19 @@ namespace BLL
             parm[5] = da.AddSPParameter("Tegi_DesignationId", Obj_Emp.Tegi_DesignationId, ParameterDirection.Input, DbType.Int32, 2);
             parm[6] = da.AddSPParameter("Tegi_PfNo", Obj_Emp.Tei_PfNo, ParameterDirection.Input, DbType.String, 50);
             parm[7] = da.AddSPParameter("Tegi_EsiNo", Obj_Emp.Tei_EsiNo, ParameterDirection.Input, DbType.String, 50);
-            parm[8] = da.AddSPParameter("Tegi_Weekoff", Obj_Emp.Tegi_Weekoff, ParameterDirection.Input, DbType.String, 100);
-            if (Obj_Emp.Tegi_ReportingLevel != "0" && Obj_Emp.Tegi_ReportingLevel!="" && Obj_Emp.Tegi_ReportingLevel != null)
+            if (Obj_Emp.Tegi_Weekoff != "0" && Obj_Emp.Tegi_Weekoff != "" && Obj_Emp.Tegi_Weekoff != null)
+            {
+                parm[8] = da.AddSPParameter("Tegi_Weekoff", Obj_Emp.Tegi_Weekoff, ParameterDirection.Input, DbType.String, 100);
+            }
+            else
+                parm[8] = da.AddSPParameter("Tegi_Weekoff", "", ParameterDirection.Input, DbType.String, 100);
+            if (Obj_Emp.Tegi_ReportingLevel != "0" && Obj_Emp.Tegi_ReportingLevel != "" && Obj_Emp.Tegi_ReportingLevel != null)
             {
                 parm[9] = da.AddSPParameter("Tegi_ReportingLevel", Obj_Emp.Tegi_ReportingLevel.TrimEnd(','), ParameterDirection.Input, DbType.String, 100);
             }
             else
             {
-                parm[9] = da.AddSPParameter("Tegi_ReportingLevel", 0, ParameterDirection.Input, DbType.String, 100);
+                parm[9] = da.AddSPParameter("Tegi_ReportingLevel", "", ParameterDirection.Input, DbType.String, 100);
             }
             parm[10] = da.AddSPParameter("Tegi_UANNumber", Obj_Emp.Tegi_UANNumber, ParameterDirection.Input, DbType.Int32, 50);
             parm[11] = da.AddSPParameter("Tegi_PF_Type", Obj_Emp.Tegi_PF_Type, ParameterDirection.Input, DbType.Int32, 50);
@@ -406,12 +411,42 @@ namespace BLL
 
             dt = da.Sp_Datatable("Usp_Employee_Details", parm);
             string Count = dt.Rows[0]["Tei_Id"].ToString();
-                
+
             return Count;
         }
-        public DataTable Get_Top_EmpID( int CompanyId, int LoactionId)
+        public string Get_EmpEmail(string Id, int CompanyId, int LoactionId)
         {
-            SqlParameter[] parm = new SqlParameter[3];           
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("Tei_Email", Id, ParameterDirection.Input, DbType.String, 100);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[2] = da.AddSPParameter("LocationId", LoactionId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[3] = da.AddSPParameter("Flag", 12, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Employee_Details", parm);
+            string Count = dt.Rows[0]["Tei_Id"].ToString();
+
+            return Count;
+        }
+        public string Get_EmpPhone(string Id, int CompanyId, int LoactionId)
+        {
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("Tei_Phone", Id, ParameterDirection.Input, DbType.String, 100);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[2] = da.AddSPParameter("LocationId", LoactionId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[3] = da.AddSPParameter("Flag", 13, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Employee_Details", parm);
+            string Count = dt.Rows[0]["Tei_Id"].ToString();
+
+            return Count;
+        }
+        public DataTable Get_Top_EmpID(int CompanyId, int LoactionId)
+        {
+            SqlParameter[] parm = new SqlParameter[3];
             parm[0] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 100);
             parm[1] = da.AddSPParameter("LocationId", LoactionId, ParameterDirection.Input, DbType.Int32, 100);
             parm[2] = da.AddSPParameter("Flag", 11, ParameterDirection.Input, DbType.Int32, 10);
@@ -419,9 +454,37 @@ namespace BLL
             DataTable dt = new DataTable();
 
             dt = da.Sp_Datatable("Usp_Employee_Details", parm);
-            
+
 
             return dt;
+        }
+
+        public EmployeeDetails GetLogin(EmployeeDetails obj_Login)
+        {
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("Txnid", obj_Login.Tei_FirstName, ParameterDirection.Input, DbType.String, 100);
+            parm[1] = da.AddSPParameter("Tcm_Name", obj_Login.Tei_LastName, ParameterDirection.Input, DbType.String, 100);
+            parm[2] = da.AddSPParameter("Tcm_Address", obj_Login.Tei_Gender, ParameterDirection.Input, DbType.String, 100);
+            parm[3] = da.AddSPParameter("Flag", 6, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Customer_info", parm);
+
+            EmployeeDetails log = new EmployeeDetails();
+            if (dt.Rows.Count > 0)
+            {
+                if (dt.Rows[0]["Tu_Userid"].ToString() != null && dt.Rows[0]["Tu_Userid"].ToString() != "")
+                    log.UserID = Convert.ToInt32(dt.Rows[0]["Tu_Userid"].ToString());
+                if (dt.Rows[0]["Tu_Companyid"].ToString() != null && dt.Rows[0]["Tu_Companyid"].ToString() != "")
+                    log.CompanyID = Convert.ToInt32(dt.Rows[0]["Tu_Companyid"].ToString());
+                if (dt.Rows[0]["Tu_Location"].ToString() != null && dt.Rows[0]["Tu_Location"].ToString() != "")
+                    log.LocationID = Convert.ToInt32(dt.Rows[0]["Tu_Location"].ToString());
+
+                log.Tei_FirstName = dt.Rows[0]["Tu_Username"].ToString();
+            }
+            
+            return log;
         }
     }
 }

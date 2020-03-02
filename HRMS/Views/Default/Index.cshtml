@@ -35,7 +35,7 @@
     <!-- Main Wrapper -->
     <div class="main-wrapper">
         <div class="account-content">
-            
+
             <div class="container">
 
                 <!-- Account Logo -->
@@ -50,10 +50,14 @@
                         <p class="account-subtitle">Access to our dashboard</p>
 
                         <!-- Account Form -->
-                        <form >
+                        <form>
                             <div class="form-group">
-                                <label>Email Address</label>
-                                <input class="form-control" type="text">
+                                <label>Customer ID</label>
+                                <input class="form-control" id="txt_CustID" onchange="return isNumberKey(this)" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>User Name</label>
+                                <input class="form-control" id="txt_UserName" type="text">
                             </div>
                             <div class="form-group">
                                 <div class="row">
@@ -66,12 +70,15 @@
                                         </a>
                                     </div>
                                 </div>
-                                <input class="form-control" type="password">
+                                <input class="form-control" type="password" id="txt_Pwd">
                             </div>
                             <div class="form-group text-center">
-                                <a href="/Master/Company">    <button class="btn btn-primary account-btn" type="submit">Login</button></a>
+                                <button class="btn btn-primary account-btn" id="btnLogin" type="button">Login</button>
                             </div>
-                            
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">                                    
+                                </div>
+                            </div>
                         </form>
                         <!-- /Account Form -->
 
@@ -90,6 +97,8 @@
 
     <!-- Custom JS -->
     <script src="/Content/assets/js/app.js"></script>
+    <script src="~/JS/Login.js"></script>
+    <script src="~/JS/Common.js"></script>
 
 </body>
 </html>

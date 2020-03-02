@@ -2,7 +2,8 @@
     load_Company();
     getCountry();
     getState();
-    $('#datepicker').datepicker();
+
+    $('.datepicker').datepicker();
     $("#userimage").change(function () {
         // $('.input-group.date').datepicker();
         var data = new FormData();
@@ -133,7 +134,7 @@ function Add_company() {
 
         return false;
     }
-
+    var EstDate = $('#txt_EstDate').val();
     var obj_ComInser = {
         Tci_id: $('#Tci_id').val(),
         Tci_Name: $('#txt_CompanyName').val(),
@@ -145,7 +146,7 @@ function Add_company() {
         Tci_Country: $('#ddl_Country').val(),
         Tci_Logo: ($('#imgPreview').attr('src')),
         Tci_phoneNo: $('#txt_PhoneNo').val(),
-        Tci_EDate: $('#txt_EstDate').val(),
+        Tci_EDate: EstDate,
         Tci_EmailID: $('#txt_EmailID').val(),
         Tci_GST: $('#txt_GST').val(),
         Tci_Tan: $('#txt_Tan').val(),
@@ -194,12 +195,12 @@ function Edit_Company(Id) {
             $('#txt_Pan').val(r.Tci_Pan_No);
             $('#txt_Website').val(r.Tci_Website)
             $('#imgPreview').attr('src', r.Tci_Logo);
-            if (r.Tci_EDate != null && r.Tci_EDate != "") {
-                var date = new Date(parseInt(r.Tci_EstDate.substr(6)));
+            if (r.Tci_Date != null && r.Tci_Date != "") {
+                var date = new Date(parseInt(r.Tci_Date.substr(6)));
                 var month = date.getMonth() + 1;
                 alert(date);
 
-                $('#datepicker').val(date.getDate() + "-" + month + "-" + date.getFullYear());
+                $('#txtEstDate').val(month + "/" + date.getDate() + "/" + date.getFullYear());
             }
 
             $('#MyModal').modal('show');
@@ -219,10 +220,12 @@ function Update_company() {
 
         return false;
     }
-    
+    var EstDate = $('#txtEstDate').val();
+    alert(EstDate);
     var obj_ComUpd = {
+        Tci_Date: EstDate,
         CompanyId: $('#hcid').val(),
-        Tci_EDate: $('#datepicker').val(),
+        Tci_EDate: EstDate,
         Tci_Name: $('#txt_CompanyName').val(),
         Tci_Code: $('#txt_Code').val(),
         Tci_Address: $('#txt_Address').val(),
@@ -230,7 +233,7 @@ function Update_company() {
         Tci_District: $('#txt_District').val(),
         Tci_State: $('#txt_State').val(),
         Tci_Country: $('#ddl_Country').val(),
-        Tci_phoneNo: $('#txt_PhoneNo').val(),      
+        Tci_phoneNo: $('#txt_PhoneNo').val(),
         Tci_EmailID: $('#txt_EmailID').val(),
         Tci_GST: $('#txt_GST').val(),
         Tci_Tan: $('#txt_Tan').val(),

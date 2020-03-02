@@ -51,7 +51,7 @@ namespace BLL
 
             parm[7] = da.AddSPParameter("Flag", Flag.Insert, ParameterDirection.Input, DbType.Int32, 10);
           
-            string id = da.ExecuteNonQuerySP("Usp_Holiday_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Holiday_Details", parm, true);
 
             return id;
         }
@@ -75,7 +75,7 @@ namespace BLL
             parm[6] = da.AddSPParameter("Thi_Location", 1, ParameterDirection.Input, DbType.String, 100);
             parm[7] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Holiday_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Holiday_Details", parm, true);
 
             return id;
         }

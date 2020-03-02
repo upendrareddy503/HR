@@ -42,7 +42,7 @@ namespace BLL
             parm[2] = da.AddSPParameter("Tdi_Id", Obj_Div.DivisionId, ParameterDirection.Input, DbType.Int32,100);            
             parm[3] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64,10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Division_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Division_Details", parm, true);
 
             return id;
         }

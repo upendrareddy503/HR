@@ -55,9 +55,9 @@ namespace BLL
      public List<properties> Get_employeeidwise(string Ter_id)
         {
 
-            SqlParameter[] parm = new SqlParameter[1];
+            SqlParameter[] parm = new SqlParameter[2];
             parm[0] = da.AddSPParameter("Ter_id", Ter_id, ParameterDirection.Input, DbType.String, 10);          
-           // parm[1] = da.AddSPParameter("Flag", , ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Flag",0 , ParameterDirection.Input, DbType.Int32, 10);
             DataTable dt = new DataTable();            
             dt = da.Sp_Datatable("Usp_Test_Details", parm);
 
@@ -66,6 +66,34 @@ namespace BLL
             List<properties> propert= new List<properties>();
            // foreach(DataRow r in dt.Rows)
            for(int i=0;i<dt.Rows.Count;i++)
+            {
+                properties empidwise = new properties();
+                empidwise.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);
+                empidwise.Tei_Empno = dt.Rows[i]["Tei_Empno"].ToString();
+                empidwise.Tei_FirstName = dt.Rows[i]["Tei_FirstName"].ToString();
+                empidwise.Tei_DivisionId = Convert.ToInt32(dt.Rows[i]["Tegi_DivisionId"]);
+                empidwise.Tei_DepartmentId = Convert.ToInt32(dt.Rows[i]["Tegi_DepartmentId"]);
+                empidwise.Tegi_GroupId = Convert.ToInt32(dt.Rows[i]["Tegi_GroupId"]);
+                propert.Add(empidwise);
+
+            }
+
+            return propert;
+        }
+        public List<properties> Get_employeeNamewise(string Ter_id)
+        {
+
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Ter_Name", Ter_id, ParameterDirection.Input, DbType.String, 10);
+            parm[1] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
+            DataTable dt = new DataTable();
+            dt = da.Sp_Datatable("Usp_Test_Details", parm);
+
+
+
+            List<properties> propert = new List<properties>();
+            // foreach(DataRow r in dt.Rows)
+            for (int i = 0; i < dt.Rows.Count; i++)
             {
                 properties empidwise = new properties();
                 empidwise.Tei_Id = Convert.ToInt32(dt.Rows[i]["Tei_Id"]);

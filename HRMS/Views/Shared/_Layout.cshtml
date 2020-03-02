@@ -220,6 +220,27 @@
     <script src="~/JS/Menu.js"></script>
 
     <script src="~/JS/Common.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){           
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '/Default/checkSession',
+                data: '{}',
+                success: function (data) {                    
+                    if (data == false) {
+                        location.href = "/Default"
+                    }
+                   
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });  
+
+        });
+    </script>
 </body>
 </html>
 

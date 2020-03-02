@@ -15,9 +15,9 @@
                     <li class="breadcrumb-item active">Allowance</li>
                 </ul>
             </div>
-            @*<div class="col-auto float-right ml-auto">
+            <div class="col-auto float-right ml-auto">
                     <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_Allowance"><i class="fa fa-plus"></i> Add Allowance</a>
-                </div>*@
+                </div>
         </div>
     </div>
     <!-- /Page Header -->
@@ -26,80 +26,11 @@
             <div class="card mb-0">
 
                 <div class="card-body">
-                    <form>
-                        <input type="hidden" value="hdnAllwId" />
-
-                        <div class="form-group" align="right">
-
-                            <input type="checkbox" id="chkFixed" />
-                            <label>Fixed</label>
+                    <div class="col-md-6">
+                        <div class="form-group">                            
+                            <select id="ddl_EmpGroup1" class="form-control"><option>Select</option></select>
                         </div>
-
-
-                        <div class="form-group">
-                            <label for="EmployeeGroup">Employee Group</label>
-                            <select id="ddl_EmpGroup" class="form-control validate"><option>Select</option></select>
-                        </div>
-                        <div class="form-group">
-                            <label for="AllowanceName">Allowance Name</label>
-                            <input type="text" class="form-control validate" id="txt_AllwName" />
-                            <input type="hidden" value="" id="hdnAllwId" />
-                        </div>
-                        <div class="form-group">
-                            <label for="AllowanceType">Allowance Type</label>
-                            <select id="ddl_AllwType" class="form-control validate">
-                                <option value="0">Select</option>
-                                <option value="1">Addition</option>
-                                <option value="2">Deduction</option>
-                            </select>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="AllowanceValueType">Value</label>
-                            <select id="ddl_AllwValType">
-                                <option value="A">Amt</option>
-                                <option value="%">%</option>
-                            </select>
-                            <input type="text" class="form-control validate" id="txt_AllwValue" />
-                        </div>
-                        <div class="form-group" id="divBasedOn" style="display:none">
-                            <label for="Allowance">Allowances</label>
-                            <select id="ddlBasedOn" class="form-control" multiple="multiple">
-                                <option>Select</option>
-                            </select>
-                        </div>
-
-                        <div class="submit-section">
-
-                            <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_Allw();">Add</button>
-                            <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Allw();" style="display:none">Update</button>
-
-                        </div>
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
-                                @*<button type="button" class="close" data-dismiss="alert" >
-                                        <span aria-hidden="true">×</span>
-                                    </button>*@
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
-                                @*<button type="button" class="close" data-dismiss="alert" >
-                                        <span aria-hidden="true">×</span>
-                                    </button>*@
-                            </div>
-                        </div>
-                    </form>
-
-
-
-
-
+                    </div>
                     <div class="table-responsive">
                         <table id="tblAllowance" class="table table-stripped mb-0">
                             <thead>
@@ -107,6 +38,7 @@
                                     @*<th style="width: 30px;">#</th>*@
 
                                     <th>Allowance Name</th>
+                                    <th>Group Name</th>
                                     <th class="text-right">Action</th>
                                 </tr>
                             </thead>
@@ -123,91 +55,91 @@
 
 </div>
 <!-- /Page Content -->
-@*<!-- Add Allowance Modal -->
-    <div id="add_Allowance" class="modal custom-modal fade" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Allowance</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="hidden" value="hdnAllwId" />
+<!-- Add Allowance Modal -->
+<div id="add_Allowance" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Allowance</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" value="hdnAllwId" />
 
-                        <div class="form-group" align="right">
+                    <div class="form-group" align="right">
 
-                            <input type="checkbox" id="chkFixed" />
-                            <label>Fixed</label>
+                        <input type="checkbox" id="chkFixed" />
+                        <label>Fixed</label>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="EmployeeGroup">Employee Group</label>
+                        <select id="ddl_EmpGroup" class="form-control"><option>Select</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="AllowanceName">Allowance Name</label>
+                        <input type="text" class="form-control" id="txt_AllwName" />
+                        <input type="hidden" value="" id="hdnAllwId" />
+                    </div>
+                    <div class="form-group">
+                        <label for="AllowanceType">Allowance Type</label>
+                        <select id="ddl_AllwType" class="form-control">
+                            <option value="0">Select</option>
+                            <option value="1">Addition</option>
+                            <option value="2">Deduction</option>
+                        </select>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="AllowanceValueType">Value</label>
+                        <select id="ddl_AllwValType">
+                            <option value="A">Amt</option>
+                            <option value="%">%</option>
+                        </select>
+                        <input type="text" class="form-control" id="txt_AllwValue" />
+                    </div>
+                    <div class="form-group" id="divBasedOn" style="display:none">
+                        <label for="Allowance">Allowances</label>
+                        <select id="ddlBasedOn" class="form-control" multiple="multiple">
+                            <option>Select</option>
+                        </select>
+                    </div>
+
+                    <div class="submit-section">
+
+                        <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_Allw();">Add</button>
+                        <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Allw();" style="display:none">Update</button>
+
+                    </div>
+
+
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
+                            @*<button type="button" class="close" data-dismiss="alert" >
+                                    <span aria-hidden="true">×</span>
+                                </button>*@
                         </div>
+                    </div>
 
-
-                        <div class="form-group">
-                            <label for="EmployeeGroup">Employee Group</label>
-                            <select id="ddl_EmpGroup" class="form-control"><option>Select</option></select>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
+                            @*<button type="button" class="close" data-dismiss="alert" >
+                                    <span aria-hidden="true">×</span>
+                                </button>*@
                         </div>
-                        <div class="form-group">
-                            <label for="AllowanceName">Allowance Name</label>
-                            <input type="text" class="form-control" id="txt_AllwName" />
-                            <input type="hidden" value="" id="hdnAllwId" />
-                        </div>
-                        <div class="form-group">
-                            <label for="AllowanceType">Allowance Type</label>
-                            <select id="ddl_AllwType" class="form-control">
-                                <option value="0">Select</option>
-                                <option value="1">Addition</option>
-                                <option value="2">Deduction</option>
-                            </select>
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <label for="AllowanceValueType">Value</label>
-                            <select id="ddl_AllwValType">
-                                <option value="A">Amt</option>
-                                <option value="%">%</option>
-                            </select>
-                            <input type="text" class="form-control" id="txt_AllwValue" />
-                        </div>
-                        <div class="form-group" id="divBasedOn" style="display:none">
-                            <label for="Allowance">Allowances</label>
-                            <select id="ddlBasedOn" class="form-control" multiple="multiple">
-                                <option>Select</option>
-                            </select>
-                        </div>
-
-                        <div class="submit-section">
-
-                            <button type="button" class="btn btn-primary submit-btn" id="btnAdd" onclick="return Insert_Allw();">Add</button>
-                            <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Update_Allw();" style="display:none">Update</button>
-
-                        </div>
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                            <div class="errMsg alert-box alert-success border-0 disabled" role="alert">
-                                @*<button type="button" class="close" data-dismiss="alert" >
-                                        <span aria-hidden="true">×</span>
-                                    </button>*@
-@*</div>
-                </div>
-
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <div class="errMsg1 alert-box alert-danger border-0 disabled" role="alert">
-                        @*<button type="button" class="close" data-dismiss="alert" >
-        <span aria-hidden="true">×</span>
-    </button>*@
-@* </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-    <!-- /Add Allowance Modal -->*@
+</div>
+<!-- /Add Allowance Modal -->
 <!-- Delete Allowance Modal -->
 <div class="modal custom-modal fade" id="delete_Allowance" role="dialog">
     <div class="modal-dialog modal-dialog-centered">

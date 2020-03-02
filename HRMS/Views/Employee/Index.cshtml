@@ -42,7 +42,7 @@
                 <div class="form-group">
                     <label for="FirstName">Emp Number</label>
                     <input type="text" class="form-control validate" id="txt_emp" placeholder="Employee number" maxlength="6" tabindex="3" />
-                    <span class="alert-danger" id="spEmpCode" style="display:none">Employee Already Exist!.</span>
+                    <span class="alert-danger" id="spEmpCode" style="display:none">Employee ID Already Exist!.</span>
                 </div>
                 <div class="form-group">
                     <label for="LastName">Last Name</label>
@@ -65,6 +65,7 @@
                     <label for="EmailID">EmailID</label>
                     <input type="text" class="form-control validate" id="txt_EmailID" placeholder="EmailID" maxlength="50" tabindex="12" />
                     <span class="alert-danger" id="spEmailValid">Please Enter Valid Email!.</span>
+                    <span class="alert-danger" id="spEmpEmail" style="display:none">Employee Email Already Exist!.</span>
                 </div>
                 <div class="form-group">
                     <label for="Address1">Address1</label>
@@ -120,6 +121,7 @@
                     <label for="PhoneNo">PhoneNo</label>
                     <input type="text" class="form-control validate" id="txt_PhoneNo" placeholder="PhoneNo" maxlength="12" onkeypress="return isNumberKey(event)" tabindex="9" />
                     <span class="error_show form-text has-danger" id="spPhoneValid">Please Enter Valid Phone!.</span>
+                    <span class="alert-danger" id="spEmpPhone" style="display:none">Employee Phone Already Exist!.</span>
                 </div>
                 <div class="form-group">
                     <label for="Dateofjoining">Date of joining</label>
@@ -254,8 +256,8 @@
                 </div>
                 <div class="form-group">
                     <label for="WeekOff">Week Off</label>
-                    <select id="ddl_WeekOff" class="form-control" tabindex="32">
-                        <option value="0">Select</option>
+                    <select id="ddl_WeekOff" class="form-control" multiple="multiple" tabindex="32">
+                        
                         <option value="1">Sunday</option>
                         <option value="2">Monday</option>
                         <option value="3">Tuesday</option>

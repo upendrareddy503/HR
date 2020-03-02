@@ -48,6 +48,14 @@ namespace HRMS.Controllers
         {
             return Json(obj_Emp.Get_EmpID(Id, 1, 1), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Get_Email(EmployeeDetails obj_EmpIns)
+        {
+            return Json(obj_Emp.Get_EmpEmail(obj_EmpIns.Tei_Email, 1, 1), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Get_EmpPhone(string Id)
+        {
+            return Json(obj_Emp.Get_EmpPhone(Id, 1, 1), JsonRequestBehavior.AllowGet);
+        }
 
 
 

@@ -70,7 +70,7 @@ namespace BLL
              parm[18] = da.AddSPParameter("Tci_Companyid", 4, ParameterDirection.Input, DbType.Int32, 5);
             parm[19] = da.AddSPParameter("Flag", Flag.Insert, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm, true);
 
             return id;
         }
@@ -107,7 +107,7 @@ namespace BLL
             parm[19] = da.AddSPParameter("Tli_Id", Obj_Location.Tli_Id, ParameterDirection.Input, DbType.Int32, 5);
             parm[20] = da.AddSPParameter("Flag", Flag.Update, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Location_Details", parm, true);
 
 
             return id;

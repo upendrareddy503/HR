@@ -27,6 +27,10 @@ namespace HRMS.Controllers
         {
             return Json(obj_Allw.Get_AllAllowance(1,1,Id), JsonRequestBehavior.AllowGet);
         }
+        public JsonResult Allowance_List_All()
+        {
+            return Json(obj_Allw.Get_AllAllowance(1, 1), JsonRequestBehavior.AllowGet);
+        }
         public JsonResult GetAllowanceByID(int ID)
         {            
             return Json(obj_Allw.Get_Allowance(1, 1, ID), JsonRequestBehavior.AllowGet);

@@ -19,6 +19,10 @@
         includeSelectAllOption: true
 
     });
+    $('[id*=ddl_WeekOff]').multiselect({
+        includeSelectAllOption: true
+
+    });
     $('#txt_emp').change(function () {
         var emp = $('#txt_emp');
         var Id = emp.val();
@@ -35,6 +39,27 @@
                 }
                 else {
                     $('#spEmpCode').hide();
+                    emp.css("border", "");
+                }
+            }
+        });
+    });
+    $('#txt_PhoneNo').change(function () {
+        var emp = $('#txt_PhoneNo');
+        var Id = emp.val();
+        $.ajax({
+            url: "/Employee/Get_EmpPhone/" + Id,
+            type: "Post",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (r) {
+                if (parseInt(r) >= 1) {
+                    $('#spEmpPhone').show();
+                    emp.val('').focus();
+                    emp.css("border", "1px solid red");
+                }
+                else {
+                    $('#spEmpPhone').hide();
                     emp.css("border", "");
                 }
             }
@@ -111,7 +136,6 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (r) {
-                $('#ddl_allowance').empty().append('<option selected="selected" value="0">Select</option>');
                 $.each(r, function (key, item) {
                     $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
                 });
@@ -132,12 +156,32 @@
         if (!validateEmail($("[id*=txt_EmailID]").val())) {
 
             $('#spEmailValid').show();
-            $(this).css("border", "1px solid red");
-
+            $('#spEmpEmail').hide();
+            $(this).css("border", "1px solid red").focus();            
         }
         else {
             $('#spEmailValid').hide();
             $(this).css("border", "");
+            var emp = $('#txt_EmailID');            
+            var obj_EmpIns = { Tei_Email:emp.val() };
+            $.ajax({
+                url: "/Employee/Get_Email/",
+                type: "Post",
+                contentType: "application/json;charset=utf-8",
+                data: JSON.stringify(obj_EmpIns),
+                dataType: "json",
+                success: function (r) {
+                    if (parseInt(r) >= 1) {
+                        $('#spEmpEmail').show();
+                        emp.val('').focus();
+                        emp.css("border", "1px solid red");
+                    }
+                    else {
+                        $('#spEmpEmail').hide();
+                        emp.css("border", "");
+                    }
+                }
+            });
         }
     });
 
@@ -503,6 +547,10 @@ function Forword() {
     $('[id*=ddl_ReportingTo] > option:selected').each(function () {
         ReportingTo += $(this).val() + ',';
     });
+    var WeekOff = "";
+    $('[id*=ddl_WeekOff] > option:selected').each(function () {
+        WeekOff += $(this).val() + ',';
+    });
     var obj_EmpIns = {
         Tei_Id: $('#hid').val(),
         Tegi_Shift_Group: $('#ddl_Shift').val(),
@@ -512,7 +560,7 @@ function Forword() {
         Tegi_DesignationId: $('#ddl_Designation').val(),
         Tei_PfNo: $('#txt_PfNo').val(),
         Tei_EsiNo: $('#txt_ESno').val(),
-        Tegi_Weekoff: $('#ddl_WeekOff').val(),
+        Tegi_Weekoff: WeekOff,
         Tegi_ReportingLevel: ReportingTo,
         Tegi_UANNumber: $('#txt_UANNumber').val(),
         Tegi_PF_Type: $('#ddl_PFType').val(),

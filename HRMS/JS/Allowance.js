@@ -1,6 +1,7 @@
 ﻿$(document).ready(function () {
     getGroup();
-    $('#ddl_EmpGroup').change(function () {
+    loadAllAllw();
+    $('#ddl_EmpGroup1').change(function () {
         if ($(this).val() != '0')
             loadAllw($(this).val());
     });
@@ -57,8 +58,10 @@ function getGroup() {
         dataType: "json",
         success: function (r) {
             $('#ddl_EmpGroup').empty().append('<option selected="selected" value="0">Select</option>');
+            $('#ddl_EmpGroup1').empty().append('<option selected="selected" value="0">All</option>');
             $.each(r, function (key, item) {
                 $('#ddl_EmpGroup').append($("<option></option>").val(item.GroupId).html(item.GroupName));
+                $('#ddl_EmpGroup1').append($("<option></option>").val(item.GroupId).html(item.GroupName));
             });
         }
     });
@@ -77,10 +80,41 @@ function loadAllw(Id) {
                 "bDestroy": true,
                 columns: [
                     { "data": "Alw_Name" },
+                    { "data": "GroupName" },
                     {
                         "data": "Alw_Id",
                         "render": function (Alw_Id) {
-                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" onclick="GetID(' + Alw_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Allowance" onclick="Deleted(' + Alw_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Allowance" onclick="GetID(' + Alw_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Allowance" onclick="Deleted(' + Alw_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ]
+            });
+
+        },
+        error: function (errmsg) {
+            alert(errmsg.responseText);
+        }
+    });
+}
+
+function loadAllAllw() {
+
+    $.ajax({
+        url: "/Payroll/Allowance_List_All/",
+        type: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            $("#tblAllowance").dataTable({
+                data: r,
+                "bDestroy": true,
+                columns: [
+                    { "data": "Alw_Name" },
+                    { "data": "GroupName" },
+                    {
+                        "data": "Alw_Id",
+                        "render": function (Alw_Id) {
+                            return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Allowance" onclick="GetID(' + Alw_Id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Allowance" onclick="Deleted(' + Alw_Id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
                 ]
@@ -130,9 +164,27 @@ function Insert_Allw() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadAllw($('#ddl_EmpGroup').val());
+            if ($('#ddl_EmpGroup1').val() != '0')
+                loadAllw($('#ddl_EmpGroup1').val());
+            else
+                loadAllAllw();
             clearAllw();
-            //clearTextBox();            
+            //clearTextBox();    
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -151,7 +203,7 @@ function GetID(Id) {
         dataType: 'json',
         async: false,
         success: function (r) {
-            //$('#ddl_EmpGroup').val(r.GroupId);
+            $('#ddl_EmpGroup').val(r.GroupId);
             $('#hdnAllwId').val(r.Alw_Id);
             $('#txt_AllwName').val(r.Alw_Name);
             $('#ddl_AllwType').val(r.Alw_Type);
@@ -220,9 +272,27 @@ function Update_Allw() {
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadAllw($('#ddl_EmpGroup').val());
+            if ($('#ddl_EmpGroup1').val() != '0')
+                loadAllw($('#ddl_EmpGroup1').val());
+            else
+                loadAllAllw();
             clearAllw();
-            //clearTextBox();            
+            //clearTextBox();   
+            var msg = r.split('$');
+
+            if (msg[1] == "True") {
+
+                $(".errMsg").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg').fadeOut('slow');
+                }, 2000);
+            }
+            else {
+                $(".errMsg1").fadeIn().html("<ul><li>" + msg[0] + "</li></ul>");
+                setTimeout(function () {
+                    $('.errMsg1').fadeOut('slow');
+                }, 2000);
+            }
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -245,7 +315,10 @@ function DeleteAllw() {
         contentType: "application/json;charset=UTF-8",
         dataType: "json",
         success: function (r) {
-            loadAllw($('#ddl_EmpGroup').val());
+            if ($('#ddl_EmpGroup1').val() != '0')
+                loadAllw($('#ddl_EmpGroup1').val());
+            else
+                loadAllAllw();
             clearAllw();
         },
         error: function (errormessage) {
@@ -261,10 +334,11 @@ function clearAllw() {
     $('#txt_AllwValue').val('');
     $('#chkFixed').prop('checked', false);
     $('#divBasedOn').hide();
-
-    $("#ddlBasedOn").multiselect("deSelectAll");
-
-    $("#ddlBasedOn").multiselect('refresh');
+    if ($('#ddl_AllwType').val() == '2') {
+        $("#ddlBasedOn").multiselect("deSelectAll");
+        $("#ddlBasedOn").multiselect('refresh');
+    }
     $('#btnUpdate').hide();
     $('#btnAdd').show();
+    $('#ddl_EmpGroup').val('0');
 }

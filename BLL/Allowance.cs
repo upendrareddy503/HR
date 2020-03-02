@@ -40,9 +40,9 @@ namespace BLL
             parm[9] = da.AddSPParameter("Tli_Id", Obj_Alw.LocationID, ParameterDirection.Input, DbType.Int32, 10);
             parm[10] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm,true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Update_Allowances(Allowance Obj_Alw)
@@ -62,9 +62,9 @@ namespace BLL
             parm[10] = da.AddSPParameter("Teai_Id", Obj_Alw.Alw_Id, ParameterDirection.Input, DbType.Int32, 10);
             parm[11] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm);
+            string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm, true);
 
-            return id;
+            return id.TrimEnd(' ');
         }
 
         public string Delete_Allowance(int Id, int CompanyID, int LocationID, int UserID)
@@ -112,6 +112,42 @@ namespace BLL
                     allw.Alw_Type = Convert.ToInt32(dt.Rows[i]["Teai_Type"]);
                 if (dt.Rows[i]["Tgi_Id"].ToString() != null && dt.Rows[i]["Tgi_Id"].ToString() != "")
                     allw.GroupId = Convert.ToInt32(dt.Rows[i]["Tgi_Id"]);
+                allw.GroupName = (dt.Rows[i]["Tgi_Name"]).ToString();
+                obj_Allw.Add(allw);
+            }
+
+            return obj_Allw;
+        }
+
+
+        public List<Allowance> Get_AllAllowance(int CompanyID, int LocationID)
+        {
+            SqlParameter[] parm = new SqlParameter[4];           
+            parm[0] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("Flag", 10, ParameterDirection.Input, DbType.Int32, 10);
+
+
+            DataTable dt = new DataTable();
+            List<Allowance> obj_Allw = new List<Allowance>();
+            dt = da.Sp_Datatable("Usp_Allowance_Details", parm);
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Allowance allw = new Allowance();
+                if (dt.Rows[i]["Teai_Id"].ToString() != null && dt.Rows[i]["Teai_Id"].ToString() != "")
+                    allw.Alw_Id = Convert.ToInt32(dt.Rows[i]["Teai_Id"]);
+                allw.Alw_Name = dt.Rows[i]["Teai_Name"].ToString();
+                allw.Alw_Val_Type = dt.Rows[i]["Teai_Cal_Type"].ToString();
+                if (dt.Rows[i]["Teai_Value"].ToString() != null && dt.Rows[i]["Teai_Value"].ToString() != "")
+                    allw.Alw_Val = Convert.ToInt32(dt.Rows[i]["Teai_Value"]);
+                allw.Alw_BasedOn = dt.Rows[i]["Teai_Basedon"].ToString();
+                allw.Alw_Fixed = dt.Rows[i]["Teai_Fixed"].ToString();
+                if (dt.Rows[i]["Teai_Type"].ToString() != null && dt.Rows[i]["Teai_Type"].ToString() != "")
+                    allw.Alw_Type = Convert.ToInt32(dt.Rows[i]["Teai_Type"]);
+                if (dt.Rows[i]["Tgi_Id"].ToString() != null && dt.Rows[i]["Tgi_Id"].ToString() != "")
+                    allw.GroupId = Convert.ToInt32(dt.Rows[i]["Tgi_Id"]);
+                allw.GroupName = (dt.Rows[i]["Tgi_Name"]).ToString();
 
                 obj_Allw.Add(allw);
             }

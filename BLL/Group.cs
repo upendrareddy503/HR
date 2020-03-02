@@ -17,7 +17,7 @@ namespace BLL
         public int LocationID { get; set; }
         public System.DateTime ModifiedDate { get; set; }
         public int CompanyID { get; set; }
-        public int UserID { get; set; }
+        public Nullable<int> UserID { get; set; }
         public enum Flag
         {
             Insert = 1, Select = 2, Update = 3, Delete = 4, Edit = 5
@@ -49,7 +49,7 @@ namespace BLL
             parm[4] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32);
             parm[5] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int64);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
-            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm);
+            string id = da.ExecuteNonQuerySP("Usp_Group_Details",parm, true);
 
             return id.TrimEnd(' ');
         }
