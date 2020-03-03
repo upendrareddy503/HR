@@ -13,7 +13,14 @@ function loadDes() {
             $("#tblDesignation").dataTable({
                 data: r,
                 "bDestroy": true,
-                columns: [
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    $("td:first", nRow).html(iDisplayIndex + 1);
+                    return nRow;
+                },
+                columns: [   
+                    {
+                        "data": "DesignationId",                                          
+                    },
                     { "data": "DesignationName" },
                     {
                         "data": "LevelId",
@@ -27,7 +34,15 @@ function loadDes() {
                             return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_Designation" onclick="GetID(' + DesignationId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_Designation" onclick="Deleted(' + DesignationId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
-                ]
+                ],
+                "columnDefs": [{
+
+                    'targets': [0, 3], /* column index */
+
+                    'orderable': false, /* true or false */
+
+                }],
+                "order":  [1, 'asc']
             })
         },
         error: function (errmsg) {

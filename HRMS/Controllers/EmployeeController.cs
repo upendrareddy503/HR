@@ -23,21 +23,34 @@ namespace HRMS.Controllers
             return View();
         }
 
+        public ActionResult EmployeeList()
+        {
+            return View();
+        }
+
         
         public JsonResult Insert_Employee(EmployeeDetails obj_EmpIns)
         {
+            obj_EmpIns.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_EmpIns.LocationID = Convert.ToInt32(Session["LocationID"]);
+            obj_EmpIns.UserID= Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Insert_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Next_Employee(EmployeeDetails obj_EmpNxt)
         {
+            obj_EmpNxt.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_EmpNxt.LocationID = Convert.ToInt32(Session["LocationID"]);
+            obj_EmpNxt.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Next_Employee(obj_EmpNxt), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Second_Employee(EmployeeDetails obj_EmpIns)
-        {
+        {            
+            obj_EmpIns.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Second_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Third_Employee(EmployeeDetails obj_EmpIns)
-        {
+        {           
+            obj_EmpIns.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Salary_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get_DesignationReport(string Id)
@@ -46,15 +59,15 @@ namespace HRMS.Controllers
         }
         public JsonResult Get_EmpID(string Id)
         {
-            return Json(obj_Emp.Get_EmpID(Id, 1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Emp.Get_EmpID(Id, Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get_Email(EmployeeDetails obj_EmpIns)
         {
-            return Json(obj_Emp.Get_EmpEmail(obj_EmpIns.Tei_Email, 1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Emp.Get_EmpEmail(obj_EmpIns.Tei_Email, Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Get_EmpPhone(string Id)
         {
-            return Json(obj_Emp.Get_EmpPhone(Id, 1, 1), JsonRequestBehavior.AllowGet);
+            return Json(obj_Emp.Get_EmpPhone(Id, Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
 
 
@@ -70,9 +83,9 @@ namespace HRMS.Controllers
                 {
                     var fileName = Path.GetFileName(pic.FileName);
                     var _ext = Path.GetExtension(pic.FileName);
-                    int CompanyId = 1,LocationId=1;
+                    int CompanyId = Convert.ToInt32(Session["companyid"]), LocationId= Convert.ToInt32(Session["LocationID"]);
                    
-                    DataTable dt = obj_Emp.Get_Top_EmpID(CompanyId, CompanyId);
+                    DataTable dt = obj_Emp.Get_Top_EmpID(CompanyId, LocationId);
                     if (dt.Rows.Count > 0)
                     {
                         _imgname = dt.Rows[0]["Tei_Id"].ToString();
@@ -320,6 +333,9 @@ namespace HRMS.Controllers
                                     }
                                     obj_Emp.Tei_Address1 = row["Address"].ToString();
                                     obj_Emp.Tei_AadharNo = row["AadharNo"].ToString();
+                                    obj_Emp.CompanyID = Convert.ToInt32(Session["companyid"]);
+                                    obj_Emp.LocationID = Convert.ToInt32(Session["LocationID"]);
+                                    obj_Emp.UserID = Convert.ToInt32(Session["userid"]);
 
                                     string k = obj_Emp.Insert_Employee(obj_Emp);
                                     //                        _lstProductMaster.Add(new EmployeeDetails
@@ -372,6 +388,12 @@ namespace HRMS.Controllers
 
             // return Json("File uploaded successfully");
             return Json(JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult List()
+        {
+            return Json(obj_Emp.Get_AllEmp(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
 
     }

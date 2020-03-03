@@ -27,12 +27,10 @@ namespace BLL
         public string Rules { get; set; }
         public List<EmployeeRuleHistory> EmployeeRuleHistories{ get; set; }   
         DataAccess da = new DataAccess();
-        public List<EmployeesCols> Get_AllEmpRules(int UserId)
+        public List<EmployeesCols> Get_AllEmpRules()
         {
-            SqlParameter[] parm = new SqlParameter[3];
-            parm[0] = da.AddSPParameter("Ter_id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Ter_Name", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[1];            
+            parm[0] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
 
             DataTable dt = new DataTable();
             List<EmployeesCols> obj_Rule = new List<EmployeesCols>();
@@ -52,12 +50,14 @@ namespace BLL
             return obj_Rule;
         }
 
-     public List<properties> Get_employeeidwise(string Ter_id)
+     public List<properties> Get_employeeidwise(string Ter_id,int CompanyId,int LocationId)
         {
 
-            SqlParameter[] parm = new SqlParameter[2];
-            parm[0] = da.AddSPParameter("Ter_id", Ter_id, ParameterDirection.Input, DbType.String, 10);          
-            parm[1] = da.AddSPParameter("Flag",0 , ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("Ter_id", Ter_id, ParameterDirection.Input, DbType.String, 10);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("LocationId", LocationId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("Flag",0 , ParameterDirection.Input, DbType.Int32, 10);
             DataTable dt = new DataTable();            
             dt = da.Sp_Datatable("Usp_Test_Details", parm);
 
@@ -80,12 +80,14 @@ namespace BLL
 
             return propert;
         }
-        public List<properties> Get_employeeNamewise(string Ter_id)
+        public List<properties> Get_employeeNamewise(string Ter_id,int CompanyId,int LocationId)
         {
 
-            SqlParameter[] parm = new SqlParameter[2];
+            SqlParameter[] parm = new SqlParameter[4];
             parm[0] = da.AddSPParameter("Ter_Name", Ter_id, ParameterDirection.Input, DbType.String, 10);
-            parm[1] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("LocationId", LocationId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             DataTable dt = new DataTable();
             dt = da.Sp_Datatable("Usp_Test_Details", parm);
 
@@ -109,30 +111,31 @@ namespace BLL
             return propert;
         }
 
-        public List<Division> GetDivision(int Id)
+        public List<DepartmentDetails> GetDepartment(int Id, int CompanyId, int LocationId,int UserId)
         {
             SqlParameter[] parm = new SqlParameter[4];
             parm[0] = da.AddSPParameter("Tgi_Id", Id, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("CompanyId", 3, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("LocationId", 1, ParameterDirection.Input, DbType.Int32, 10);
-             parm[3] = da.AddSPParameter("Flag", 6, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("LocationId", LocationId, ParameterDirection.Input, DbType.Int32, 10);
+            //parm[3] = da.AddSPParameter("Tdp_UserId", UserId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[3] = da.AddSPParameter("Flag", 6, ParameterDirection.Input, DbType.Int32, 10);
             DataTable dt = new DataTable();
-            dt = da.Sp_Datatable("Usp_Division_Details", parm);
+            dt = da.Sp_Datatable("Usp_Department_Details", parm);
 
 
 
-            List<Division> lst_Div = new List<Division>();
+            List<DepartmentDetails> lst_Dep = new List<DepartmentDetails>();
             // foreach(DataRow r in dt.Rows)
             for (int i = 0; i < dt.Rows.Count; i++)
             {
-                Division obj_Div = new Division();
-                obj_Div.DivisionId = Convert.ToInt32(dt.Rows[i]["Tdi_Id"]);
-                obj_Div.DivisionName = dt.Rows[i]["Tdi_Name"].ToString();
-                lst_Div.Add(obj_Div);
+                DepartmentDetails obj_Dep = new DepartmentDetails();
+                obj_Dep.Department_Id = Convert.ToInt32(dt.Rows[i]["Tdpi_Id"]);
+                obj_Dep.Department_Name = dt.Rows[i]["Tdp_Name"].ToString();
+                lst_Dep.Add(obj_Dep);
 
             }
 
-            return lst_Div;
+            return lst_Dep;
         }
 
         public List<Emprulesdetails> GetGroupByRules(Emprulesdetails obj_Rules)
@@ -160,11 +163,11 @@ namespace BLL
 
             return lst_EmpRules;
         }
-        public List<Emprulesdetails> GetDivisionByRules(Emprulesdetails obj_Rules)
+        public List<Emprulesdetails> GetDeptByRules(Emprulesdetails obj_Rules)
         {
             SqlParameter[] parm = new SqlParameter[3];
             parm[0] = da.AddSPParameter("GroupId", obj_Rules.GroupId, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tei_DivisionId", obj_Rules.Tegi_DivisionId, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tegi_DepartmentId", obj_Rules.Tegi_DepartmentId, ParameterDirection.Input, DbType.Int32, 10);
             parm[2] = da.AddSPParameter("Flag", 8, ParameterDirection.Input, DbType.Int32, 10);
             DataTable dt = new DataTable();
             dt = da.Sp_Datatable("Usp_Rules_Details", parm);

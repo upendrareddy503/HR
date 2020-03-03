@@ -24,7 +24,7 @@ namespace BLL
         public string Insert_Allowances(Allowance Obj_Alw)
         {
 
-            SqlParameter[] parm = new SqlParameter[11];
+            SqlParameter[] parm = new SqlParameter[9];
             parm[0] = da.AddSPParameter("Tgi_Id", Obj_Alw.GroupId, ParameterDirection.Input, DbType.Int32, 10);
             parm[1] = da.AddSPParameter("Teai_Name", Obj_Alw.Alw_Name, ParameterDirection.Input, DbType.String, 200);
             parm[2] = da.AddSPParameter("Teai_Type", Obj_Alw.Alw_Type, ParameterDirection.Input, DbType.Int32, 10);
@@ -35,10 +35,8 @@ namespace BLL
             else
                 parm[5] = da.AddSPParameter("Teai_Basedon", null, ParameterDirection.Input, DbType.String, 500);
             parm[6] = da.AddSPParameter("Teai_Fixed", Obj_Alw.Alw_Fixed, ParameterDirection.Input, DbType.String, 10);
-            parm[7] = da.AddSPParameter("UserId", Obj_Alw.UserID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[8] = da.AddSPParameter("Tci_Id", Obj_Alw.CompanyID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[9] = da.AddSPParameter("Tli_Id", Obj_Alw.LocationID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[10] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[7] = da.AddSPParameter("UserId", Obj_Alw.UserID, ParameterDirection.Input, DbType.Int32, 10);           
+            parm[8] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm,true);
 
@@ -48,7 +46,7 @@ namespace BLL
         public string Update_Allowances(Allowance Obj_Alw)
         {
 
-            SqlParameter[] parm = new SqlParameter[12];
+            SqlParameter[] parm = new SqlParameter[10];
             parm[0] = da.AddSPParameter("Tgi_Id", Obj_Alw.GroupId, ParameterDirection.Input, DbType.Int32, 10);
             parm[1] = da.AddSPParameter("Teai_Name", Obj_Alw.Alw_Name, ParameterDirection.Input, DbType.String, 200);
             parm[2] = da.AddSPParameter("Teai_Type", Obj_Alw.Alw_Type, ParameterDirection.Input, DbType.Int32, 10);
@@ -56,11 +54,9 @@ namespace BLL
             parm[4] = da.AddSPParameter("Teai_Value", Obj_Alw.Alw_Val, ParameterDirection.Input, DbType.Int32, 10);
             parm[5] = da.AddSPParameter("Teai_Basedon", Obj_Alw.Alw_BasedOn, ParameterDirection.Input, DbType.String, 500);
             parm[6] = da.AddSPParameter("Teai_Fixed", Obj_Alw.Alw_Fixed, ParameterDirection.Input, DbType.String, 10);
-            parm[7] = da.AddSPParameter("UserId", Obj_Alw.UserID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[8] = da.AddSPParameter("Tci_Id", Obj_Alw.CompanyID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[9] = da.AddSPParameter("Tli_Id", Obj_Alw.LocationID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[10] = da.AddSPParameter("Teai_Id", Obj_Alw.Alw_Id, ParameterDirection.Input, DbType.Int32, 10);
-            parm[11] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int32, 10);
+            parm[7] = da.AddSPParameter("UserId", Obj_Alw.UserID, ParameterDirection.Input, DbType.Int32, 10);           
+            parm[8] = da.AddSPParameter("Teai_Id", Obj_Alw.Alw_Id, ParameterDirection.Input, DbType.Int32, 10);
+            parm[9] = da.AddSPParameter("Flag", 3, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm, true);
 
@@ -69,12 +65,9 @@ namespace BLL
 
         public string Delete_Allowance(int Id, int CompanyID, int LocationID, int UserID)
         {
-            SqlParameter[] parm = new SqlParameter[5];
-            parm[0] = da.AddSPParameter("Teai_Id", Id, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("UserId", UserID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[4] = da.AddSPParameter("Flag", (int)Flag.Delete, ParameterDirection.Input, DbType.Int64, 10);
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Teai_Id", Id, ParameterDirection.Input, DbType.Int32, 10);            
+            parm[1] = da.AddSPParameter("Flag", (int)Flag.Delete, ParameterDirection.Input, DbType.Int64, 10);
             //parm[5] = da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Allowance_Details", parm);
             if (id == null)
@@ -84,14 +77,11 @@ namespace BLL
             return id;
         }
 
-        public List<Allowance> Get_AllAllowance(int CompanyID, int LocationID, int GroupId)
+        public List<Allowance> Get_AllAllowance(int GroupId)
         {
-            SqlParameter[] parm = new SqlParameter[5];
-            parm[0] = da.AddSPParameter("Tgi_Id", GroupId, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[4] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Tgi_Id", GroupId, ParameterDirection.Input, DbType.Int32, 10);                      
+            parm[1] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
 
 
             DataTable dt = new DataTable();
@@ -122,11 +112,10 @@ namespace BLL
 
         public List<Allowance> Get_AllAllowance(int CompanyID, int LocationID)
         {
-            SqlParameter[] parm = new SqlParameter[4];           
-            parm[0] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("Flag", 10, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[3];           
+            parm[0] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32, 10);          
+            parm[2] = da.AddSPParameter("Flag", 10, ParameterDirection.Input, DbType.Int32, 10);
 
 
             DataTable dt = new DataTable();
@@ -155,14 +144,11 @@ namespace BLL
             return obj_Allw;
         }
 
-        public Allowance Get_Allowance(int CompanyID, int LocationID, int Id)
+        public Allowance Get_Allowance(int Id)
         {
-            SqlParameter[] parm = new SqlParameter[5];
-            parm[0] = da.AddSPParameter("Teai_Id", Id, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tci_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tli_Id", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
-            parm[4] = da.AddSPParameter("Flag", 5, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Teai_Id", Id, ParameterDirection.Input, DbType.Int32, 10);            
+            parm[1] = da.AddSPParameter("Flag", 5, ParameterDirection.Input, DbType.Int32, 10);
 
             DataTable dt = new DataTable();
             dt = da.Sp_Datatable("Usp_Allowance_Details", parm);
@@ -212,11 +198,10 @@ namespace BLL
         }
 
 
-        public List<Allowance> Get_Droupdwon(int ID)
+        public List<Allowance> Get_Droupdwon(int ID,int CompanyId,int LocationId)
         {
-            SqlParameter[] parm = new SqlParameter[3];
-            parm[0] = da.AddSPParameter("Tgi_Id", ID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("UserId", 1, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Tgi_Id", ID, ParameterDirection.Input, DbType.Int32, 10);                      
             parm[2] = da.AddSPParameter("Flag", 7, ParameterDirection.Input, DbType.Int32, 10);
 
 

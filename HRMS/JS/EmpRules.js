@@ -10,7 +10,7 @@
     $('#ddl_Group').change(function () {
         if ($(this).val() != '0') {
             var Id = $(this).val();
-            getDivisions(Id);
+            getDepartment(Id);
             //$.ajax({
             //    url: "/EmployeeRules/GetDivision/"+ Id,
             //    type: "Get",
@@ -30,17 +30,17 @@
 })
 
 
-function getDivisions(Id) {
+function getDepartment(Id) {
     $.ajax({
-        url: "/EmployeeRules/GetDivision/" + Id,
+        url: "/EmployeeRules/GetDepartment/" + Id,
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         async: false,
         success: function (r) {
-            $('#ddl_Division').empty().append('<option selected="selected" value="0">Select</option>');
+            $('#ddl_Dept').empty().append('<option selected="selected" value="0">Select</option>');
             $.each(r, function (key, item) {
-                $('#ddl_Division').append($("<option></option>").val(item.DivisionId).html(item.DivisionName));
+                $('#ddl_Dept').append($("<option></option>").val(item.Department_Id).html(item.Department_Name));
             });
         }
     });
@@ -82,12 +82,12 @@ function EmpRolesTables() {
         success: function (r) {
             var html = '<table class="table table-bordered table-hover" id="tbl">';            
             var thead = "";
-            thead = "<thead> <tr><th>S.no </th><th>Employe id </th><th>Employee Name</th>"
+            thead = "<thead> <tr><th>Employe id </th><th>Employee Name</th>"
             var thcolumn = "";
             var i = 0;
             $.each(r, function (key, item) {
                 thcolumn += "<th><input type='checkbox' class='headName' value='" + item.Ter_Name + "' /> " + item.Ter_Name + "</th>"
-                parseInt(i)++;
+                i=(parseInt(i))+1;
             });
             thcolumn += "<th style='display:none'>ID</th>";
             var tr = "";
@@ -103,7 +103,7 @@ function EmpRolesTables() {
             //});
 
             thead += thcolumn + "</tr></thead>";            
-            html += thead + "<tbody class='tbody'></tbody></table>";            
+            html += thead + "<tbody class='tRules'></tbody></table>";            
             // tbody += "<tr>" + emprulebind + "</tr>"
             $('#emprulebind').html(html);
 
@@ -119,26 +119,26 @@ function Show() {
         var obj_Emprule;
         var URL;
         alert($('#ddl_Group').val())
-        if ($('#ddl_Division').val() != "0" && $('#txt_EmloyeeId').val() == "") {
+        
+        if ($('#txt_EmloyeeId').val() != "" && $('#ddl_Dept').val()!=0) {
              obj_Emprule = {
-                GroupId: $('#ddl_Group').val(),
-                 Tegi_DivisionId: $('#ddl_Division').val()
-            };
-            URL = "~/employeerules/ShowDivisiondetails";
-        }
-        else if ($('#ddl_Division').val() != "0" && $('#txt_EmloyeeId').val() != "") {
-             obj_Emprule = {
-                GroupId: $('#ddl_Group').val(),
-                 Tegi_DivisionId: $('#ddl_Division').val(),
+                GroupId: $('#ddl_Group').val(),               
                  Tei_Id: $('#hdnEmpId').val()
             };
-            URL = "~/employeerules/ShowEmployeedetails";
+            URL = "/employeerules/ShowEmployeedetails";
+        }
+        else if ($('#txt_EmloyeeId').val() == "" && $('#ddl_Dept').val() != 0) {
+            obj_Emprule = {
+                GroupId: $('#ddl_Group').val(),
+                Tegi_DepartmentId: $('#ddl_Dept').val()
+            };
+            URL = "/employeerules/ShowDeptdetails";
         }
         else {
              obj_Emprule = {
                 GroupId: $('#ddl_Group').val()              
             };
-            URL = "~/employeerules/Showdetails";
+            URL = "/employeerules/Showdetails";
         }
         
         $.ajax({
@@ -151,15 +151,14 @@ function Show() {
                 var html = '';
                 var i = 1;
                 $.each(r, function (key, item) {
-                    html += '<tr>';
-                    html += '<td>' + parseInt(i++) + '</td>';
+                    html += '<tr>';                   
                     html += '<td>' + item.Tei_Empno + '</td>';
                     html += '<td>' + item.Tei_FirstName + '</td>';                    
                     var Rules = item.Rules.split('$');
-                    var length = parseInt(Rules.length + 4);
+                    var length = parseInt(Rules.length + 3);
                     $("#hdnLength").val(length);                    
-                    for (var j = 4; j < length; j++) {                        
-                        var Rules1 = Rules[parseInt(j-4)].split('|');
+                    for (var j = 3; j < length; j++) {                        
+                        var Rules1 = Rules[parseInt(j-3)].split('|');
                         //alert(Rules1[2]);
                         //var BatchId = $("#tbl thead tr:nth-child(1) th:nth-child(" + parseInt(j) + ") .headName").val();                        
                         
@@ -181,7 +180,7 @@ function Show() {
                 });
 
                 
-                $('.tbody').html(html);
+                $('.tRules').html(html);
                 
 
             }
@@ -190,14 +189,16 @@ function Show() {
     }
 }
 
-function Add() {    
+function Add_EmpRules() {  
+    alert($("#hdnLength").val());
     if ($("#tbl tbody tr").length > 0) {
+        var len = $("#tbl tbody tr").length;
         var EmpId="";
         var Rules = "";
         var Rules1 = "";
-        for (var i = 1; i <= $("#tbl tbody tr").length; i++) {
+        for (var i = 1; i <= len; i++) {
             EmpId += $("#tbl tbody tr:nth-child(" + i + ") td:nth-child(" + $("#hdnLength").val()+")").html() + "$" ;
-            for (var j = 4; j < $("#hdnLength").val(); j++) {
+            for (var j = 2; j < $("#hdnLength").val(); j++) {
                 if ($("#tbl tbody tr:nth-child(" + i + ") td:nth-child(" + j + ") .chkRules").prop('checked') == true) {                    
                     Rules += $("#tbl tbody tr:nth-child(" + i + ") td:nth-child(" + j + ") .chkRules").val()+"," ;
                 }
@@ -247,8 +248,53 @@ $(document).ready(function () {
             $('#hdnEmpId').val(r.Tei_Id)            
             $('#txt_Employeename').val(r.Tei_FirstName);            
             $('#ddl_Group').val(r.Tegi_GroupId);
-            getDivisions(r.Tegi_GroupId);
-            $('#ddl_Division').val(r.Tegi_DivisionId);
+            getDepartment(r.Tegi_GroupId);
+            $('#ddl_Dept').val(r.Tegi_DepartmentId);
+            //getDivisions(r.Tegi_GroupId);
+            //$('#ddl_Division').val(r.Tegi_DivisionId);
+            //  $('#ddl_Division').append($("<option     />").val(r.Tei_DivisionId).text(this.Tdi_Name));
+            //$('#ddl_Division').append($("<option></option>").val(item.Tei_DivisionId).text(item.Tei_DivisionId));
+            // $('#ddl_Department').append($("<option></option>").val(item.Tei_DepartmentId).text(item.Tdp_Name));
+
+        },
+
+
+        messages: {
+            noResults: "",
+            results: function (count) {
+                return count + (count > 1 ? ' results' : ' result ') + ' found';
+            }
+        }
+    });
+
+
+    $("#txt_Employeename").autocomplete({
+
+        source: function (request, response) {
+            // var param = { Perfix: $('#txt_EmloyeeId').val() };
+            $.ajax({
+                url: "/EmployeeRules/EmployeeNamewise",
+                type: "POST",
+                dataType: "json",
+                data: { Prefix: request.term },
+                success: function (data) {
+                    arr = data;
+                    response($.map(data, function (item) {
+                        return { label: item.Tei_FirstName, value: item.Tei_FirstName };
+                    }))
+
+                }
+            })
+        },
+        select: function (ev, val) {
+            var r = arr.find(x => x.Tei_FirstName = val.item.value)
+            $('#hdnEmpId').val(r.Tei_Id)
+            $('#txt_EmloyeeId').val(r.Tei_Empno);
+            $('#ddl_Group').val(r.Tegi_GroupId);
+            getDepartment(r.Tegi_GroupId);
+            $('#ddl_Dept').val(r.Tegi_DepartmentId);
+            //getDivisions(r.Tegi_GroupId);
+            //$('#ddl_Division').val(r.Tegi_DivisionId);
             //  $('#ddl_Division').append($("<option     />").val(r.Tei_DivisionId).text(this.Tdi_Name));
             //$('#ddl_Division').append($("<option></option>").val(item.Tei_DivisionId).text(item.Tei_DivisionId));
             // $('#ddl_Department').append($("<option></option>").val(item.Tei_DepartmentId).text(item.Tdp_Name));

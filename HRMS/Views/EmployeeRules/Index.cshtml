@@ -1,72 +1,92 @@
 ﻿
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EmployeeRules</title>
-    
-    <script src="~/JS/EmpRules.js"></script>
-
-</head>
-<body>
-    <div class="container">
-        <h2>Employee Rules</h2>
-        <hr />
-        @*<div class="modal fade" id="MyModal" tabindex="1" role="dialog" labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">X</button>
-                        <h4 class="modal-title" id="myModalLabel">Add Group</h4>
-                    </div>*@
-        <div>
-            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add();">Save</button>
-            <button type="button" class="btn btn-primary" id="btnShow" onclick="Show();">Show</button>
-            <button type="button" class="btn btn-default" onclick="clearTextBox();">Close</button>
-        </div>
-
-        <div class="modal-body">
-            <form>
-
-                <input type="hidden" id="empruleId" />
-                <input type="hidden" id="hdnLength" />
-                <div class="form-group">
-                    <label for="GroupName">Group</label>
-                    <select id="ddl_Group"><option value="0">Select</option></select>
-
-                </div>
-
-                <div class="form-group">
-                    <label for="DivisionName">DivisionName</label>
-                    <select id="ddl_Division"><option value="0">Select</option></select>
-                </div>
-
-                <div class="form-group">
-                    <label for="EmployeeId">EmployeeId</label>
-                    <input type="text" class="form-control" id="txt_EmloyeeId" placeholder="EmployeeId" maxlength="15" />
-                    <input type="hidden" id="hdnEmpId" />
-                </div>
-
-                <div class="form-group">
-                    <label for="Employeename">Employee Name</label>
-                    <input type="text" class="form-control" id="txt_Employeename" placeholder="Employee Name" maxlength="15" />
-                </div>
-            </form>
-        </div>
-
-        @*</div>
-                </div>
-            </div>*@
-        @*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearText();">Add Menu</button>*@
-        <br /><br />
-        <div id="emprulebind">
 
 
+<script src="~/JS/EmpRules.js"></script>
+<script src="~/JS/Common.js"></script>
+
+<div class="content container-fluid">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Employee Rules</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Employee Rules</li>
+                </ul>
+            </div>
+            @*<div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_Allowance"><i class="fa fa-plus"></i> Add Allowance</a>
+                </div>*@
         </div>
     </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card mb-0">
+
+                <div class="card-body">
+                    <form>
+                        <div class="col-md-6">
+                            <button type="button" class="btn btn-primary" id="btnAdd" onclick="return Add_EmpRules();">Save</button>
+                            <button type="button" class="btn btn-primary" id="btnShow" onclick="Show();">Show</button>
+                            <button type="button" class="btn btn-primary" onclick="clearTextBox();">Close</button>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="hidden" id="empruleId" />
+                            <input type="hidden" id="hdnLength" />
+                            <div class="form-group">
+                                <label for="GroupName">Group</label>
+                                <select id="ddl_Group" class="form-control"><option value="0">Select</option></select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="DeptName">Department</label>
+                                <select id="ddl_Dept" class="form-control"><option value="0">Select</option></select>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="EmployeeId">EmployeeId</label>
+                                <input type="text" class="form-control" id="txt_EmloyeeId" placeholder="EmployeeId" maxlength="15" />
+                                <input type="hidden" id="hdnEmpId" />
+                            </div>
+                            <div class="form-group">
+                                <label for="Employeename">Employee Name</label>
+                                <input type="text" class="form-control" id="txt_Employeename" placeholder="Employee Name" maxlength="15" />
+                            </div>
+                        </div>
+                    </form>
+                    <div class="table-responsive" id="emprulebind">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
-</body>
-</html>
+@*<div class="modal-body">
+    <form>*@
+
+
+
+@*<div class="form-group">
+        <label for="DivisionName">DivisionName</label>
+        <select id="ddl_Division"><option value="0">Select</option></select>
+    </div>*@
+
+
+
+
+@*</form>
+    </div>*@
+
+@*</div>
+        </div>
+    </div>*@
+@*<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#MyModal" onclick="clearText();">Add Menu</button>*@
+
+
+

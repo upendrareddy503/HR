@@ -1,0 +1,50 @@
+﻿
+<script src="~/JS/EmployeeList.js"></script>
+
+
+
+    <!-- Page Content -->
+    <div class="content container-fluid">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="row align-items-center">
+                <div class="col">
+                    <h3 class="page-title">Employee</h3>
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Employee</li>
+                    </ul>
+                </div>
+                <div class="col-auto float-right ml-auto">
+                    <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
+                    <div class="view-icons">
+                        <a href="employees.html" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
+                        <a href="/Employee/EmployeeList" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /Page Header -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-striped custom-table datatable" id="tblEmp">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Employee ID</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th class="text-right no-sort">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Content -->
+
+

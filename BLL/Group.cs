@@ -67,13 +67,12 @@ namespace BLL
         }
 
 
-        public List<Group> Get_AllGroup(int CompanyID, int LocationID,int UserId)
+        public List<Group> Get_AllGroup(int CompanyID, int LocationID)
         {
-            SqlParameter[] parm = new SqlParameter[4];
-            parm[0] = da.AddSPParameter("Userid", UserId, ParameterDirection.Input, DbType.Int32, 10);
-            parm[1] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[2] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32, 10);
-            parm[3] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
+            SqlParameter[] parm = new SqlParameter[3];           
+            parm[0] = da.AddSPParameter("Tci_Id", CompanyID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[1] = da.AddSPParameter("Tli_Id", LocationID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[2] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
            
             DataTable dt = new DataTable();
             List<Group> obj_Group = new List<Group>();

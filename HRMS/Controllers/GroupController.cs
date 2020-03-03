@@ -18,7 +18,7 @@ namespace HRMS.Controllers
         }
         public JsonResult List()
         {
-            return Json(obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
+            return Json(obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Group(Group obj_GrpIns)
         {
@@ -36,7 +36,7 @@ namespace HRMS.Controllers
         }
         public JsonResult GetByID(int ID)
         {
-            var GroupId = obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["userid"])).Find(x => x.GroupId.Equals(ID));
+            var GroupId = obj_Grp.Get_AllGroup(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.GroupId.Equals(ID));
 
             return Json(GroupId, JsonRequestBehavior.AllowGet);
         }
