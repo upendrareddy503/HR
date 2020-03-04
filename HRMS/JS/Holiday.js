@@ -7,17 +7,25 @@
 
 function AddHoliday() {
 
+   
+    var Type_data = false;
+    if ($('#chkid').is(":checked")) {
+        Type_data = true;
+       
+    }
+
     var res = validate();
     if (res == false) {
-
         return false;
     }
     var Obj_Holi = {
         Thi_Name: $('#txt_holName').val(),
         Thi_Date: $('#tbDate').val(),
-        Thi_Year: $('#txt_Year').val(),
-
+        Thi_Year: $('#txt_Year').val()
+        
     };
+    Obj_Holi.Thi_Type = Type_data;
+
     $.ajax({
         url: "/Master/Insert_HolidayName",
         type: "Post",
@@ -26,7 +34,7 @@ function AddHoliday() {
         dataType: 'json',
         success: function (r) {
             loadHoliday();
-            //clearTextBox();
+            clearholiday();
             $('#MyModal').modal('hide');
         },
         error: function (errMsg) {
@@ -47,6 +55,9 @@ function loadHoliday() {
                 data: data,
                 "bDestroy": true,
                 columns: [
+                    {
+                        "data": "Thi_id"
+                    },
                     { "data": "Thi_Name" },
                     {
                         "data": "Thi_Date",
@@ -64,7 +75,13 @@ function loadHoliday() {
                             return '<div class="dropdown dropdown-action"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_holiday" onclick="GetID(' + Thi_id + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + Thi_id + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
-                ]
+                ],
+                "columnDefs": [{
+                    'targets': [0, 2],
+                    'orderable': false
+
+                }],
+                "order": [1, 'asc']
             })
 
         },
@@ -75,7 +92,10 @@ function loadHoliday() {
 }
 
 function UpdateHoliday() {
-  
+    var Type_data = false;
+    if ($('#chkid').is(":checked")) {
+        Type_data = true;
+    }
     var res = validate();
     if (res == false) {
 
@@ -83,10 +103,13 @@ function UpdateHoliday() {
     }
     var Obj_Holi = {
         Thi_id: $('#hdnHoliday').val(),
+       
         Thi_Name: $('#txt_holName').val(),
         Thi_Date: $('#tbDate').val(),
         Thi_Year: $('#txt_Year').val()
     };
+    Obj_Holi.Thi_Type = Type_data;
+    
     $.ajax({
         url: "/Master/Update_HolidayName",
         type: "Post",
@@ -97,7 +120,7 @@ function UpdateHoliday() {
         success: function (r) {
             loadHoliday();
             $('#MyModal').modal('hide');
-            clearTextBox();
+            clearholiday();
         },
         error: function (errMsg) {
             alert(errMsg.responseText);
@@ -114,6 +137,7 @@ function GetID(Id) {
         dataType: 'json',
         success: function (r) {
             $('#hdnHoliday').val(r.Thi_id);
+   
             $('#txt_holName').val(r.Thi_Name);
             if (r.Thi_Date != null) {
                 var Date1 = "";
@@ -123,9 +147,15 @@ function GetID(Id) {
 
                 $("[id*=tbDate]").val(Date1);
             }
-            // $('#tbDate').val(dateformat(r.Thi_Date));
-            $('#txt_Year').val(r.Thi_Year);
          
+            $('#txt_Year').val(r.Thi_Year);
+            if (r.Thi_Type == true) {
+                $('#chkid').prop("checked", true);
+            }
+            else {
+                $('#chkid').prop("checked", false);
+            }
+
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },
@@ -136,7 +166,7 @@ function GetID(Id) {
     return false;
 }
 function Deleted(Id) {
-   
+
     var ans = confirm("Are you sure you want to delete this Record?");
     if (ans) {
         $.ajax({
@@ -191,16 +221,13 @@ function validate() {
 }
 
 
-function clearTextBox() {
-
+function clearholiday() {
+    clearCSS();
 
     $('#txt_holName').val('');
     $('#tbDate').val('');
     $('#txt_Year').val('');
     $("#btnUpdate").hide();
     $("#btnAdd").show();
-    $('#txt_holName').css('border-color', 'lightgrey');
-    $('#tbDate').css('border-color', 'lightgrey');
-    $('#txt_Year').css('border-color', 'lightgrey');
 
 }

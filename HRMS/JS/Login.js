@@ -13,7 +13,7 @@
             dataType: 'json',
             success: function (data) {
                 if (data.UserID != null && data.UserID != "" && data.UserID != 0) {
-                    window.location.href = "/Master/Company";
+                    window.location.href = "Dashboard";
                 }
                 else {
                     $(".errMsg1").fadeIn().html("<ul><li>Invaild Credintials</li></ul>");

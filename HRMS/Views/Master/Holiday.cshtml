@@ -27,6 +27,7 @@
                 <table id="tblHoliday" class="table table-stripped mb-0">
                     <thead>
                         <tr>
+                            <th>Sno</th>
                             <th>Holiday Name</th>
                             <th>Date</th>
                             <th>Year</th>
@@ -44,8 +45,8 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Add Holiday</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
-                    <span aria-hidden="true" onclick="return clearTextBox();">&times;</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="return clearholiday();">
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -54,35 +55,36 @@
 
                     <input type="hidden" id="hdnHoliday" />
 
-
+                    <div class="form-group">
+                        <label for="HolidayName">Optional</label>
+                        <input id="chkid" type="checkbox" />
+                    </div>
                     <div class="form-group">
                         <label for="HolidayName">Holiday Name</label>
-                        <input type="text" class="form-control" id="txt_holName" placeholder="Holiday Name" />
+                        <input type="text" class="form-control validate" id="txt_holName" placeholder="Holiday Name" onkeypress="return onlyString(event)" />
                     </div>
                     <div class="form-group">
                         <label for="date">Date</label>
 
                         @*<input type="text" id="datepicker" class="form-control" placeholder="01/01/1999">*@
-                        <input type="text" id="tbDate" class="form-control" />
-                       
+                        <input type="text" id="tbDate" class="form-control validate" />
+
                     </div>
 
                     <div class="form-group">
                         <label for="year">year</label>
-                        <input type="text" class="form-control" id="txt_Year" placeholder="Year" />
+                        <input type="text" class="form-control validate" id="txt_Year" placeholder="Year" onkeypress="return isNumberKey(event)" />
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-primary" id="btnAdd" onclick="return AddHoliday();">Add</button>
                 <button type="button" class="btn btn-primary" id="btnUpdate" onclick="UpdateHoliday();" style="display:none">Update</button>
-                
+
             </div>
         </div>
     </div>
 </div>
 
-
-
-
 <script src="~/JS/Holiday.js"></script>
+<script src="~/JS/Common.js"></script>

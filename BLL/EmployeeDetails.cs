@@ -76,6 +76,10 @@ namespace BLL
         public string Tea_Allowance_Type { get; set; }
         public string Tef_Value { get; set; }
         public double Tegi_Prev_CTC { get; set; }
+        public string Tdg_Name { get; set; }
+        public string Tdp_Name { get; set; }
+        public string Tegi_PfNo { get; set; }
+        public string Tegi_EsiNo { get; set; }
         // public int UserId { get; set; }
 
         public string Insert_Employee(EmployeeDetails Obj_Emp)
@@ -537,6 +541,51 @@ namespace BLL
                 obj_Lst_Emp.Add(obj_Emp);
             }
             return obj_Lst_Emp;
+        }
+
+        public EmployeeDetails Get_Dashboard_profile(string Id, int CompanyId, int LoactionId)
+        {
+            SqlParameter[] parm = new SqlParameter[4];
+            parm[0] = da.AddSPParameter("Tei_Empno", Id, ParameterDirection.Input, DbType.String, 100);
+            parm[1] = da.AddSPParameter("CompanyId", CompanyId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[2] = da.AddSPParameter("LocationId", LoactionId, ParameterDirection.Input, DbType.Int32, 100);
+            parm[3] = da.AddSPParameter("Flag", 14, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Employee_Details", parm);
+            EmployeeDetails obj_Emp = new EmployeeDetails();
+            if (dt.Rows.Count > 0)
+            {
+
+                obj_Emp.Tei_FirstName = dt.Rows[0]["Tei_FirstName"].ToString();
+                obj_Emp.Tei_LastName = dt.Rows[0]["Tei_LastName"].ToString();
+                obj_Emp.Tei_Gender = dt.Rows[0]["Tei_Gender"].ToString();
+                obj_Emp.Tei_Empno = dt.Rows[0]["Tei_Empno"].ToString();
+                obj_Emp.Tei_Phone = dt.Rows[0]["Tei_Phone"].ToString();
+                obj_Emp.Tei_Email = dt.Rows[0]["Tei_Email"].ToString();
+                obj_Emp.Tei_Type = dt.Rows[0]["Tei_Type"].ToString();
+                obj_Emp.Tei_Father = dt.Rows[0]["Tei_Father"].ToString();
+                //obj_Emp.Tei_DateofBirth = dt.Rows[0]["Tei_DateofBirth"].ToString();
+                obj_Emp.Tei_Address1 = dt.Rows[0]["Tei_Address1"].ToString();
+                obj_Emp.Tei_Address2 = dt.Rows[0]["Tei_Address2"].ToString();
+                obj_Emp.Tei_stateId = Convert.ToInt32(dt.Rows[0]["Tei_stateId"].ToString());
+                obj_Emp.Tei_CountryId = Convert.ToInt32(dt.Rows[0]["Tei_CountryId"].ToString());
+                obj_Emp.Tei_AadharNo = dt.Rows[0]["Tei_AadharNo"].ToString();
+                obj_Emp.Tei_TypeofExpe = Convert.ToInt32(dt.Rows[0]["Tei_TypeofExpe"].ToString());
+                obj_Emp.Tei_Old_Company = dt.Rows[0]["Tei_Old_Company"].ToString();
+                obj_Emp.Tei_prev_Disig = dt.Rows[0]["Tei_prev_Disig"].ToString();
+                obj_Emp.Tei_Prev_Exp = Convert.ToInt32(dt.Rows[0]["Tei_Prev_Exp"].ToString());
+                obj_Emp.Tdg_Name = dt.Rows[0]["Tdg_Name"].ToString();
+                obj_Emp.Tdp_Name = dt.Rows[0]["Tdp_Name"].ToString();
+                obj_Emp.Tei_Photo = dt.Rows[0]["Tei_Photo"].ToString();
+                obj_Emp.Tegi_PfNo= dt.Rows[0]["Tegi_PfNo"].ToString();
+                obj_Emp.Tegi_EsiNo = dt.Rows[0]["Tegi_EsiNo"].ToString();
+                obj_Emp.Tegi_UANNumber = dt.Rows[0]["Tegi_UANNumber"].ToString();
+                //obj_Emp.Tegi_Prev_CTC = Convert.ToInt32(dt.Rows[0]["Tegi_Prev_CTC"].ToString());
+            }
+
+            return obj_Emp;
         }
     }
 }

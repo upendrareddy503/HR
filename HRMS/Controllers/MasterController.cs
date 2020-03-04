@@ -27,7 +27,7 @@ namespace HRMS.Controllers
         {
             return View();
         }
-        
+
 
         #region Group
         public ActionResult Group()
@@ -68,7 +68,7 @@ namespace HRMS.Controllers
             return View();
         }
         public JsonResult Country_List()
-        {         
+        {
             return Json(obj_Con.Get_AllCountry(), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Insert_Country(Country obj_CountryIns)
@@ -82,7 +82,7 @@ namespace HRMS.Controllers
         public JsonResult GetCountryByID(int ID)
         {
             var CountryId = obj_Con.Get_AllCountry().Find(x => x.CountryId.Equals(ID));
-            
+
             return Json(CountryId, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Country(int ID)
@@ -196,7 +196,7 @@ namespace HRMS.Controllers
 
         public JsonResult GetDepartment_ID(int Id)
         {
-           
+
             return Json(Obj_Dep.Get_AllDepartment_ID(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"]), Id), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Department(int ID)
@@ -212,7 +212,7 @@ namespace HRMS.Controllers
             return View();
         }
         public JsonResult Location_List()
-        {           
+        {
 
             return Json(Obj_loc_D.Get_Location(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
         }
@@ -229,7 +229,7 @@ namespace HRMS.Controllers
             return Json(Obj_loc_D.Update_Location(obj_locUpd), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetLocationByID(int ID)
-        {                                 
+        {
             var LocationID = Obj_loc_D.Get_Location(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.Tli_Id.Equals(ID));
             return Json(LocationID, JsonRequestBehavior.AllowGet);
         }
@@ -314,26 +314,36 @@ namespace HRMS.Controllers
 
         public JsonResult Holiday_List()
         {
-            return Json(Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
+            return Json(Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["companyid"])), JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult Insert_HolidayName(Holidaydetails Obj_Holi)
         {
-            Obj_Holi.Thi_Company = Convert.ToInt32(Session["companyid"]);
+            Obj_Holi.Thi_CompanyId = Convert.ToInt32(Session["companyid"]);
+            Obj_Holi.Thi_LocationId = Convert.ToInt32(Session["LocationID"]);
             Obj_Holi.Thi_Userid = Convert.ToInt32(Session["userid"]);
             return Json(Obj_Holi.Insert_HolidayName(Obj_Holi), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Update_HolidayName(Holidaydetails Obj_Holi)
         {
+            Obj_Holi.Thi_CompanyId = Convert.ToInt32(Session["companyid"]);
+            Obj_Holi.Thi_LocationId = Convert.ToInt32(Session["LocationID"]);
+            Obj_Holi.Thi_Userid = Convert.ToInt32(Session["userid"]);
             return Json(Obj_Holi.Update_HolidayName(Obj_Holi), JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetHolidayByID(int ID)
         {
-            var holidayid = Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])).Find(x => x.Thi_id.Equals(ID));
+            var holidayid = Obj_Holi.Get_AllHolidays(Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["companyid"])).Find(x => x.Thi_id.Equals(ID));
             return Json(holidayid, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Delete_Holiday(int ID)
         {
             return Json(Obj_Holi.Delete_Holiday(ID), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Holiday_ListDashboard()
+        {
+
+            return Json(Obj_Holi.Get_DahbordHolidays(Convert.ToInt32(Session["LocationID"]), Convert.ToInt32(Session["companyid"])), JsonRequestBehavior.AllowGet);
         }
         #endregion Holiday
     }
