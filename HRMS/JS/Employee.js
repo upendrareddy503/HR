@@ -1,12 +1,14 @@
-﻿$(document).ready(function () {
+﻿
+$(document).ready(function () {
 
     getCountry();
     getState();
     getGroup();
     getDesignation();
+    
    // getDepartment();
     getShift();
-    getRules();
+    getRules();   
     $('.datepicker').datepicker();  
     $('#spEmailValid').hide();
     $('#Second').hide();
@@ -20,7 +22,6 @@
     });
     $('[id*=ddl_WeekOff]').multiselect({
         includeSelectAllOption: true
-
     });
     $('#txt_emp').change(function () {
         var emp = $('#txt_emp');
@@ -131,25 +132,12 @@
             Id = $(this).val();
             getDepartment(Id);
             
-            $.ajax({
-                url: "/Payroll/Allowance_List/" + Id,
-                type: "Post",
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (r) {
-                    $.each(r, function (key, item) {
-                        $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-                    });
-                    $('[id*=ddl_allowance]').multiselect({
-                        includeSelectAllOption: true
-
-                    });
-
-                }
-            });
+            getALLowanceByGroup(Id);
         }
 
     });
+
+    
     $("[id*=txt_EmailID]").change(function () {
 
 
@@ -191,42 +179,11 @@
         var Id;
 
         Id = $('#ddl_DesignationReport').val();
-        alert(Id);
-        $.ajax({
-            url: "/Employee/Get_DesignationReport/" + Id,
-            type: "Post",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (r) {
-                $('#ddl_ReportingTo').empty();  
-                $.each(r, function (key, item) {
-                    $('#ddl_ReportingTo').append($("<option></option>").val(item.Tei_Id).html(item.Tei_FirstName));
-                   
-                });
-                
-                $('#ddl_ReportingTo').multiselect('rebuild');
-                
-
-            }
-        });
+        
+        getDesignationReport(Id);
 
     });
-
-    function getDepartment(Id) {
-        $.ajax({
-            url: "/EmployeeRules/GetDepartment/" + Id,
-            type: "Get",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            async: false,
-            success: function (r) {
-                $('#ddl_Department').empty().append('<option selected="selected" value="0">Select</option>');
-                $.each(r, function (key, item) {
-                    $('#ddl_Department').append($("<option></option>").val(item.Department_Id).html(item.Department_Name));
-                });
-            }
-        });
-    }
+    
     //function getDivision() {
 
     //    var Id;
@@ -270,7 +227,59 @@
     //}
 });
    
+function getDesignationReport(Id) {
+    $.ajax({
+        url: "/Employee/Get_DesignationReport/" + Id,
+        type: "Post",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        async: false,
+        success: function (r) {
+            $('#ddl_ReportingTo').empty();
+            $.each(r, function (key, item) {
+                $('#ddl_ReportingTo').append($("<option></option>").val(item.Tei_Id).html(item.Tei_FirstName));
 
+            });
+
+            $('#ddl_ReportingTo').multiselect('rebuild');
+
+
+        }
+    });
+}
+function getDepartment(Id) {
+    $.ajax({
+        url: "/EmployeeRules/GetDepartment/" + Id,
+        type: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        async: false,
+        success: function (r) {
+            $('#ddl_Department').empty().append('<option selected="selected" value="0">Select</option>');
+            $.each(r, function (key, item) {
+                $('#ddl_Department').append($("<option></option>").val(item.Department_Id).html(item.Department_Name));
+            });
+        }
+    });
+}
+function getALLowanceByGroup(Id) {
+    $.ajax({
+        url: "/Payroll/Allowance_List/" + Id,
+        type: "Post",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (r) {
+            $.each(r, function (key, item) {
+                $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
+            });
+            $('[id*=ddl_allowance]').multiselect({
+                includeSelectAllOption: true
+
+            });
+
+        }
+    });
+}
 
 
 function getCountry() {
@@ -419,6 +428,7 @@ function NextAdd() {
         Tei_Phone: $('#txt_PhoneNo').val(),
         Tei_AadharNo: $('#txt_AadharNo').val(),
         Tei_TypeofExpe: $('#ddl_Experience').val(),
+        Tei_BloodGroup: $('#ddl_BloodGroup').val(),
         Tei_Old_Company: old_Company,
         Tei_prev_Disig: Prev_Disig,
         Tei_Prev_Exp: Prev_Exp,
@@ -492,6 +502,7 @@ function AddTemp() {
         Tei_Phone: $('#txt_PhoneNo').val(),
         Tei_AadharNo: $('#txt_AadharNo').val(),
         Tei_TypeofExpe: $('#ddl_Experience').val(),
+        Tei_BloodGroup: $('#ddl_BloodGroup').val(),
         Tei_Old_Company: old_Company,
         Tei_prev_Disig: Prev_Disig,
         Tei_Prev_Exp: Prev_Exp,
@@ -532,6 +543,10 @@ function Forword() {
     $('[id*=ddl_ReportingTo] > option:selected').each(function () {
         ReportingTo += $(this).val() + ',';
     });
+    var DesignationReport = "";
+    $('[id*=ddl_DesignationReport] > option:selected').each(function () {
+        DesignationReport += $(this).val() + ',';
+    });
     var WeekOff = "";
     $('[id*=ddl_WeekOff] > option:selected').each(function () {
         WeekOff += $(this).val() + ',';
@@ -547,6 +562,7 @@ function Forword() {
         Tei_EsiNo: $('#txt_ESno').val(),
         Tegi_Weekoff: WeekOff,
         Tegi_ReportingLevel: ReportingTo,
+        Tegi_DesignationReport: DesignationReport,
         Tegi_UANNumber: $('#txt_UANNumber').val(),
         Tegi_PF_Type: $('#ddl_PFType').val(),
         Tegi_Emp_Rules: Rules,
@@ -751,24 +767,74 @@ function Delete(Id) {
 function clearEmp() {
 
 
-    $('#ddl_Title').val('');
+    $('#ddl_Title').val('0');
     $('#txt_FirstName').val('');
     $('#txt_LastName').val('');
+    $("#rdbgenderM").prop("checked", false);
+    $("#rdbgenderF").prop("checked", false);
     $('#txt_emp').val('');
     $('#txt_EmailID').val('');
-    $('#ddl_Type').val('');
+    $('#ddl_Type').val('0');
     $('#txt_Address').val('');
     $('#txt_Address1').val('');
+    $('#imgPreview').removeAttr('src');
+    $('#imgPreview').removeAttr('style');
     $('#txt_FatherName').val('');
     $('#txt_DOB').val('');
     $('#txt_DOJ').val('');
-    $('#ddl_State').val('');
-    $('#ddl_Country').val('');
+    $('#ddl_State').val('0');
+    $('#ddl_Country').val('0');
     $('#txt_PhoneNo').val('');
-    $('#txt_EmailID').val('');
+    $('#ddl_Experience').val('0');
+    $('#ddl_BloodGroup').val('0');
+    $('#PreviousEx').hide();
+    $('#PreviousEx1').hide();
+    $('#txt_CompanyName').val('');
+    $('#txt_Noofyears').val('');
+    $('#txt_ResDate').val('');
+    $('#txt_PreviousDeg').val('');
+    $('#txt_SalaryCTC').val('');
     $('#hid').val('');
-    clearValidateCSS();
+    $('#txt_AadharNo').val('');
+    $('#btnAdd').text('Add');
+    $('#btnNext').hide();
+    clearCSS();
+    $('#Third').hide();
+    $('#Second').hide();
+    $('#first').show();
+    clearSecondTab();
+    clearThirdTab();
 
+}
+function clearSecondTab() {
+    $('#ddl_Group').val('0');
+    $('#ddl_Department').empty().append('<option selected="selected" value="0">Select</option>');
+    $('#ddl_Shift').val('0');
+    $('#ddl_Rules').multiselect('deselectAll', false);
+    $("#ddl_Rules").multiselect('refresh');
+    $('#ddl_Grade').val('0');
+    $('#txt_PfNo').val('');
+    $('#ddl_Designation').val('0');
+    $('#ddl_WeekOff').multiselect('deselectAll', false);
+    $("#ddl_WeekOff").multiselect('refresh');
+    $('#ddl_PFType').val('0');
+    $('#ddl_DesignationReport').multiselect('deselectAll', false);
+    $("#ddl_DesignationReport").multiselect('refresh');
+    $('#ddl_ReportingTo').empty();
+    $('#ddl_ReportingTo').multiselect('rebuild');
+    $('#txt_UANNumber').val('');
+    $('#txt_ESno').val('');
+
+}
+function clearThirdTab() {
+    $('#ddl_SalaryType').val('0');
+    $('#txt_Salary').val('');
+    
+    $('#txt_SalEffectivedate').val('');
+    
+    $('#ddl_allowance').empty();
+    $('#ddl_allowance').multiselect('rebuild');
+    
 }
 function validateFirst() {
 
@@ -815,8 +881,7 @@ $('#fileUploadExcel').click(function () {
                 processData: false,
                 contentType: false,
                 data: data,
-                success: function (result) {
-                    alert("fff");
+                success: function (result) {                   
                     console.log(result);
                 },
                 error: function (er) {

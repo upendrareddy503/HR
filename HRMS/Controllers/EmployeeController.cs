@@ -28,7 +28,12 @@ namespace HRMS.Controllers
             return View();
         }
 
-        
+        public ActionResult EmployeeDivList()
+        {
+            return View();
+        }
+
+
         public JsonResult Insert_Employee(EmployeeDetails obj_EmpIns)
         {
             obj_EmpIns.CompanyID = Convert.ToInt32(Session["companyid"]);
@@ -394,6 +399,21 @@ namespace HRMS.Controllers
         public JsonResult List()
         {
             return Json(obj_Emp.Get_AllEmp(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult EmpDivList()
+        {
+            return Json(obj_Emp.Get_AllEmp(Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult EmployeeById(int ID)
+        {
+            return Json(obj_Emp.Get_Dashboard_profile(ID), JsonRequestBehavior.AllowGet);
+        }
+
+
+        public JsonResult Delete_Employee(int ID)
+        {
+            return Json(obj_Emp.Delete_Employee(ID), JsonRequestBehavior.AllowGet);
         }
 
     }

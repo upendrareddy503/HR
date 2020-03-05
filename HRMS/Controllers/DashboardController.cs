@@ -24,7 +24,7 @@ namespace HRMS.Controllers
         }
         public JsonResult profile_Details()
         {
-            return Json(obj_Emp.Get_Dashboard_profile("1171", Convert.ToInt32(Session["companyid"]), Convert.ToInt32(Session["LocationID"])), JsonRequestBehavior.AllowGet);
+            return Json(obj_Emp.Get_Dashboard_profile(Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
         }
 
 

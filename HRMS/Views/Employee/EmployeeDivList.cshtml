@@ -1,12 +1,5 @@
 ﻿
-<script src="~/JS/EmployeeList.js"></script>
-<script src="~/JS/Employee.js"></script>
-<script src="~/JS/Common.js"></script>
-
-
-<!-- Page Content -->
 <div class="content container-fluid">
-
     <!-- Page Header -->
     <div class="page-header">
         <div class="row align-items-center">
@@ -14,36 +7,21 @@
                 <h3 class="page-title">Employee</h3>
                 <ul class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
-                    <li class="breadcrumb-item active">Employee</li>
+                    <li class="breadcrumb-item active">Employee List</li>
                 </ul>
             </div>
             <div class="col-auto float-right ml-auto">
                 <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_employee"><i class="fa fa-plus"></i> Add Employee</a>
                 <div class="view-icons">
-                    <a href="/Employee/EmployeeDivList" class="grid-view btn btn-link"><i class="fa fa-th"></i></a>
-                    <a href="/Employee/EmployeeList" class="list-view btn btn-link active"><i class="fa fa-bars"></i></a>
+                    <a href="/Employee/EmployeeDivList" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
+                    <a href="/Employee/EmployeeList" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
                 </div>
             </div>
         </div>
     </div>
     <!-- /Page Header -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="table-responsive">
-                <table class="table table-striped custom-table datatable" id="tblEmp">
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Employee ID</th>
-                            <th>Email</th>
-                            <th>Mobile</th>
-                            <th class="text-right no-sort">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-        </div>
+
+    <div class="row staff-grid-row" id="divContent">
     </div>
     <!-- Add Employee Modal -->
     <div id="add_employee" class="modal custom-modal fade" role="dialog">
@@ -51,7 +29,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Employee</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnCloseModal">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="btnCloseDivModal">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -77,7 +55,7 @@
                         <div class="row">
                             <div class="col-6">
 
-                                <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn" onclick="return FinalDelete();">Delete</a>
+                                <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary continue-btn" onclick="return FinalDivDelete();">Delete</a>
                             </div>
                             <div class="col-6">
                                 <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
@@ -90,4 +68,7 @@
     </div>
     <!-- /Delete Department Modal -->
 </div>
-<!-- Page Content -->
+<script src="~/JS/EmployeeDivList.js"></script>
+<script src="~/JS/EmployeeList.js"></script>
+<script src="~/JS/Employee.js"></script>
+<script src="~/JS/Common.js"></script>
