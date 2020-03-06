@@ -20,6 +20,11 @@ $(document).ready(function () {
         includeSelectAllOption: true
 
     });
+    $('[id*=ddl_allowance]').multiselect({
+        includeSelectAllOption: true
+
+    });
+    
     $('[id*=ddl_WeekOff]').multiselect({
         includeSelectAllOption: true
     });
@@ -265,17 +270,18 @@ function getDepartment(Id) {
 function getALLowanceByGroup(Id) {
     $.ajax({
         url: "/Payroll/Allowance_List/" + Id,
-        type: "Post",
+        type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
+        async: false,
         success: function (r) {
+            $('#ddl_allowance').empty();
             $.each(r, function (key, item) {
                 $('#ddl_allowance').append($("<option></option>").val(item.Alw_Id).html(item.Alw_Name));
-            });
-            $('[id*=ddl_allowance]').multiselect({
-                includeSelectAllOption: true
 
             });
+
+            $('#ddl_allowance').multiselect('rebuild');          
 
         }
     });

@@ -1,4 +1,4 @@
-﻿<form enctype="multipart/form-data" method="post" action="/Employee/UploadHomeReport">
+﻿@*<form enctype="multipart/form-data" method="post" action="/Employee/UploadHomeReport">
 
     <div id="first">
 
@@ -8,8 +8,54 @@
         @*<input class="col-md-8" type="file" name="userimage" id="userimage">
 
             <img src="" class="img-circle" id="imgPreview">*@
-        <input type="file" id="fileUpload" class="btn btn-primary" name="FileUpload" /><br />
-        <input type="submit" class="btn btn-primary" name="UploadNewEmployee" id="fileUploadExcel" value="Upload New Employee Details" />
-        </div>
-    </form>
+@*<input type="file" id="fileUpload" class="btn btn-primary" name="FileUpload" /><br />
+    <input type="submit" class="btn btn-primary" name="UploadNewEmployee" id="fileUploadExcel" value="Upload New Employee Details" />
+    </div>
+    </form>*@
 
+
+<!-- Page Content -->
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Templates</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Templates</li>
+                </ul>
+            </div>
+            <div class="col-auto float-right ml-auto">
+
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+    <div class="row">
+        <div class="col-md-6">
+            <ul>
+                <li>
+                    Adminstration
+                    <ul>
+                        <li>
+                            <a href="#">Employee</a>
+                            <ul>
+                                <li>
+                                    Temporary Employee <a href="#" id="dwnldTempEmp" onclick="window.location.href=@Url.Action("Employee","DwnEmp")">DownloadTemplate</a>  <a href="#">UploadTemplate</a>
+                                </li>
+                                <li>
+                                    Permanent Employee <a href="#">DownloadTemplate</a>  <a href="#">UploadTemplate</a>
+                                </li>
+                            </ul>
+                        </li>
+
+
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

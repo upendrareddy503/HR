@@ -406,5 +406,27 @@ namespace HRMS.Controllers
             return Json(obj_Emp.Delete_Employee(ID), JsonRequestBehavior.AllowGet);
         }
 
+
+        public JsonResult Get_All_Emp(int ID)
+        {
+            return Json(obj_Emp.Get_All_Emp(ID), JsonRequestBehavior.AllowGet);
+        }
+
+
+
+        public void DwnEmp()
+        {
+            FileInfo TheFile = new FileInfo(Server.MapPath("~/Excels/EmployeeTemplate.xls"));
+            if (TheFile.Exists)
+            {
+                System.IO.File.Delete(Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
+                System.IO.File.Copy(Server.MapPath("~/Excels/Tempory Employee.xls"), Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
+            }
+            Response.ContentType = "application/ms-excel";
+            Response.AppendHeader("Content-Disposition", "attachment; filename=EmployeeTemplate.xls");
+            Response.TransmitFile(Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
+            Response.End();
+        }
+
     }
 }

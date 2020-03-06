@@ -145,5 +145,36 @@ namespace BLL
             return obj_Shift_lst;
                         
         }
+
+
+        public List<Shift> GetPunchTimings(int UserId)
+        {
+            SqlParameter[] parm = new SqlParameter[1];
+            //parm[0] = da.AddSPParameter("UserId", UserID, ParameterDirection.Input, DbType.Int32, 10);
+            parm[0] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
+            DataTable dt = da.Sp_Datatable("Usp_Shift_Details", parm);
+            List<Shift> obj_Shift_lst = new List<Shift>();
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                Shift obj_Shift = new Shift();
+                obj_Shift.ShiftID = Convert.ToInt32(dt.Rows[i]["Tsh_id"].ToString());
+                obj_Shift.ShiftName = dt.Rows[i]["Tsh_Name"].ToString();
+                obj_Shift.ShiftCode = dt.Rows[i]["Tsh_code"].ToString();
+                obj_Shift.GroupId = Convert.ToInt32(dt.Rows[i]["Tsh_GroupId"].ToString());
+                obj_Shift.ShiftInTime = dt.Rows[i]["Tsh_Intime"].ToString();
+                obj_Shift.ShiftLateInCutTime = dt.Rows[i]["Tsh_Lateincutofftime"].ToString();
+                obj_Shift.ShiftInCutTime = dt.Rows[i]["Tsh_Shiftincutofftime"].ToString();
+                obj_Shift.SecShiftInTime = dt.Rows[i]["Tsh_SecShiftintime"].ToString();
+                obj_Shift.SecShiftLateInTime = dt.Rows[i]["Tsh_Secshiftlateintime"].ToString();
+                obj_Shift.SecShiftInCutTime = dt.Rows[i]["Tsh_secshiftcutoftime"].ToString();
+                obj_Shift.ShiftOutTime = dt.Rows[i]["Tsh_OutTime"].ToString();
+                obj_Shift.ShiftOTBefore = dt.Rows[i]["Tsh_OTBshift"].ToString();
+                obj_Shift.ShiftOTAfter = dt.Rows[i]["Tsh_OTAshift"].ToString();
+                obj_Shift.TotalHours = dt.Rows[i]["Tsh_Totalhours"].ToString();
+                //obj_Shift.GroupName = dt.Rows[i]["Tgi_Name"].ToString();
+                obj_Shift_lst.Add(obj_Shift);
+            }
+            return obj_Shift_lst;
+        }
     }
 }

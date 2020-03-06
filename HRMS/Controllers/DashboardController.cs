@@ -14,6 +14,7 @@ namespace HRMS.Controllers
     {
         // GET: Dashboard
         EmployeeDetails obj_Emp = new EmployeeDetails();
+
         public ActionResult Index()
         {
             return View();
@@ -25,6 +26,12 @@ namespace HRMS.Controllers
         public JsonResult profile_Details()
         {
             return Json(obj_Emp.Get_Dashboard_profile(Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetPunchTimings()
+        {
+            Shift obj_Shift = new Shift();
+            return Json(obj_Shift.GetPunchTimings(Convert.ToInt32(Session["userid"])), JsonRequestBehavior.AllowGet);
         }
 
 

@@ -1,8 +1,20 @@
 ﻿$(document).ready(function () {
 
-    loadHoliday()
-
+    loadHoliday();
+    loadTimings();
 });
+
+
+function loadTimings() {
+    $.ajax({
+        url: "/Dashboard/GetPunchTimings",
+        type: "Get",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (data) {
+        }
+    });
+}
 
 
 

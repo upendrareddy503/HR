@@ -638,5 +638,89 @@ namespace BLL
             }
             return id.TrimEnd(' ');
         }
+
+        public EmployeeDetails Get_All_Emp(int Id)
+        {
+            SqlParameter[] parm = new SqlParameter[2];
+            parm[0] = da.AddSPParameter("Tei_Id", Id, ParameterDirection.Input, DbType.Int32, 100);
+            parm[1] = da.AddSPParameter("Flag", 15, ParameterDirection.Input, DbType.Int32, 10);
+
+            DataTable dt = new DataTable();
+
+            dt = da.Sp_Datatable("Usp_Employee_Details", parm);
+            EmployeeDetails obj_Emp = new EmployeeDetails();
+            if (dt.Rows.Count > 0)
+            {
+
+                obj_Emp.Tei_Id = Convert.ToInt32(dt.Rows[0]["Tei_Id"]);
+                obj_Emp.Tei_Title = dt.Rows[0]["Tei_Title"].ToString();
+                obj_Emp.Tei_FirstName = dt.Rows[0]["Tei_FirstName"].ToString();
+                obj_Emp.Tei_LastName = dt.Rows[0]["Tei_LastName"].ToString();
+                obj_Emp.Tei_Gender = dt.Rows[0]["Tei_Gender"].ToString();
+                obj_Emp.Tei_Empno = dt.Rows[0]["Tei_Empno"].ToString();
+                obj_Emp.Tei_Phone = dt.Rows[0]["Tei_Phone"].ToString();
+                obj_Emp.Tei_Email = dt.Rows[0]["Tei_Email"].ToString();
+                obj_Emp.Tei_Type = dt.Rows[0]["Tei_Type"].ToString();
+                obj_Emp.Tei_Father = dt.Rows[0]["Tei_Father"].ToString();
+                if (dt.Rows[0]["Tei_DateofBirth"].ToString() != null && dt.Rows[0]["Tei_DateofBirth"].ToString() != "")
+                    obj_Emp.Tei_DateofBirth = Convert.ToDateTime(dt.Rows[0]["Tei_DateofBirth"]);
+                if (dt.Rows[0]["Tei_JoiningDate"].ToString() != null && dt.Rows[0]["Tei_JoiningDate"].ToString() != "")
+                    obj_Emp.Tei_JoiningDate = Convert.ToDateTime(dt.Rows[0]["Tei_JoiningDate"]);
+                obj_Emp.Tei_Address1 = dt.Rows[0]["Tei_Address1"].ToString();
+                obj_Emp.Tei_Address2 = dt.Rows[0]["Tei_Address2"].ToString();
+                if (dt.Rows[0]["Tei_stateId"].ToString() != null && dt.Rows[0]["Tei_stateId"].ToString() != "")
+                    obj_Emp.Tei_stateId = Convert.ToInt32(dt.Rows[0]["Tei_stateId"]);
+                if (dt.Rows[0]["Tei_CountryId"].ToString() != null && dt.Rows[0]["Tei_CountryId"].ToString() != "")
+                    obj_Emp.Tei_CountryId = Convert.ToInt32(dt.Rows[0]["Tei_CountryId"]);
+                obj_Emp.Tei_Photo = dt.Rows[0]["Tei_Photo"].ToString();
+                obj_Emp.Tei_AadharNo = dt.Rows[0]["Tei_AadharNo"].ToString();
+                if (dt.Rows[0]["Tei_TypeofExpe"].ToString() != null && dt.Rows[0]["Tei_TypeofExpe"].ToString() != "")
+                    obj_Emp.Tei_TypeofExpe = Convert.ToInt32(dt.Rows[0]["Tei_TypeofExpe"]);
+                obj_Emp.Tei_Old_Company = dt.Rows[0]["Tei_Old_Company"].ToString();
+                obj_Emp.Tei_prev_Disig = dt.Rows[0]["Tei_prev_Disig"].ToString();
+                if (dt.Rows[0]["Tei_Prev_Exp"].ToString() != null && dt.Rows[0]["Tei_Prev_Exp"].ToString() != "")
+                    obj_Emp.Tei_Prev_Exp = Convert.ToInt32(dt.Rows[0]["Tei_Prev_Exp"]);
+                if (dt.Rows[0]["Tegi_Region_Date"].ToString() != null && dt.Rows[0]["Tegi_Region_Date"].ToString() != "")
+                    obj_Emp.Tegi_Region_Date = Convert.ToDateTime(dt.Rows[0]["Tegi_Region_Date"]);
+                if (dt.Rows[0]["Tegi_Prev_CTC"].ToString() != null && dt.Rows[0]["Tegi_Prev_CTC"].ToString() != "")
+                    obj_Emp.Tegi_Prev_CTC = Convert.ToDouble(dt.Rows[0]["Tegi_Prev_CTC"]);
+                if (dt.Rows[0]["Tegi_Shift_Group"].ToString() != null && dt.Rows[0]["Tegi_Shift_Group"].ToString() != "")
+                    obj_Emp.Tegi_Shift_Group = Convert.ToInt32(dt.Rows[0]["Tegi_Shift_Group"]);
+                if (dt.Rows[0]["Tegi_GroupId"].ToString() != null && dt.Rows[0]["Tegi_GroupId"].ToString() != "")
+                    obj_Emp.Tegi_GroupId = Convert.ToInt32(dt.Rows[0]["Tegi_GroupId"]);
+                if (dt.Rows[0]["Tegi_DivisionId"].ToString() != null && dt.Rows[0]["Tegi_DivisionId"].ToString() != "")
+                    obj_Emp.Tegi_DivisionId = Convert.ToInt32(dt.Rows[0]["Tegi_DivisionId"]);
+                if (dt.Rows[0]["Tegi_DesignationId"].ToString() != null && dt.Rows[0]["Tegi_DesignationId"].ToString() != "")
+                    obj_Emp.Tegi_DesignationId = Convert.ToInt32(dt.Rows[0]["Tegi_DesignationId"]);
+                obj_Emp.Tegi_PfNo = dt.Rows[0]["Tegi_PfNo"].ToString();
+                obj_Emp.Tegi_EsiNo = dt.Rows[0]["Tegi_EsiNo"].ToString();
+                obj_Emp.Tegi_Weekoff = dt.Rows[0]["Tegi_Weekoff"].ToString();
+                obj_Emp.Tegi_ReportingLevel = dt.Rows[0]["Tegi_ReportingLevel"].ToString();
+                obj_Emp.Tegi_UANNumber = dt.Rows[0]["Tegi_UANNumber"].ToString();
+                obj_Emp.Tegi_PF_Type = dt.Rows[0]["Tegi_PF_Type"].ToString();
+                obj_Emp.Tegi_Emp_Rules = dt.Rows[0]["Tegi_Emp_Rules"].ToString();
+                obj_Emp.Tegi_Grade = dt.Rows[0]["Tegi_Grade"].ToString();
+                obj_Emp.Tei_BloodGroup = dt.Rows[0]["Tei_BloodGroup"].ToString();
+                obj_Emp.Tegi_DesignationReport = dt.Rows[0]["Tegi_DesignationReport"].ToString();
+                if (dt.Rows[0]["Tegi_DepartmentId"].ToString() != null && dt.Rows[0]["Tegi_DepartmentId"].ToString() != "")
+                    obj_Emp.Tegi_DepartmentId = Convert.ToInt32(dt.Rows[0]["Tegi_DepartmentId"]);
+                obj_Emp.Tei_PfNo = dt.Rows[0]["Tegi_PfNo"].ToString();
+                obj_Emp.Tei_EsiNo = dt.Rows[0]["Tegi_EsiNo"].ToString();
+                obj_Emp.Tea_Name = dt.Rows[0]["Allowances"].ToString();
+                if (dt.Rows[0]["Tes_Sal_Efctive_Date"].ToString() != null && dt.Rows[0]["Tes_Sal_Efctive_Date"].ToString() != "")
+                    obj_Emp.Tes_Sal_Efctive_Date = Convert.ToDateTime(dt.Rows[0]["Tes_Sal_Efctive_Date"]);
+                if (dt.Rows[0]["tes_Sal"].ToString() != null && dt.Rows[0]["tes_Sal"].ToString() != "")
+                    obj_Emp.Tes_Sal = Convert.ToDecimal(dt.Rows[0]["tes_Sal"]);
+                if (dt.Rows[0]["Tes_Sal_CTC"].ToString() != null && dt.Rows[0]["Tes_Sal_CTC"].ToString() != "")
+                    obj_Emp.Tes_Sal_CTC = Convert.ToInt32(dt.Rows[0]["Tes_Sal_CTC"]);
+
+
+
+                //obj_Emp.Tegi_Prev_CTC = Convert.ToInt32(dt.Rows[0]["Tegi_Prev_CTC"].ToString());
+            }
+
+            return obj_Emp;
+        }
+
     }
 }

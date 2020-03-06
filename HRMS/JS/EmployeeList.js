@@ -54,7 +54,7 @@ function LoadAllEmpList() {
 function GetListID(Id) {
     //$('#add_employee').show();    
     $.ajax({
-        url: "/Employee/EmployeeById/" + Id,
+        url: "/Employee/Get_All_Emp/" + Id,
         type: "Post",
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
@@ -172,6 +172,24 @@ function GetListID(Id) {
 
                 $('#txt_UANNumber').val(r.Tegi_UANNumber);
                 $('#txt_ESno').val(r.Tei_EsiNo);
+                $('#ddl_SalaryType').val(r.Tes_Sal_CTC);
+                $('#txt_Salary').val(r.Tes_Sal);
+                if (r.Tes_Sal_Efctive_Date != null && r.Tes_Sal_Efctive_Date != "") {
+                    var date = new Date(parseInt(r.Tes_Sal_Efctive_Date.substr(6)));
+                    var month = date.getMonth() + 1;
+                    var CurDate = "";
+                    if (parseInt(date.getDate()) < 10)
+                        CurDate = "0" + date.getDate();
+                    else
+                        CurDate = date.getDate();
+                    if (month < 10)
+                        month = "0" + month;
+                    $('#txt_SalEffectivedate').val(month + "/" + CurDate + "/" + date.getFullYear());
+                }
+                alert(r.Tea_Name);
+                var AllwOptions = r.Tea_Name.split(",");
+                $("#ddl_allowance").val(AllwOptions);
+                $("#ddl_allowance").multiselect('refresh');                
             }
 
         },
@@ -181,6 +199,8 @@ function GetListID(Id) {
     });
     return false;
 }
+
+
 
 
 function Deleted(Id) {
