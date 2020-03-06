@@ -54,11 +54,17 @@ namespace HRMS.Controllers
         }
         public JsonResult Insert_Leave(LeaveGroup obj_Leave)
         {
+            obj_Leave.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_Leave.LocationID = Convert.ToInt32(Session["LocationID"]);
+            obj_Leave.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Leave.Insert_Leaves(obj_Leave), JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult Update_Leave(LeaveGroup obj_Leave)
         {
+            obj_Leave.CompanyID = Convert.ToInt32(Session["companyid"]);
+            obj_Leave.LocationID = Convert.ToInt32(Session["LocationID"]);
+            obj_Leave.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Leave.Update_Leaves(obj_Leave), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Leave_List()

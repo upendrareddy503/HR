@@ -78,6 +78,7 @@ namespace HRMS.Controllers
         // AccordionMenu
         public ActionResult GetAccordionMenu()
         {
+
             Menudetails mm = new Menudetails();
             SubMenudetails mm1 = new SubMenudetails();
             List<Menudetails> accList = new List<Menudetails>();
@@ -100,10 +101,11 @@ namespace HRMS.Controllers
                     var qSubcategory = mm1.Get_AllSubMenuList_id(cat.TxnId);
                         foreach (var subcat in qSubcategory)
                         {
-                            SubMenudetails sc = new SubMenudetails()
-                            {
-                                TxnId = Convert.ToInt32(subcat.TxnId),
-                                MenuName = Convert.ToString(subcat.Url_Name)
+                        SubMenudetails sc = new SubMenudetails()
+                        {
+                            TxnId = Convert.ToInt32(subcat.TxnId),
+                            MenuName = Convert.ToString(subcat.Description),
+                                Url_Name = subcat.Url_Name
                             };
 
                             mm.SubMenudetails.Add(sc);

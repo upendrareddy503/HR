@@ -27,6 +27,9 @@ namespace HRMS.Controllers
                 Session["userid"] = ob_lg.UserID;
                 Session["companyid"] = ob_lg.CompanyID;
                 Session["LocationID"] = ob_lg.LocationID;
+
+                Session["Username"] = ob_lg.Tei_FirstName;
+
             }
             return Json(ob_lg, JsonRequestBehavior.AllowGet);
         }

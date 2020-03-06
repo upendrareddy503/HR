@@ -1,0 +1,198 @@
+﻿
+<script src="~/JS/LeaveType.js"></script>
+<script src="~/JS/Common.js"></script>
+
+<!-- Page Content -->
+<div class="content container-fluid">
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Leave Type</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index-2.html">Dashboard</a></li>
+                    <li class="breadcrumb-item active">Leave Type</li>
+                </ul>
+            </div>
+            <div class="col-auto float-right ml-auto">
+                <a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_leavetype"><i class="fa fa-plus"></i> Add Leave Type</a>
+            </div>
+        </div>
+    </div>
+    <!-- /Page Header -->
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table id="tblleaveGroup" class="table table-striped custom-table datatable mb-0">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Leave Type</th>
+                            <th>Code</th>
+                            <th>No of Days</th>
+                            <th>Status</th>
+                            <th class="text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Page Content -->
+<!-- Add Leavetype Modal -->
+<div id="add_leavetype" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Add Leave Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label>Group Name <span class="text-danger">*</span></label>
+
+                                <select id="ddl_Group" class="form-control validate"><option>Select</option></select>
+                            </div>
+                            <div class="form-group">
+                                <label>Leave Name <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LName" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Code <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LCode" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Number of days <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LNoDays" type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Leave Type <span class="text-danger">*</span></label>
+                                <select id="ddlLType" class="form-control validate" tabindex="2">
+                                    <option value="0">Select</option>
+                                    <option value="P">Paid</option>
+                                    <option value="H">Half Paid</option>
+                                    <option value="L">Loss of Pay</option>
+
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Leave Property <span class="text-danger">*</span></label>
+                                <select id="ddlLProperty" class="form-control validate" tabindex="2">
+                                    <option value="0">Select</option>
+                                    <option value="C">Cummulative </option>
+                                    <option value="E">Encashable</option>
+                                    <option value="L">Lapse</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+
+                            <div class="form-group">
+                                <label>Leave availed for a period Min Days  <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LAvailMax" type="text">
+                            </div>
+                            <div class="form-group">
+                                <label>Leave availed for a period Max Days  <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LAvailMin" type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Leave availed for Number of Times  <span class="text-danger">*</span></label>
+                                <input class="form-control validate" id="txt_LNoTimeAvail" type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Weekly off and paid holidays during the Leave period shall be counted as leave </label>
+                                @*<input class="form-control" id="Tli_NoTimeavailed" type="text">*@
+                                <input type="radio" id="rdbT" name="Week" class="radio-label" value="T" tabindex="7" />True
+                                <input type="radio" id="rdbF" name="Week" class="radio-label" value="F" tabindex="8" />False
+
+                            </div>
+                            <div class="form-group">
+                                <label>Approval for an adavance leave </label>
+                                <input class="form-control" id=" txt_LAdvancelive" type="text">
+                            </div>
+
+                            <div class="form-group">
+                                <label>	Leave will not be prefixed or suffixed to other leave  </label>
+                                @*<input class="form-control" id="Tli_prefixed" type="text">*@
+                                <input type="radio" id="rdbPrefixT" name="Prefix" class="radio-label" value="T" tabindex="7" />True
+                                <input type="radio" id="rdbPrefixF" name="Prefix" class="radio-label" value="F" tabindex="8" />False
+                            </div>
+                        </div>
+                        <div class="col-sm-12">
+                            <div class="submit-section">
+                                <button class="btn btn-primary submit-btn" onclick="return Add_leaveType();">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Add Leavetype Modal -->
+<!-- Edit Leavetype Modal -->
+<div id="edit_leavetype" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Edit Leave Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label>Leave Type <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" value="Casual Leave">
+                    </div>
+                    <div class="form-group">
+                        <label>Number of days <span class="text-danger">*</span></label>
+                        <input class="form-control" type="text" value="12">
+                    </div>
+                    <div class="submit-section">
+                        <button class="btn btn-primary submit-btn">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Edit Leavetype Modal -->
+<!-- Delete Leavetype Modal -->
+<div class="modal custom-modal fade" id="delete_leavetype" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="form-header">
+                    <h3>Delete Leave Type</h3>
+                    <p>Are you sure want to delete?</p>
+                </div>
+                <div class="modal-btn delete-action">
+                    <div class="row">
+                        <div class="col-6">
+                            <a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+                        </div>
+                        <div class="col-6">
+                            <a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /Delete Leavetype Modal -->

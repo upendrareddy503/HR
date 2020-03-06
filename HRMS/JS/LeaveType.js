@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    loadData();
+    loadLeavetype();
     getGroup();
 });
 
@@ -10,32 +10,55 @@ function getGroup() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (r) {
-            $('#ddl_EmpGroup').empty().append('<option selected="selected" value="0">Select</option>');
+            $('#ddl_Group').empty().append('<option selected="selected" value="0">Select</option>');
             $.each(r, function (key, item) {
-                $('#ddl_EmpGroup').append($("<option></option>").val(item.GroupId).html(item.GroupName));
+                $('#ddl_Group').append($("<option></option>").val(item.GroupId).html(item.GroupName));
             });
         }
     });
 }
 
-function loadData() {
+function loadLeavetype() {
     $.ajax({
         url: "/Attendance/Leave_List",
         type: "Get",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        success: function (r) {
-            var html = '';
-            var i = 0;
-            $.each(r, function (key, item) {
+        success: function (data) {
+            $("#tblleaveGroup").dataTable({
+                data: data,
+                "bDestroy": true,
+                "fnRowCallback": function (nRow, aData, iDisplayIndex) {
+                    $("td:first", nRow).html(iDisplayIndex + 1);
+                    return nRow;
+                },
+                columns: [
+                    {
+                        "data": "LId"
+                    },
+                    { "data": "LName" },
+                    { "data": "LCode" },
+                    { "data": "LNoDays" },
+                    { "data": "LType" },
+                    {
+                        "data": "LId",
+                        "render": function (LId) {
+                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + LId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + LId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                        }
+                    }
+                ],
+                "columnDefs": [{
+                    'targets': [0, 2],
+                    'orderable': false
 
-                html += '<tr>';
-                html += '<td>' + parseInt(i+1) + '</td>';
-                html += '<td>' + item.LName + '</td>';
-                html += '<td><a href="#"  onclick="getbyID(' + item.LId + ')">Edit</a>|<a href="#" onclick="Delete(' + item.LId + ')">Delete</a></td > ';
-                html += '</tr>';
-            });
-            $('.tbody').html(html);
+                }],
+                "order": [1, 'asc']
+
+            })    
+
+
+
+           
         },
         error: function (errmsg) {
             alert(errmsg.responseText);
@@ -43,10 +66,14 @@ function loadData() {
     });
 }
 
-function Add() {    
+function Add_leaveType() {    
+    var res = validate();
+    if (res == false) {
 
-    var obj_Leave = {
-        GroupId: $('#ddl_EmpGroup').val(),
+        return false;
+    }
+    var Obj_Leav = {
+        GroupId: $('#ddl_Group').val(),
         LName: $('#txt_LName').val(),
         LCode: $('#txt_LCode').val(),
         LNoDays: $('#txt_LNoDays').val(),
@@ -63,11 +90,11 @@ function Add() {
     $.ajax({
         url: "/Attendance/Insert_Leave",
         type: "Post",
-        data: JSON.stringify(obj_Leave),
+        data: JSON.stringify(Obj_Leav),
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
+            loadLeavetype();
             //clearTextBox();            
         },
         error: function (errMsg) {
@@ -78,10 +105,14 @@ function Add() {
 
 
 function Update() {
+    var res = validate();
+    if (res == false) {
 
-    var obj_Leave = {
+        return false;
+    }
+    var Obj_Leav = {
         LId: $('#hdnLId').val(),
-        GroupId: $('#ddl_EmpGroup').val(),
+        GroupId: $('#ddl_Group').val(),
         LName: $('#txt_LName').val(),
         LCode: $('#txt_LCode').val(),
         LNoDays: $('#txt_LNoDays').val(),
@@ -98,11 +129,11 @@ function Update() {
     $.ajax({
         url: "/Attendance/Update_Leave",
         type: "Post",
-        data: JSON.stringify(obj_Leave),
+        data: JSON.stringify(Obj_Leav),
         contentType: "application/json;charset=utf-8",
         dataType: 'json',
         success: function (r) {
-            loadData();
+            loadLeavetype();
             //clearTextBox();            
         },
         error: function (errMsg) {
@@ -150,7 +181,7 @@ function Delete(Id) {
             contentType: "application/json;charset=UTF-8",
             dataType: "json",
             success: function (result) {
-                loadData();
+                loadLeavetype();
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);

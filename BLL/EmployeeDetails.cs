@@ -82,7 +82,7 @@ namespace BLL
         public string Tegi_EsiNo { get; set; }
         public string Tei_BloodGroup { get; set; }
         public string Tegi_DesignationReport { get; set; }
-        
+
         // public int UserId { get; set; }
 
         public string Insert_Employee(EmployeeDetails Obj_Emp)
@@ -494,7 +494,7 @@ namespace BLL
                 if (dt.Rows[0]["Tu_Location"].ToString() != null && dt.Rows[0]["Tu_Location"].ToString() != "")
                     log.LocationID = Convert.ToInt32(dt.Rows[0]["Tu_Location"].ToString());
 
-                log.Tei_FirstName = dt.Rows[0]["Tu_Username"].ToString();
+                log.Tei_FirstName = dt.Rows[0]["Tei_FirstName"].ToString();
             }
 
             return log;
@@ -554,7 +554,7 @@ namespace BLL
         public EmployeeDetails Get_Dashboard_profile(int Id)
         {
             SqlParameter[] parm = new SqlParameter[2];
-            parm[0] = da.AddSPParameter("Tei_Id", Id, ParameterDirection.Input, DbType.Int32, 100);            
+            parm[0] = da.AddSPParameter("Tei_Id", Id, ParameterDirection.Input, DbType.Int32, 100);
             parm[1] = da.AddSPParameter("Flag", 14, ParameterDirection.Input, DbType.Int32, 10);
 
             DataTable dt = new DataTable();
@@ -618,7 +618,7 @@ namespace BLL
                     obj_Emp.Tegi_DepartmentId = Convert.ToInt32(dt.Rows[0]["Tegi_DepartmentId"]);
                 obj_Emp.Tei_PfNo = dt.Rows[0]["Tegi_PfNo"].ToString();
                 obj_Emp.Tei_EsiNo = dt.Rows[0]["Tegi_EsiNo"].ToString();
-                
+
 
 
                 //obj_Emp.Tegi_Prev_CTC = Convert.ToInt32(dt.Rows[0]["Tegi_Prev_CTC"].ToString());

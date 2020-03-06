@@ -38,7 +38,7 @@ namespace HRMS.Controllers
         {
             obj_EmpIns.CompanyID = Convert.ToInt32(Session["companyid"]);
             obj_EmpIns.LocationID = Convert.ToInt32(Session["LocationID"]);
-            obj_EmpIns.UserID= Convert.ToInt32(Session["userid"]);
+            obj_EmpIns.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Insert_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Next_Employee(EmployeeDetails obj_EmpNxt)
@@ -49,12 +49,12 @@ namespace HRMS.Controllers
             return Json(obj_Emp.Next_Employee(obj_EmpNxt), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Second_Employee(EmployeeDetails obj_EmpIns)
-        {            
+        {
             obj_EmpIns.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Second_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
         public JsonResult Third_Employee(EmployeeDetails obj_EmpIns)
-        {           
+        {
             obj_EmpIns.UserID = Convert.ToInt32(Session["userid"]);
             return Json(obj_Emp.Salary_Employee(obj_EmpIns), JsonRequestBehavior.AllowGet);
         }
@@ -88,8 +88,8 @@ namespace HRMS.Controllers
                 {
                     var fileName = Path.GetFileName(pic.FileName);
                     var _ext = Path.GetExtension(pic.FileName);
-                    int CompanyId = Convert.ToInt32(Session["companyid"]), LocationId= Convert.ToInt32(Session["LocationID"]);
-                   
+                    int CompanyId = Convert.ToInt32(Session["companyid"]), LocationId = Convert.ToInt32(Session["LocationID"]);
+
                     DataTable dt = obj_Emp.Get_Top_EmpID(CompanyId, LocationId);
                     if (dt.Rows.Count > 0)
                     {
@@ -99,7 +99,7 @@ namespace HRMS.Controllers
                     {
                         _imgname = "1";//WebSecurity.CurrentUserId.ToString();
                     }
-                    var _comPath = Server.MapPath("/Images/Emp/User_")+CompanyId+"_"+LocationId+"_"+ _imgname + _ext;
+                    var _comPath = Server.MapPath("/Images/Emp/User_") + CompanyId + "_" + LocationId + "_" + _imgname + _ext;
                     _imgname = "User_" + CompanyId + "_" + LocationId + "_" + _imgname + _ext;
 
                     ViewBag.Msg = _comPath;
@@ -220,7 +220,7 @@ namespace HRMS.Controllers
                                         entered++;
                                         if (entered > 0)
                                         {
-                                           // GetOccassionRecipientMasters();
+                                            // GetOccassionRecipientMasters();
                                         }
                                     }
                                 }
@@ -242,11 +242,11 @@ namespace HRMS.Controllers
                         }
                     }
                 }
-               
+
                 //List<ProductMaster> _productmaster = new List<ProductMaster>();
                 //ViewBag.maindata = _lstProductMaster;
-                ////return Json(_lstProductMaster, JsonRequestBehavior.AllowGet);
-                //return View("ImportProductsFromExcel", _lstProductMaster);
+                ////return Json(_lstProductMaster, JsonRequestBehavior.AllowGet);
+                //return View("ImportProductsFromExcel", _lstProductMaster);
             }
             return Json(JsonRequestBehavior.AllowGet);
 
@@ -257,7 +257,7 @@ namespace HRMS.Controllers
         public JsonResult UploadHomeReport(string id)
         {
             var file = Request.Files[0];
-             string filePath = string.Empty;
+            string filePath = string.Empty;
             if (Request.Files != null)
             {
                 string path = Server.MapPath("~/Excels/");
@@ -307,7 +307,7 @@ namespace HRMS.Controllers
                             odaExcel.SelectCommand = cmdExcel;
                             odaExcel.Fill(dt);
                             connExcel.Close();
-                          
+
 
                             if (dt.Rows.Count > 0)
                             {
@@ -316,17 +316,33 @@ namespace HRMS.Controllers
                                 {
                                     total++;
 
-                                    if(row["EmpNo"]!="")
-                                    { 
-                                    obj_Emp.Tei_Empno = row["EmpNo"].ToString();
+                                    if (row["EmpNo"] != "")
+                                    {
+                                        obj_Emp.Tei_Empno = row["EmpNo"].ToString();
                                     }
                                     obj_Emp.Tei_Title = row["Title"].ToString();
                                     obj_Emp.Tei_FirstName = row["First Name"].ToString();
                                     obj_Emp.Tei_LastName = row["Last Name"].ToString();
-                                    obj_Emp.Tei_Gender = row["Gender"].ToString();
+                                    if (row["Gender"].ToString() == "Male")
+                                    {
+                                        obj_Emp.Tei_Gender = "M";
+                                    }
+                                    else
+                                    {
+                                        obj_Emp.Tei_Gender = "F";
+                                    }
+
                                     obj_Emp.Tei_Phone = row["Phone"].ToString();
                                     obj_Emp.Tei_Email = row["Email"].ToString();
-                                    obj_Emp.Tei_Type = row["Type"].ToString();
+                                    if (row["Type"].ToString() == "Temporary")
+                                    {
+                                        obj_Emp.Tei_Type = "1";
+                                    }
+                                    else
+                                    {
+                                        obj_Emp.Tei_Type = "2";
+                                    }
+
                                     obj_Emp.Tei_Father = row["Father Name"].ToString();
                                     if (row["DateofBirth"] != "")
                                     {
@@ -343,33 +359,7 @@ namespace HRMS.Controllers
                                     obj_Emp.UserID = Convert.ToInt32(Session["userid"]);
 
                                     string k = obj_Emp.Insert_Employee(obj_Emp);
-                                    //                        _lstProductMaster.Add(new EmployeeDetails
-                                    // {
-                                    //Tei_Empno = row["ProductName"].ToString().Replace("'", "''"),
-                                    //ProductSKU = row["VendorSKU"].ToString().Trim() + "GL" + DateTime.Now.Year.ToString().Substring(2),
-                                    //VendorSKU = row["VendorSKU"].ToString().Trim(),
-                                    //DisplayText = row["DisplayText"].ToString().Trim(),
-                                    //ProductSpecification = row["ProductSpecification"].ToString().Replace("'", "''"),
-                                    //Description = row["Description"].ToString().Replace("'", "''"),
-                                    //ShortDescription = row["ShortDescription"].ToString().Replace("'", "''"),
-                                    //LongDescription = row["LongDescription"].ToString().Replace("'", "''"),
-                                    //InventoryCount = row["InventoryCount"].ToString().Trim(),
-                                    //ListPrice = row["ListPrice"].ToString().Trim(),
-                                    //SellingPrice = row["SellingPrice"].ToString().Trim(),
-                                    // if (chkMultiple.Checked == true && ProductSKU != "")
-                                    //{
-                                    //    ProductImage = Convert.ToString(VendorSKU).Trim() + "_1.jpg";
-                                    //}
-                                    //else if ((chkMultiple.Checked == false && details.SKU != ""))
-                                    //{
-                                    //    ProductImage = Convert.ToString(VendorSKU).Trim() + ".jpg";
-                                    //}
-                                    //  });
-                                    //entered++;
-                                    ///if (entered > 0)
-                                    //{
-                                        // GetOccassionRecipientMasters();
-                                    //}
+
                                 }
                             }
                         }

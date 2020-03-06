@@ -15,7 +15,7 @@
     <meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
     <meta name="author" content="Dreamguys - Bootstrap Admin Template">
     <meta name="robots" content="noindex, nofollow">
-    <title>Departments - HRMS admin template</title>
+    <title>HRMS </title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="/Content/assets/img/favicon.png">
@@ -144,7 +144,7 @@
 
             <!-- Header Title -->
             <div class="page-title-box">
-                <h3>Dreamguy's Technologies</h3>
+                <h3>HRMS</h3>
             </div>
             <!-- /Header Title -->
 
@@ -171,15 +171,15 @@
                 <li class="nav-item dropdown has-arrow main-drop">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
-                            <img src="/Content/assets/img/profiles/avatar-21.jpg" alt="">
+                            <img id="Imgpro" alt="">
                             <span class="status online"></span>
                         </span>
-                        <span>Admin</span>
+                        <span id="Idusername"></span>
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="profile.html">My Profile</a>
-                        <a class="dropdown-item" href="settings.html">Settings</a>
-                        <a class="dropdown-item" href="login.html">Logout</a>
+                        <a class="dropdown-item" href="~/Dashboard/profile">My Profile</a>
+                        <a class="dropdown-item" href="#">Settings</a>
+                        <a class="dropdown-item" href="~/Default/">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -188,9 +188,9 @@
             <div class="dropdown mobile-user-menu">
                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" href="profile.html">My Profile</a>
+                    <a class="dropdown-item" href="~/Dashboard/profile">My Profile</a>
                     <a class="dropdown-item" href="settings.html">Settings</a>
-                    <a class="dropdown-item" href="login.html">Logout</a>
+                    <a class="dropdown-item" href="~/Default/">Logout</a>
                 </div>
             </div>
             <!-- /Mobile Menu -->
@@ -221,23 +221,30 @@
 
     <script src="~/JS/Common.js"></script>
     <script type="text/javascript">
-        $(document).ready(function(){           
+        $(document).ready(function(){
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
                 url: '/Default/checkSession',
                 data: '{}',
-                success: function (data) {                    
+                success: function (data) {
                     if (data == false) {
                         location.href = "/Default"
                     }
-                   
+                    else {
+                        var path = "/Images/Emp/User_" +@Session["companyid"]+"_" +@Session["LocationID"]+"_" +@Session["userid"]+".jpg"
+                        $('#Imgpro').attr("Src", path);
+                        var Idusername ="@Session["Username"]";
+                        $('#Idusername').text(Idusername);
+
+                    }
+
                 },
                 error: function (xhr) {
                     alert('error');
                 }
-            });  
+            });
 
         });
     </script>

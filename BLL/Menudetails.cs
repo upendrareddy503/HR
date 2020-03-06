@@ -81,11 +81,8 @@ namespace BLL
                     menulist.Code = dt.Rows[i]["Code"].ToString();
                        menulist.Order_No = Convert.ToInt32(dt.Rows[i]["Order_No"]);
                 menulist.TxnId = Convert.ToInt32(dt.Rows[i]["TxnId"]);
-
-
                 obj_M.Add(menulist);
             }
-
             return obj_M;
         }
 
