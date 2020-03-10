@@ -58,6 +58,7 @@
                     <div class="row">
                         <div class="col-sm-6">
                             <div class="form-group">
+                                <input type="hidden" id="hdnLId" />
                                 <label>Group Name <span class="text-danger">*</span></label>
 
                                 <select id="ddl_Group" class="form-control validate"><option>Select</option></select>
@@ -115,8 +116,8 @@
                             <div class="form-group">
                                 <label>Weekly off and paid holidays during the Leave period shall be counted as leave </label>
                                 @*<input class="form-control" id="Tli_NoTimeavailed" type="text">*@
-                                <input type="radio" id="rdbT" name="Week" class="radio-label" value="T" tabindex="7" />True
-                                <input type="radio" id="rdbF" name="Week" class="radio-label" value="F" tabindex="8" />False
+                                <input type="radio" id="rdbT" name="Week" class="radio-label" value="T"  />True
+                                <input type="radio" id="rdbF" name="Week" class="radio-label" value="F"  />False
 
                             </div>
                             <div class="form-group">
@@ -127,13 +128,14 @@
                             <div class="form-group">
                                 <label>	Leave will not be prefixed or suffixed to other leave  </label>
                                 @*<input class="form-control" id="Tli_prefixed" type="text">*@
-                                <input type="radio" id="rdbPrefixT" name="Prefix" class="radio-label" value="T" tabindex="7" />True
-                                <input type="radio" id="rdbPrefixF" name="Prefix" class="radio-label" value="F" tabindex="8" />False
+                                <input type="radio" id="rdbPrefixT" name="Prefix" class="radio-label" value="T" />True
+                                <input type="radio" id="rdbPrefixF" name="Prefix" class="radio-label" value="F"  />False
                             </div>
                         </div>
                         <div class="col-sm-12">
                             <div class="submit-section">
-                                <button class="btn btn-primary submit-btn" onclick="return Add_leaveType();">Submit</button>
+                                <button class="btn btn-primary submit-btn" id="btnAdd" onclick="return Add_leaveType();">Submit</button>
+                                <button type="button" class="btn btn-primary submit-btn" id="btnUpdate" onclick="Updated_Type();" style="display:none">Update</button>
                             </div>
                         </div>
                     </div>
@@ -144,33 +146,7 @@
 </div>
 <!-- /Add Leavetype Modal -->
 <!-- Edit Leavetype Modal -->
-<div id="edit_leavetype" class="modal custom-modal fade" role="dialog">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Edit Leave Type</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label>Leave Type <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" value="Casual Leave">
-                    </div>
-                    <div class="form-group">
-                        <label>Number of days <span class="text-danger">*</span></label>
-                        <input class="form-control" type="text" value="12">
-                    </div>
-                    <div class="submit-section">
-                        <button class="btn btn-primary submit-btn">Save</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+
 <!-- /Edit Leavetype Modal -->
 <!-- Delete Leavetype Modal -->
 <div class="modal custom-modal fade" id="delete_leavetype" role="dialog">

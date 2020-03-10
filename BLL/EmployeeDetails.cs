@@ -612,6 +612,8 @@ namespace BLL
                 obj_Emp.Tegi_PF_Type = dt.Rows[0]["Tegi_PF_Type"].ToString();
                 obj_Emp.Tegi_Emp_Rules = dt.Rows[0]["Tegi_Emp_Rules"].ToString();
                 obj_Emp.Tegi_Grade = dt.Rows[0]["Tegi_Grade"].ToString();
+                obj_Emp.Tdg_Name = dt.Rows[0]["Tdg_Name"].ToString();
+                obj_Emp.Tdp_Name = dt.Rows[0]["Tdp_Name"].ToString();
                 obj_Emp.Tei_BloodGroup = dt.Rows[0]["Tei_BloodGroup"].ToString();
                 obj_Emp.Tegi_DesignationReport = dt.Rows[0]["Tegi_DesignationReport"].ToString();
                 if (dt.Rows[0]["Tegi_DepartmentId"].ToString() != null && dt.Rows[0]["Tegi_DepartmentId"].ToString() != "")

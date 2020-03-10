@@ -43,7 +43,7 @@ function loadLeavetype() {
                     {
                         "data": "LId",
                         "render": function (LId) {
-                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_department" onclick="GetID(' + LId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + LId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
+                            return '<div class="dropdown dropdown-action" align="right"><a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a><div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#" data-toggle="modal" data-target="#add_leavetype" onclick="get_leaveID(' + LId + ')"><i class="fa fa-pencil m-r-5"></i>Edit</a><a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_department" onclick="Deleted(' + LId + ')"><i class="fa fa-trash-o m-r-5"></i> Delete</a></div></div>'
                         }
                     }
                 ],
@@ -104,7 +104,7 @@ function Add_leaveType() {
 }
 
 
-function Update() {
+function Updated_Type() {
     var res = validate();
     if (res == false) {
 
@@ -143,7 +143,7 @@ function Update() {
 }
 
 
-function getbyID(Id) {    
+function get_leaveID(Id) {    
     $.ajax({
         url: "/Attendance/GetLeaveByID/" + Id,
         type: "Post",
@@ -151,17 +151,38 @@ function getbyID(Id) {
         dataType: 'json',
         success: function (r) {
             $('#hdnLId').val(r.LId);
-            $('#ddl_EmpGroup').val(r.GroupId)
+            $('#ddl_Group').val(r.GroupId)
             $('#txt_LName').val(r.LName);
             $('#txt_LCode').val(r.LCode);
             $('#txt_LNoDays').val(r.LNoDays);
             $('#ddlLType').val(r.LType);
             $('#ddlLProperty').val(r.LProperty);
             $('#txt_LAvailMax').val(r.LAvailMax);
+            $('#txt_LAvailMin').val(r.LAvailMin);
             $('#txt_LNoTimeAvail').val(r.LNoTimeAvail);
-            $("input[name='Week']:checked").val(r.LSandwich);
+            if (r.LSandwich == "T") {
+                alert(r.LSandwich);
+                $('#rdbT').prop("checked", true)
+               
+            }
+            else {
+                
+                $('#rdbF').prop("checked", true)
+            }
+            //$("input[name='Week']:checked").val(r.LSandwich);
             $('#txt_LAdvancelive').val(r.LAdvancelive);
-            $("input[name='Prefix']:checked").val(r.Lprefixed);
+
+
+            if (r.Lprefixed == "T") {
+                
+                $('#rdbPrefixT').prop("checked", true)
+
+            }
+            else {
+
+                $('#rdbPrefixF').prop("checked", true)
+            }
+           
             $('#btnAdd').hide();
             $('#btnUpdate').show();
         },

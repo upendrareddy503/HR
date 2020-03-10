@@ -72,7 +72,7 @@ namespace BLL
             parm[12] = da.AddSPParameter("Tli_companyid", Obj_Leav.CompanyID, ParameterDirection.Input, DbType.String, 100);
             parm[13] = da.AddSPParameter("Tli_location", Obj_Leav.LocationID, ParameterDirection.Input, DbType.Int32, 5);
             parm[14] = da.AddSPParameter("UserId", Obj_Leav.UserID, ParameterDirection.Input, DbType.Int32, 5);
-            parm[15] = da.AddSPParameter("Flag", 1, ParameterDirection.Input, DbType.Int32, 10);
+            parm[15] = da.AddSPParameter("Flag", 2, ParameterDirection.Input, DbType.Int32, 10);
             parm[16] = da.AddSPParameter("Tli_Id", Obj_Leav.LId, ParameterDirection.Input, DbType.Int32, 10);
             //da.AddSPParameter("Msg", null, ParameterDirection.Output, DbType.String);
             string id = da.ExecuteNonQuerySP("Usp_Leave_Details", parm);
