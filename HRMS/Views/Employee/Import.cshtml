@@ -43,7 +43,8 @@
                             <a href="#">Employee</a>
                             <ul>
                                 <li>
-                                    Temporary Employee <a href="#" id="dwnldTempEmp" onclick="window.location.href=@Url.Action("Employee","DwnEmp")">DownloadTemplate</a>  <a href="#">UploadTemplate</a>
+                                    Temporary Employee <a href="#" id="dwnldTempEmp" onclick="window.location.href='/Employee/DwnEmp'">DownloadTemplate</a>  <a href="#" id="btnEmpTempUpload">UploadTemplate</a>
+                                    <input type="file" id="btnEmpTempUpl" style="display:none" />
                                 </li>
                                 <li>
                                     Permanent Employee <a href="#">DownloadTemplate</a>  <a href="#">UploadTemplate</a>
@@ -59,3 +60,4 @@
         </div>
     </div>
 </div>
+<script src="~/JS/Template.js"></script>

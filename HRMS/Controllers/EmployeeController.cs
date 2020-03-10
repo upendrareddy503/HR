@@ -99,8 +99,8 @@ namespace HRMS.Controllers
                     {
                         _imgname = "1";//WebSecurity.CurrentUserId.ToString();
                     }
-                    var _comPath = Server.MapPath("/Images/Emp/User_") + CompanyId + "_" + LocationId + "_" + _imgname + _ext;
-                    _imgname = "User_" + CompanyId + "_" + LocationId + "_" + _imgname + _ext;
+                    var _comPath = Server.MapPath("/Images/Emp/User_") + CompanyId + "_" + LocationId + "_" + _imgname +".jpg";
+                    _imgname = "User_" + CompanyId + "_" + LocationId + "_" + _imgname + ".jpg";
 
                     ViewBag.Msg = _comPath;
                     var path = _comPath;
@@ -260,32 +260,41 @@ namespace HRMS.Controllers
             string filePath = string.Empty;
             if (Request.Files != null)
             {
-                string path = Server.MapPath("~/Excels/");
-                if (!Directory.Exists(path))
+                //string path = Server.MapPath("~/Excels/");
+                //if (!Directory.Exists(path))
+                //{
+                //    Directory.CreateDirectory(path);
+                //}
+                //filePath = path + Path.GetFileName("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                //string extension = Path.GetExtension("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
+                //file.SaveAs(filePath);
+                string fileName = Path.GetFileName(file.FileName);
+                string fileExtension = Path.GetExtension(file.FileName).ToLower();
+                string fileLocation = Server.MapPath("~/Downloads/" + fileName);
+                if (fileExtension == ".xls" || fileExtension == ".xlsx" || fileExtension == ".csv")
                 {
-                    Directory.CreateDirectory(path);
+                    file.SaveAs(fileLocation);
                 }
-                filePath = path + Path.GetFileName("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
-                string extension = Path.GetExtension("ProductUploadSheet-" + DateTime.Now.ToString("dd-MMM-yyyy-HH-mm-ss-ff") + Path.GetExtension(file.FileName));
-                file.SaveAs(filePath);
-
-                string conString = string.Empty;
-                switch (extension)
+                string connectionString = string.Empty;
+                string stFileType = fileExtension;
+                switch (stFileType)
                 {
-                    case ".xls": //Excel 97-03.
-                        conString = ConfigurationManager.ConnectionStrings["Excel03ConString"].ConnectionString;
+                    case ".xls":
+                        connectionString = string.Format(ConfigurationManager.ConnectionStrings["Excel2003OleDBConnection"].ConnectionString, fileLocation);
                         break;
-                    case ".xlsx": //Excel 07 and above.
-                        conString = ConfigurationManager.ConnectionStrings["Excel07ConString"].ConnectionString;
+                    case ".xlsx":
+                        connectionString = string.Format(ConfigurationManager.ConnectionStrings["Excel2007OleDBConnection"].ConnectionString, fileLocation);
+                        break;
+                    case ".csv":
                         break;
                 }
                 int total = 0;
                 int entered = 0;
                 int failed = 0;
 
-                conString = string.Format(conString, filePath);
+                //conString = string.Format(conString, filePath);
 
-                using (OleDbConnection connExcel = new OleDbConnection(conString))
+                using (OleDbConnection connExcel = new OleDbConnection(connectionString))
                 {
                     using (OleDbCommand cmdExcel = new OleDbCommand())
                     {
@@ -307,7 +316,7 @@ namespace HRMS.Controllers
                             odaExcel.SelectCommand = cmdExcel;
                             odaExcel.Fill(dt);
                             connExcel.Close();
-
+                            
 
                             if (dt.Rows.Count > 0)
                             {
@@ -416,16 +425,17 @@ namespace HRMS.Controllers
 
         public void DwnEmp()
         {
-            FileInfo TheFile = new FileInfo(Server.MapPath("~/Excels/EmployeeTemplate.xls"));
+            FileInfo TheFile = new FileInfo(Server.MapPath("~/Excels/EmployeeTemp.xlsx"));
             if (TheFile.Exists)
             {
-                System.IO.File.Delete(Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
-                System.IO.File.Copy(Server.MapPath("~/Excels/Tempory Employee.xls"), Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
-            }
+                System.IO.File.Delete(Server.MapPath("~/Downloads/EmployeeTemp.xlsx"));
+                System.IO.File.Copy(Server.MapPath("~/Excels/EmployeeTemp.xlsx"), Server.MapPath("~/Downloads/EmployeeTemp.xlsx"));
+            }            
             Response.ContentType = "application/ms-excel";
-            Response.AppendHeader("Content-Disposition", "attachment; filename=EmployeeTemplate.xls");
-            Response.TransmitFile(Server.MapPath("~/Downloads/EmployeeTemplate.xls"));
+            Response.AppendHeader("Content-Disposition", "attachment; filename=EmployeeTemp.xlsx");
+            Response.TransmitFile(Server.MapPath("~/Downloads/EmployeeTemp.xlsx"));
             Response.End();
+            //return Json("", JsonRequestBehavior.AllowGet);
         }
 
     }

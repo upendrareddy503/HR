@@ -154,17 +154,17 @@
             <ul class="nav user-menu">
 
                 <!-- Search -->
-                <li class="nav-item">
-                    <div class="top-nav-search">
-                        <a href="javascript:void(0);" class="responsive-search">
-                            <i class="fa fa-search"></i>
-                        </a>
-                        <form action="https://dreamguys.co.in/smarthr/blue/search.html">
-                            <input class="form-control" type="text" placeholder="Search here">
-                            <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                        </form>
-                    </div>
-                </li>
+                @*<li class="nav-item">
+                        <div class="top-nav-search">
+                            <a href="javascript:void(0);" class="responsive-search">
+                                <i class="fa fa-search"></i>
+                            </a>
+                            <form action="https://dreamguys.co.in/smarthr/blue/search.html">
+                                <input class="form-control" type="text" placeholder="Search here">
+                                <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                    </li>*@
                 <!-- /Search -->
 
 
@@ -172,14 +172,14 @@
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <span class="user-img">
                             <img id="Imgpro" alt="">
-                            <span class="status online"></span>
+                            @*<span class="status online"></span>*@
                         </span>
                         <span id="Idusername"></span>
                     </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="~/Dashboard/profile">My Profile</a>
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="~/Default/">Logout</a>
+                        <a class="dropdown-item" href="#" id="aLogOut">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -211,33 +211,47 @@
     <!-- /Main Wrapper -->
     <!-- jQuery -->
     <!-- Bootstrap Core JS -->
-
-
-
-
     <!-- Custom JS -->
     <script src="/Content/assets/js/app.js"></script>
-    <script src="~/JS/Menu.js"></script>
+    @*<script src="~/JS/Menu.js"></script>*@
 
-    <script src="~/JS/Common.js"></script>
+    @*<script src="~/JS/Common.js"></script>*@
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(document).ready(function () {            
+            CheckSession();
+
+            $('#aLogOut').click(function () {
+                $.ajax({
+                    type: 'POST',
+                    dataType: 'json',
+                    contentType: 'application/json',
+                    url: '/Default/Logout',
+                    data: '{}',
+                    success: function (data) {
+                        location.href = "/Default";
+                    }
+                });
+            });
+        });
+        function CheckSession() {
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',
                 url: '/Default/checkSession',
                 data: '{}',
-                success: function (data) {
-                    if (data == false) {
+                success: function (r) {                    
+                    var st = r.split('-');
+                    
+                    if (st[0] == "False") {
                         location.href = "/Default"
                     }
                     else {
-                        var path = "/Images/Emp/User_" +@Session["companyid"]+"_" +@Session["LocationID"]+"_" +@Session["userid"]+".jpg"
-                        $('#Imgpro').attr("Src", path);
-                        var Idusername ="@Session["Username"]";
-                        $('#Idusername').text(Idusername);
 
+                        var path = "/Images/Emp/User_" + st[1] + "_" + st[3] + "_" + st[2] + ".jpg"
+                        $('#Imgpro').attr("src", path);
+                        var Idusername = st[4];
+                        $('#Idusername').text(Idusername);
                     }
 
                 },
@@ -245,8 +259,7 @@
                     alert('error');
                 }
             });
-
-        });
+        }
     </script>
 </body>
 </html>

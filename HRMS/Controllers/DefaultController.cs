@@ -20,7 +20,7 @@ namespace HRMS.Controllers
             return View();
         }
         public JsonResult Login(EmployeeDetails obj_Login)
-        {            
+        {
             ob_lg = ob_lg.GetLogin(obj_Login);
             if (ob_lg.UserID != 0 && ob_lg.UserID != null)
             {
@@ -45,7 +45,17 @@ namespace HRMS.Controllers
                 sessionValue = false;
 
             }
-            return Json(sessionValue, JsonRequestBehavior.AllowGet);
+            string CompnayId = (Session["companyid"] == null) ? "" : Session["companyid"].ToString();
+            string LocationId= (Session["LocationID"] == null) ? "" : Session["LocationID"].ToString();
+            string UserId= (Session["userid"] == null) ? "" : Session["userid"].ToString();
+            string UserName= (Session["Username"] == null) ? "" : Session["Username"].ToString();
+            string str = sessionValue.ToString() + "-" + CompnayId + "-" + UserId + "-" + LocationId + "-" + UserName;
+            return Json(str, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult Logout()
+        {
+            Session.Clear();
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }
